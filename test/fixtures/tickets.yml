@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: tickets
+#
+#  id          :integer          not null, primary key
+#  titre       :string(255)
+#  description :string(255)
+#  importance  :integer
+#  poids       :integer
+#  tempsPris   :datetime
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  titre: MyString
+  description: MyString
+  importance: 1
+  poids: 1
+  tempsPris: 2013-07-09 13:23:27
+
+two:
+  titre: MyString
+  description: MyString
+  importance: 1
+  poids: 1
+  tempsPris: 2013-07-09 13:23:27
