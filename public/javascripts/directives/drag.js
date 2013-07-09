@@ -2,7 +2,7 @@ app.directive("drag", ["$rootScope", "$timeout",
   function($rootScope, $timeout) { 
     
   var currentElement, firstOffsetX, firstOffsetY, originalElement;
-  var containerId = "content";
+  var containerId = "container";
   var container = angular.element(document.getElementById(containerId));
   var elements = []; 
   var listen = true; 
