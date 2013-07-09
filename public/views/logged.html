@@ -2,16 +2,19 @@
 <section class="max-width text-center big-padding-bottom ng-scope">
 			<div class="leftNavigation">
 				<div class="staticLeftNavigation">
-					<a class="btn ng-scope ng-binding" >Backlog</a>
+					<a class="btn " >Backlog</a>
 				</div>
 				<div class="scrollLeftNavigation">
-					<a class="btn ng-scope ng-binding" ng-repeat="sprint in sprints">{{sprint.name}}</a>
+					<a class="btn " ng-repeat="sprint in sprints">{{sprint.titre}}</a>
 				</div>
 			</div>
 			<div class="boardContent">
 				<div class="topBoardBar">
 					<a class="btnTopBar" href="">
 						<img title="addNewTicket" alt="Add" src="images/icon_add.png">
+					</a>
+					<a class="btnTopBar" href="">
+						<img title="editPdf" alt="Pdf" src="images/icon_doc.png">
 					</a>
 				</div>
 				<div id="ticketsList">

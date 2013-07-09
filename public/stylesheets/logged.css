@@ -41,6 +41,8 @@
     text-decoration: none;
     vertical-align: top;
 	padding: 10px 20px;
+	min-width: 32px;
+	float:left;
 }
 .boardContent > .topBoardBar >.btnTopBar:hover, .boardContent > .topBoardBar >.btnTopBar:focus {
     background-color: rgb(245, 245, 245);
@@ -48,6 +50,7 @@
     border-radius: 2px 2px 2px 2px;
     color: rgb(0, 0, 0);
     text-decoration: none;
+	min-width: 32px;
 }
 
 .boardContent > #ticketsList{
