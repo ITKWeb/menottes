@@ -10,4 +10,5 @@
 
 class Projet < ActiveRecord::Base
 	has_many :tickets
+	has_many :sprints
 end

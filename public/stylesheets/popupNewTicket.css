@@ -1,0 +1,20 @@
+
+/*--------------------- Popup nouveau ticket  --------------------*/
+.newTicketContent{
+	text-align:left;
+}
+
+.inputNewTicket{
+	border-top : none;
+	border-left : none;
+	border-right : none;
+	border-bottom : 1px solid black;
+	width : 50%;
+	font-size: 100%;
+}
+#lblHistoryId{
+	float:left;
+}
+#lblTrackId{
+	float:left;
+}
