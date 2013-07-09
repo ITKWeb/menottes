@@ -35,12 +35,16 @@
 }
 
 .topBoardBar{
-	border-bottom: 1px solid rgb(221, 221, 221);
-	background:#F5F5F5;
+	border-bottom: 1px solid #F5F5F5;
 }
 
 #ticketsList{
 	padding: 10px;
 }
 
-
+#ticketsList li{
+	padding:10px;
+	margin:2px;
+	background-color:#FFF;
+	border: 1px solid #aaa;
+}
