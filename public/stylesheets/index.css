@@ -1,5 +1,76 @@
-.main {
-  width: 150px;
-  height: 50px;
-  background-color: red;
+
+html{
+    height: 100%;
+}
+body{
+	height:100%;
+	font-family : sans-serif;
+	color:#5E5E5E;
+}
+#container{
+	position:relative;
+	min-height:100%;
+	height:auto;
+	background:#FFFFFF;
+}
+.max-width{
+	position:relative;
+	margin:0 auto;
+	width:90%;
+	max-width:1400px;
+	padding:20px 0;
+}
+.big-padding-bottom{
+	padding-bottom:100px;
+}
+.text-center{
+	text-align:center;
+}
+
+.btn{
+	display:inline-block;
+	margin:20px;
+	padding:20px;
+	background-color:#F0F0F0;
+	border-radius:2px;
+	border:1px solid #DDD;
+	box-shadow: 0 -1px 0 0 #999999 inset, 0 1px 0 0 #FFFFFF inset;
+	color:#5E5E5E;
+	text-decoration:none;
+	vertical-align:top;
+	cursor:pointer;
+}
+.btn:hover, .btn:focus{
+	background-color:#F5F5F5;
+	border-radius:2px;
+	border:1px solid #CCC;
+	color:#000;
+	text-decoration:none;
+}
+.btn:active{
+	box-shadow: 0 1px 0 0 #999999 inset, 0 -1px 0 0 #FFFFFF inset;
+}
+
+.btn-new-project{
+	display:inline-block;
+	margin:20px;
+	padding:18px;
+	border:2px dashed #CCC;
+	color:#CCC;
+	text-decoration:none;
+}
+
+
+footer{
+	font-size:0.6em;
+	color:#888;
+	position:absolute;
+	bottom:0;
+	text-align:center;
+	left:0;
+	width:100%;
+	padding:20px 0;
+}
+.link-footer{
+	color:#888;
 }
