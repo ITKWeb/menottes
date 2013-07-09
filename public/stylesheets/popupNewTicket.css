@@ -4,7 +4,15 @@
 	text-align:left;
 }
 
-.inputNewTicket{
+#lblHistory{
+	float:left;
+}
+#lblTrac{
+	
+}
+
+#inputTitreTicket{
+	float:left;
 	border-top : none;
 	border-left : none;
 	border-right : none;
@@ -12,9 +20,23 @@
 	width : 50%;
 	font-size: 100%;
 }
-#lblHistoryId{
-	float:left;
+
+#inputImportance{
+	border-top : none;
+	border-left : none;
+	border-right : none;
+	border-bottom : 1px solid black;
+	width:27px;
 }
-#lblTrackId{
-	float:left;
+
+#lblImportance{
+}
+
+.leftContent{
+	float: left;
+	width: 60%;
+}
+.rightContent{
+	float: right;
+	width: 40%;
 }
