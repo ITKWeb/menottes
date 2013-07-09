@@ -28,7 +28,7 @@ app.factory("Network", ["$http",
           {id:3, nom:"Sprint3"}
         ]);
       } else {
-        $http.get("/jalons/"+projectId)
+        $http.get("/sprints/"+projectId)
           .success(callback)
           .error(
             function(data, status, headers, config) {
