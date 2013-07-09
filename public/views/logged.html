@@ -3,14 +3,13 @@
         <li ng-repeat="sprint in sprints">{{sprint.name}}</li>
     </ul>
 </div>-->
-<div class="mainContent">
+<section class="max-width text-center big-padding-bottom ng-scope">
 			<div class="leftNavigation">
 				<div class="staticLeftNavigation">
+					<a class="btn ng-scope ng-binding" >Backlog</a>
 				</div>
 				<div class="scrollLeftNavigation">
-				    <ul>
-						<li ng-repeat="sprint in sprints">{{sprint.name}}</li>
-					</ul>
+					<a class="btn ng-scope ng-binding" ng-repeat="sprint in sprints">{{sprint.name}}</a>
 				</div>
 			</div>
 			<div class="boardContent">
@@ -19,4 +18,4 @@
 				<div id="ticketsList">
 				</div>
 			</div>
-</div>
+</section>
