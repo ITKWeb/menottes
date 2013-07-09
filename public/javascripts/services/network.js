@@ -28,11 +28,7 @@ app.factory("Network", ["$http",
           {id:3, nom:"Sprint3"}
         ]);
       } else {
-        var url = "/jalons";
-        if(projectId !== undefined) {
-          url = "/jalons/"+projectId;
-        }
-        $http.get(url)
+        $http.get("/jalons/"+projectId)
           .success(callback)
           .error(
             function(data, status, headers, config) {

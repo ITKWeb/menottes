@@ -5,7 +5,7 @@
 					<a class="btn ng-scope ng-binding" >Backlog</a>
 				</div>
 				<div class="scrollLeftNavigation">
-					<a class="btn ng-scope ng-binding" ng-repeat="sprint in sprints">{{sprint.name}}</a>
+					<a class="btn ng-scope ng-binding" ng-repeat="sprint in sprints" ng-click="clickOnSprint(sprint)">{{sprint.nom}}</a>
 				</div>
 			</div>
 			<div class="boardContent">
@@ -15,6 +15,9 @@
 					</a>
 				</div>
 				<div id="ticketsList">
+				    <ul>
+				        <li ng-repeat="ticket in tickets" style="background-color:red;border:1px solid black" drag="ticket" drag-element-id="ticket_{{$index}}"><div id="ticket_{{$index}}" >{{ticket.titre}}</div></li>
+				    </ul>
 				</div>
 			</div>
 </section>
