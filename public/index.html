@@ -13,9 +13,16 @@
     <link rel="stylesheet" media="screen" href="stylesheets/reset.css">
     <link rel="stylesheet" media="screen" href="stylesheets/index.css">
   </head>
-  <body>
+  <body ng-app="app">
 
-    <div class="main"></div>
+    <div class="main" ng-view></div>
+
+    <script type="text/javascript" src="vendor/angular.min.js"></script>
+    <script type="text/javascript" src="javascripts/app.js"></script>
+    <script type="text/javascript" src="javascripts/services/network.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/MainController.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/LoginController.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/LoggedController.js"></script>
 
   </body>
 </html>
