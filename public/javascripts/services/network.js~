@@ -1,7 +1,7 @@
 app.factory("Network", ["$http",
   function($http) {
   
-    var isMocked = false;
+    var isMocked = true;
 
     function getProjets(callback) {
       if(isMocked === true) {

@@ -5,6 +5,7 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     }, $routeParams.projectId);
     
     $scope.clickOnSprint = function(sprint) {
+	console.log(sprint);
         $network.getTickets(function(tickets) {
             $scope.tickets = tickets;
         }, $routeParams.projectId, sprint.id);
