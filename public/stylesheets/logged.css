@@ -1,5 +1,10 @@
 
 /*--------------------- Menu gauche --------------------*/
+
+#container{
+	background:#f9f9f9;
+}
+
 .leftNavigation{
 	width:160px;
 	height:100%;
@@ -7,8 +12,9 @@
 	position:absolute;
 	top:0;
 	left:0;
-	border-right : 1px solid #F5F5F5;
+	border-right : 1px solid #888;
 	overflow:auto;
+	background:#FFFFFF;
 }
 
 .staticLeftNavigation, .scrollLeftNavigation{
@@ -29,49 +35,16 @@
 }
 
 .topBoardBar{
-	height:50px;
-	padding: 10px;
-	background:#F5F5F5;
+	border-bottom: 1px solid #F5F5F5;
 }
 
 #ticketsList{
 	padding: 10px;
-	border: 1px solid rgb(221, 221, 221);
-	margin-left: 150px;
 }
 
-.boardContent > .topBoardBar{
-	height: 55px;
-	border: 1px solid rgb(221, 221, 221);
-	margin: 5px 5px 5px 5px;
-	text-align: left;
-	background-color: rgb(240, 240, 240);
-    border: 1px solid rgb(221, 221, 221);
-    border-radius: 2px 2px 2px 2px;
-    box-shadow: 0 -1px 0 0 rgb(153, 153, 153) inset, 0 1px 0 0 rgb(255, 255, 255) inset;
-    color: rgb(94, 94, 94);
-}
-.boardContent > .topBoardBar > .btnTopBar{
-    border-right: 1px solid rgb(221, 221, 221);
-    color: rgb(94, 94, 94);
-    cursor: pointer;
-    display: inline-block;
-    text-decoration: none;
-    vertical-align: top;
-	padding: 10px 20px;
-	min-width: 32px;
-	float:left;
-	text-align:center;
-}
-.boardContent > .topBoardBar >.btnTopBar:hover, .boardContent > .topBoardBar >.btnTopBar:focus {
-    background-color: rgb(245, 245, 245);
-    border: 1px solid rgb(204, 204, 204);
-    border-radius: 2px 2px 2px 2px;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-	min-width: 32px;
-}
-
-.boardContent > #ticketsList{
-	margin: 5px 5px 5px 5px;
+#ticketsList li{
+	padding:10px;
+	margin:2px;
+	background-color:#FFF;
+	border: 1px solid #aaa;
 }
