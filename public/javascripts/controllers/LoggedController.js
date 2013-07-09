@@ -7,7 +7,7 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     $scope.clickOnSprint = function(sprint) {
         $network.getTickets(function(tickets) {
             $scope.tickets = tickets;
-        }, sprint.id);
+        }, $routeParams.projectId, sprint.id);
     };
     
     $rootScope.$on('moveColumnEvent', function(evt, dragged, dropped) {

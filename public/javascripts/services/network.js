@@ -38,17 +38,14 @@ app.factory("Network", ["$http",
       }
     }
     
-    function getTickets(callback, sprintId) {
+    function getTickets(callback, projectId, sprintId) {
       if(isMocked === true) {
         callback([
           {"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3},
           {"id":5,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3}
         ]);
       } else {
-        var url = "/tickets";
-        if(sprintId !== undefined) {
-          url = "/tickets/"+sprintId;
-        }
+        var url = "/tickets/"+projectId+"/"+sprintId;
         $http.get(url)
           .success(callback)
           .error(
