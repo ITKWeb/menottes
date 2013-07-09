@@ -63,8 +63,8 @@ app.factory("Network", ["$http",
       getSprints: function(callback, projectId) {
         getSprints(callback, projectId);
       },
-      getTickets: function(callback, sprintId) {
-        getTickets(callback, sprintId);
+      getTickets: function(callback, projectId, sprintId) {
+        getTickets(callback, projectId, sprintId);
       }
     }
 
