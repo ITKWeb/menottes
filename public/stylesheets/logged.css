@@ -1,23 +1,41 @@
 
 /*--------------------- Menu gauche --------------------*/
 .leftNavigation{
-	width:150px;
+	width:160px;
 	height:100%;
-	float:left;
+	max-height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	border-right : 1px solid #F5F5F5;
+	overflow:auto;
 }
 
-.leftNavigation > .staticLeftNavigation{
-	height:100px;
-	border : 1px solid rgb(221, 221, 221);
+.staticLeftNavigation, .scrollLeftNavigation{
+	padding:10px;
 }
 
-.leftNavigation > .scrollLeftNavigation{
-	border : 1px solid rgb(221, 221, 221);
+.staticLeftNavigation{
+	border-bottom : 1px solid #F5F5F5;
+}
+
+.scrollLeftNavigation{
 }
 
 /*--------------------- Tableau de bord  --------------------*/
 .boardContent{
 	height:100%;
+	margin-left : 160px;
+}
+
+.topBoardBar{
+	height:50px;
+	padding: 10px;
+	background:#F5F5F5;
+}
+
+#ticketsList{
+	padding: 10px;
 	border: 1px solid rgb(221, 221, 221);
 	margin-left: 150px;
 }
@@ -43,6 +61,7 @@
 	padding: 10px 20px;
 	min-width: 32px;
 	float:left;
+	text-align:center;
 }
 .boardContent > .topBoardBar >.btnTopBar:hover, .boardContent > .topBoardBar >.btnTopBar:focus {
     background-color: rgb(245, 245, 245);

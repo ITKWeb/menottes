@@ -1,23 +1,25 @@
 
-<section class="max-width text-center big-padding-bottom ng-scope">
-			<div class="leftNavigation">
-				<div class="staticLeftNavigation">
-					<a class="btn " >Backlog</a>
-				</div>
-				<div class="scrollLeftNavigation">
-					<a class="btn " ng-repeat="sprint in sprints">{{sprint.titre}}</a>
-				</div>
-			</div>
-			<div class="boardContent">
-				<div class="topBoardBar">
-					<a class="btnTopBar" href="">
-						<img title="addNewTicket" alt="Add" src="images/icon_add.png">
-					</a>
-					<a class="btnTopBar" href="">
-						<img title="editPdf" alt="Pdf" src="images/icon_doc.png">
-					</a>
-				</div>
-				<div id="ticketsList">
-				</div>
-			</div>
-</section>
+<div class="leftNavigation">
+	<div class="staticLeftNavigation">
+		<a class="btn btn-grey fullwidth-btn" >Backlog</a>
+	</div>
+	<div class="scrollLeftNavigation">
+		<a class="btn fullwidth-btn" ng-repeat="sprint in sprints">{{sprint.titre}}</a>
+	</div>
+</div>
+<div class="boardContent">
+	<div class="topBoardBar">
+		<a class="btnTopBar" href="" ng-click="showGlass=!showGlass">
+			<img title="addNewTicket" alt="Add" src="images/icon_add.png">
+		</a>
+		<a class="btnTopBar" href="">
+			<img title="editPdf" alt="Pdf" src="images/icon_doc.png">
+		</a>
+		<a class="btnTopBar" href="">
+			<img title="editPdf" alt="Pdf" src="images/icon_reporting.png">
+		</a>
+	</div>
+	<div id="ticketsList">
+	</div>
+</div>
+<ng-include src="'views/addNewTicket.html'" ng-show="showGlass" ng-controller="PopupController" ></ng-include>
