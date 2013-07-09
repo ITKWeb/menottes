@@ -1,34 +1,39 @@
 
 /*--------------------- Menu gauche --------------------*/
 .leftNavigation{
-	width:150px;
+	width:160px;
 	height:100%;
-	float:left;
+	max-height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	border-right : 1px solid #F5F5F5;
+	overflow:auto;
 }
 
-.leftNavigation > .staticLeftNavigation{
-	height:100px;
-	border : 1px solid rgb(221, 221, 221);
+.staticLeftNavigation, .scrollLeftNavigation{
+	padding:10px;
 }
 
-.leftNavigation > .scrollLeftNavigation{
-	border : 1px solid rgb(221, 221, 221);
+.staticLeftNavigation{
+	border-bottom : 1px solid #F5F5F5;
+}
+
+.scrollLeftNavigation{
 }
 
 /*--------------------- Tableau de bord  --------------------*/
 .boardContent{
 	height:100%;
-	margin-left : 150px;
-	border: 2px solid pink;/* remove */
+	margin-left : 160px;
 }
 
-.boardContent > .topBoardBar{
+.topBoardBar{
 	height:50px;
-	border: 2px solid red;/* remove */
-	margin: 5px 5px 5px 5px;
+	padding: 10px;
+	background:#F5F5F5;
 }
 
-.boardContent > #ticketsList{
-	border: 2px solid red;/* remove */
-	margin: 5px 5px 5px 5px;
+#ticketsList{
+	padding: 10px;
 }
