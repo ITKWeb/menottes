@@ -18,14 +18,21 @@
 /*--------------------- Tableau de bord  --------------------*/
 .boardContent{
 	height:100%;
-	margin-left : 150px;
-	border: 2px solid pink;/* remove */
+	border: 1px solid rgb(221, 221, 221);
+	margin-left: 150px;
 }
 
 .boardContent > .topBoardBar{
-	height:50px;
-	border: 2px solid red;/* remove */
+	height: 55px;
+	border: 1px solid rgb(221, 221, 221);
 	margin: 5px 5px 5px 5px;
+	text-align: left;
+}
+.boardContent > .topBoardBar > .btnTopBar{
+    margin: 0;
+	padding: 10px;
+}
+
 }
 
 .boardContent > #ticketsList{
