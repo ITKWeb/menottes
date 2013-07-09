@@ -1,0 +1,16 @@
+#main-projects,#secondary-projects{
+	padding:20px 0;
+}
+
+#secondary-projects{
+	border-top:1px solid #F5F5F5;
+}
+.btn-new-project:hover,.btn-new-project:focus{
+	border:2px dashed #5E5E5E;
+	color:#5E5E5E;
+}
+
+
+.texte{
+	padding:40px 0;
+}

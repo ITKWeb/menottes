@@ -17,7 +17,8 @@ app.factory("Network", ["$http",
       }
     }
     
-    function getSprints(callback) {
+    function getSprints(projectName, callback) {
+    console.log(projectName);
       if(isMocked === true) {
         callback([{name:"sprint"}, {name:"sprint2"}, {name:"sprint3"}]);
       } else {
@@ -35,8 +36,8 @@ app.factory("Network", ["$http",
       getProjets: function(callback) {
         getProjets(callback);
       },
-      getSprints: function(callback) {
-        getSprints(callback);
+      getSprints: function(projectName, callback) {
+        getSprints(projectName, callback);
       }
     }
 
