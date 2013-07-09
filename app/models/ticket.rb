@@ -14,4 +14,5 @@
 
 class Ticket < ActiveRecord::Base
 	belongs_to :projet
+	belongs_to :sprint
 end
