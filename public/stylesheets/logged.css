@@ -43,6 +43,7 @@
 	padding: 10px 20px;
 	min-width: 32px;
 	float:left;
+	text-align:center;
 }
 .boardContent > .topBoardBar >.btnTopBar:hover, .boardContent > .topBoardBar >.btnTopBar:focus {
     background-color: rgb(245, 245, 245);
