@@ -21,7 +21,28 @@ app.factory("Network", ["$http",
     }
     
     function getSprints(callback, projectId) {
-    console.log(projectId);
+      if(isMocked === true) {
+        callback([
+          {id:1, nom:"Sprint1"},
+          {id:2, nom:"Sprint2"},
+          {id:3, nom:"Sprint3"}
+        ]);
+      } else {
+        var url = "/jalons";
+        if(projectId !== undefined) {
+          url = "/jalons/"+projectId;
+        }
+        $http.get(url)
+          .success(callback)
+          .error(
+            function(data, status, headers, config) {
+              console.log(data, status, headers, config);
+            }
+          );
+      }
+    }
+    
+    function getTickets(callback, sprintId) {
       if(isMocked === true) {
         callback([
           {"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3},
@@ -29,8 +50,8 @@ app.factory("Network", ["$http",
         ]);
       } else {
         var url = "/tickets";
-        if(projectId !== undefined) {
-          url = "/tickets/"+projectId;
+        if(sprintId !== undefined) {
+          url = "/tickets/"+sprintId;
         }
         $http.get(url)
           .success(callback)
@@ -47,7 +68,10 @@ app.factory("Network", ["$http",
         getProjets(callback);
       },
       getSprints: function(callback, projectId) {
-        getSprints(callback,projectId);
+        getSprints(callback, projectId);
+      },
+      getTickets: function(callback, sprintId) {
+        getTickets(callback, sprintId);
       }
     }
 
