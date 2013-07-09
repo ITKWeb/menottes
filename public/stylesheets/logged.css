@@ -1,5 +1,10 @@
 
 /*--------------------- Menu gauche --------------------*/
+
+#container{
+	background:#f9f9f9;
+}
+
 .leftNavigation{
 	width:160px;
 	height:100%;
@@ -7,7 +12,7 @@
 	position:absolute;
 	top:0;
 	left:0;
-	border-right : 1px solid #444;
+	border-right : 1px solid #888;
 	overflow:auto;
 	background:#FFFFFF;
 }
@@ -27,7 +32,6 @@
 .boardContent{
 	height:100%;
 	margin-left : 160px;
-	background:#f9f9f9;
 }
 
 .topBoardBar{
