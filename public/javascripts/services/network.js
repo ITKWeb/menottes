@@ -38,7 +38,7 @@ app.factory("Network", ["$http",
       }
     }
     
-    function getTickets(callback, sprintId) {
+    function getTickets(callback, projectId, sprintId) {
       if(isMocked === true) {
         callback([
           {"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3},
@@ -47,7 +47,7 @@ app.factory("Network", ["$http",
       } else {
         var url = "/tickets";
         if(sprintId !== undefined) {
-          url = "/tickets/"+sprintId;
+          url = "/tickets/"+projectId+"/"+sprintId;
         }
         $http.get(url)
           .success(callback)
