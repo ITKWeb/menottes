@@ -5,9 +5,12 @@ app.factory("Network", ["$http",
 
     function getProjets(callback) {
       if(isMocked === true) {
-        callback([{name:"menottes"}, {name:"menottes2"}, {name:"menottes3"}]);
+        callback([
+          {"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
+          {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
+          {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}]);
       } else {
-        $http.get("????")
+        $http.get("/projets")
           .success(callback)
           .error(
             function(data, status, headers, config) {
@@ -17,12 +20,19 @@ app.factory("Network", ["$http",
       }
     }
     
-    function getSprints(projectName, callback) {
-    console.log(projectName);
+    function getSprints(callback, projectId) {
+    console.log(projectId);
       if(isMocked === true) {
-        callback([{name:"sprint"}, {name:"sprint2"}, {name:"sprint3"}]);
+        callback([
+          {"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3},
+          {"id":5,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3}
+        ]);
       } else {
-        $http.get("????")
+        var url = "/tickets";
+        if(projectId !== undefined) {
+          url = "/tickets/"+projectId;
+        }
+        $http.get(url)
           .success(callback)
           .error(
             function(data, status, headers, config) {
@@ -36,8 +46,8 @@ app.factory("Network", ["$http",
       getProjets: function(callback) {
         getProjets(callback);
       },
-      getSprints: function(projectName, callback) {
-        getSprints(projectName, callback);
+      getSprints: function(callback, projectId) {
+        getSprints(callback,projectId);
       }
     }
 
