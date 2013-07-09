@@ -11,11 +11,13 @@ app.directive("drag", ["$rootScope", "$timeout",
     var offsetX = firstOffsetX;
     var offsetY = firstOffsetY;
     if(useOffsetEvt == true) {
-      offsetX = evt.offsetX;
-      offsetY = evt.offsetY;
-      firstOffsetX = evt.offsetX;
-      firstOffsetY = evt.offsetY;
+      offsetX = evt.offsetX || (evt.layerX - evt.currentTarget.offsetLeft);
+      offsetY = evt.offsetY || (evt.layerY - evt.currentTarget.offsetTop);
+      firstOffsetX = offsetX;
+      firstOffsetY = offsetY;
+      console.log(evt);
     }
+    
     return {
       x: (evt.pageX - offsetX), 
       y: (evt.pageY - offsetY)
@@ -28,21 +30,27 @@ app.directive("drag", ["$rootScope", "$timeout",
   }
 
   function buildCarreMouseEvt(evt) {
-    return {
-      x: (evt.pageX - evt.offsetX),
-      y: (evt.pageY - evt.offsetY),
+    var offsetX = evt.offsetX || evt.layerX;
+    var offsetY = evt.offsetY || evt.layerY;
+    var o = {
+      x: (evt.pageX - offsetX),
+      y: (evt.pageY - offsetY),
       w: 100,
       h: 100
     }
+    console.log(o);
+    return o;
   }
 
   function buildCarreElmt(elmt) {
-    return {
+    var o = {
       x: elmt.offsetLeft,
       y: elmt.offsetTop,
       w: elmt.clientWidth,
       h: elmt.clientHeight
     }
+    console.log(o);
+    return o;
   }
 
   function deleteElement(originalId) {
@@ -63,7 +71,7 @@ app.directive("drag", ["$rootScope", "$timeout",
         for(var i=0; i<elements.length && listen == true; i++) {
           var elm = document.getElementById(elements[i].originalId);
           if(elm) {//FIXME : remove and fix it !
-            var inside = isInside(buildCarreElmt(elm), buildCarreMouseEvt(evt));
+            var inside = isInside(buildCarreElmt(elm), buildCarreElmt(currentElement[0]));//buildCarreMouseEvt(evt));
             if(inside && 
               currentElement.dragData.title != elements[i].dragData.title) {
               $rootScope.$broadcast("moveColumnEvent", currentElement.dragData, elements[i].dragData);
@@ -116,6 +124,7 @@ app.directive("drag", ["$rootScope", "$timeout",
           currentElement[0].style.left = position.x+"px";
           currentElement[0].style.width = originalElement.style.width;
           currentElement[0].style.height = originalElement.style.height;
+          console.log(position);
           angular.element(originalElement).addClass("columnDrag");
         }
       });

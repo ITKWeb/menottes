@@ -6,6 +6,10 @@ Menottes::Application.routes.draw do
   get 'tickets/:idProjet' => 'tickets#get_tickets_by_projet'
   post 'projets' => 'projets#create' #=> create 
   delete 'projets/:idProjet' => 'projets#destroy'
+  get 'sprints' => 'sprints#index'
+  get 'sprints/:idProjet' => 'sprints#get_sprints_by_projet'
+  get 'tickets/:idProjet/:idSprint' => 'sprints#get_tickets_by_projet_by_sprint'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
