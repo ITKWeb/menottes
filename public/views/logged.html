@@ -3,18 +3,18 @@
 		<a class="btn btn-grey fullwidth-btn" >Backlog</a>
 	</div>
 	<div class="scrollLeftNavigation">
-		<a class="btn ng-scope ng-binding" ng-repeat="sprint in sprints" ng-click="clickOnSprint(sprint)">{{sprint.nom}}</a>
+		<a class="btn fullwidth-btn" ng-repeat="sprint in sprints" ng-click="clickOnSprint(sprint)">{{sprint.nom}}</a>
 	</div>
 </div>
 <div class="boardContent">
 	<div class="topBoardBar">
-		<a class="btnTopBar" href="" ng-click="showGlass=!showGlass">
+		<a class="btn" href="" ng-click="showGlass=!showGlass">
 			<img title="addNewTicket" alt="Add" src="images/icon_add.png">
 		</a>
-		<a class="btnTopBar" href="">
+		<a class="btn" href="">
 			<img title="editPdf" alt="Pdf" src="images/icon_doc.png">
 		</a>
-		<a class="btnTopBar" href="">
+		<a class="btn" href="">
 			<img title="editPdf" alt="Pdf" src="images/icon_reporting.png">
 		</a>
 	</div>
