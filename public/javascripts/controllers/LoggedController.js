@@ -2,7 +2,6 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', functio
     
     $network.getSprints($routeParams.projectName, function(sprints) {
         $scope.sprints = sprints;
-        $scope.$apply();    
     });
     
 }]);
