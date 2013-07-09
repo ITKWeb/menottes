@@ -1,22 +1,22 @@
-<!--<div>
-    <ul>
-        <li ng-repeat="sprint in sprints">{{sprint.name}}</li>
-    </ul>
-</div>-->
 <div class="leftNavigation">
 	<div class="staticLeftNavigation">
 		<a class="btn btn-grey fullwidth-btn" >Backlog</a>
 	</div>
 	<div class="scrollLeftNavigation">
-		<a class="btn fullwidth-btn" ng-repeat="sprint in sprints">{{sprint.name}}</a>
-		<a class="btn fullwidth-btn" ng-repeat="sprint in sprints">{{sprint.name}}</a>
-		<a class="btn fullwidth-btn" ng-repeat="sprint in sprints">{{sprint.name}}</a>
-		<a class="btn fullwidth-btn" ng-repeat="sprint in sprints">{{sprint.name}}</a>
-		<a class="btn fullwidth-btn" ng-repeat="sprint in sprints">{{sprint.name}}</a>
+		<a class="btn fullwidth-btn" ng-repeat="sprint in sprints">{{sprint.titre}}</a>
 	</div>
 </div>
 <div class="boardContent">
 	<div class="topBoardBar">
+		<a class="btnTopBar" href="">
+			<img title="addNewTicket" alt="Add" src="images/icon_add.png">
+		</a>
+		<a class="btnTopBar" href="">
+			<img title="editPdf" alt="Pdf" src="images/icon_doc.png">
+		</a>
+		<a class="btnTopBar" href="">
+			<img title="editPdf" alt="Pdf" src="images/icon_reporting.png">
+		</a>
 	</div>
 	<div id="ticketsList">
 	</div>
