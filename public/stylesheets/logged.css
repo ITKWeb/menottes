@@ -2,7 +2,7 @@
 /*--------------------- Menu gauche --------------------*/
 
 #container{
-	background:#f9f9f9;
+	background:#F0F0F0;
 }
 
 .leftNavigation{
@@ -12,39 +12,75 @@
 	position:absolute;
 	top:0;
 	left:0;
-	border-right : 1px solid #888;
 	overflow:auto;
 	background:#FFFFFF;
+	cursor:pointer;
 }
 
-.staticLeftNavigation, .scrollLeftNavigation{
-	padding:10px;
+.leftNavigation li{
+	padding:20px;
+	transition:padding 200ms;
 }
-
-.staticLeftNavigation{
-	border-bottom : 1px solid #F5F5F5;
+.leftNavigation li:hover, .leftNavigation li:focus{
+	background:#F8F8F8;
 }
-
-.scrollLeftNavigation{
+.leftNavigation li.active{
+	background:#F0F0F0;
+	padding-left:25px;
 }
 
 /*--------------------- Tableau de bord  --------------------*/
 .boardContent{
 	height:100%;
 	margin-left : 160px;
+	padding:0 20px;
 }
 
-.topBoardBar{
-	border-bottom: 1px solid #F5F5F5;
-}
-
-#ticketsList{
+.topBoardBar, .ticketsList{
 	padding: 10px;
 }
 
-#ticketsList li{
+.topBoardBar{
+	font-size:0.9em;
+	text-align:center;
+}
+
+.ticketsList{
+	padding:0 20px;
+}
+.ticketsList li{
 	padding:10px;
 	margin:2px;
 	background-color:#FFF;
 	border: 1px solid #aaa;
+	border-radius:2px;
+	cursor:move;
 }
+.ticketsList li:hover, .ticketsList li:focus{
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+.ticketsList span{
+	display:inline-block;
+}
+	.ticket-id{
+		width:40px;
+	}
+	.ticket-titre{
+		font-weight:bold;
+		padding: 0 10px 0 0;
+	}
+	.ticket-description{
+		font-style: italic;
+		font-size:0.9em;
+	}
+
+
+
+
+
+
+
+
+
+
+

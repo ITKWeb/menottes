@@ -1,27 +1,22 @@
-<div class="leftNavigation">
-	<div class="staticLeftNavigation">
-		<a class="btn btn-grey fullwidth-btn" >Backlog</a>
-	</div>
-	<div class="scrollLeftNavigation">
-
-		<a class="btn fullwidth-btn" ng-repeat="sprint in sprints" ng-click="clickOnSprint(sprint)">{{sprint.nom}}</a>
-	</div>
-</div>
+<ul class="leftNavigation">
+	<!--<li class="bold">Backlog</li>-->
+	<li ng-repeat="sprint in sprints" ng-click="clickOnSprint(sprint)" ng-class="{active: sprint == selected}">{{sprint.nom}}</li>
+</ul>
 <div class="boardContent">
 	<div class="topBoardBar">
 		<a class="btn" href="" ng-click="showGlass=!showGlass">
-			<img title="addNewTicket" alt="Add" src="images/icon_add.png">
+			[LogoFont] Nouveau Ticket
 		</a>
 		<a class="btn" href="">
-			<img title="editPdf" alt="Pdf" src="images/icon_doc.png">
+			[LogoFont] Imprimer les tickets
 		</a>
 		<a class="btn" href="">
-			<img title="editPdf" alt="Pdf" src="images/icon_reporting.png">
+			[LogoFont] Rapport
 		</a>
 	</div>
-	<div id="ticketsList">
+	<div class="ticketsList">
 	    <ul>
-	        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}"><div id="ticket_{{$index}}" >{{ticket.titre}}</div></li>
+	        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}"><div id="ticket_{{$index}}" ><span class="ticket-id">#{{ticket.id}}</span><span class="ticket-titre">{{ticket.titre}}</span><span class="ticket-description">{{ticket.description}}</span></div></li>
 	    </ul>
 	</div>
 </div>
