@@ -1,5 +1,4 @@
 <ul class="leftNavigation">
-	<!--<li class="bold">Backlog</li>-->
 	<li ng-repeat="sprint in sprints" ng-click="clickOnSprint(sprint)" ng-class="{active: sprint == selected}">{{sprint.nom}}</li>
 </ul>
 <div class="boardContent">

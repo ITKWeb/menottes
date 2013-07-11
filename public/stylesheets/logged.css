@@ -20,7 +20,11 @@
 .leftNavigation li{
 	padding:20px;
 	transition:padding 200ms;
+	font-weight:bold;
 }
+
+.leftNavigation li+li{font-weight:normal;}
+
 .leftNavigation li:hover, .leftNavigation li:focus{
 	background:#F8F8F8;
 }

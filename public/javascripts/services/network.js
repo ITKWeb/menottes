@@ -23,6 +23,7 @@ app.factory("Network", ["$http",
     function getSprints(callback, projectId) {
       if(isMocked === true) {
         callback([
+          {id:0, nom:"Backlog"},
           {id:1, nom:"Sprint1"},
           {id:2, nom:"Sprint2"},
           {id:3, nom:"Sprint3"}

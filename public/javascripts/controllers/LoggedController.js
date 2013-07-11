@@ -2,8 +2,15 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     
     $network.getSprints(function(sprints) {
         $scope.sprints = sprints;
-		//$scope.selected = $scope.sprints[0]; //Pour le premier sélectionné par défaut -> a voir car aucun vraiment sélectionné par défaut. Il faudrait que le Backlog le soit.
-    }, $routeParams.projectId);
+		//Ajout By Laurent
+			//pour que le Backlog soit selected direct et que ses tickets apparaissent cash aussi
+			//A vérifier donc...
+			$scope.selected = $scope.sprints[0];
+			$network.getTickets(function(tickets) {
+				$scope.tickets = tickets;
+			}, $routeParams.projectId, sprints[0].id);
+		//fin d'ajout by Laurent
+	}, $routeParams.projectId);
     
     $scope.clickOnSprint = function(sprint) {
 	console.log(sprint);
