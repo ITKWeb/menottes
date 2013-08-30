@@ -13,6 +13,18 @@
 
 ActiveRecord::Schema.define(version: 2013070916200000) do
 
+  create_table "choices", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "date_choice_choices", force: true do |t|
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "projets", force: true do |t|
     t.string   "nom"
     t.datetime "created_at"
