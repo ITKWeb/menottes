@@ -4,6 +4,14 @@
 	text-align:left;
 }
 
+.labelTicket {
+	font-weight: bold;
+	text-align: center;
+}
+.inputTicket {
+
+}
+
 #lblHistory{
 	float:left;
 }
@@ -36,6 +44,7 @@
 	float: left;
 	width: 60%;
 }
+
 .rightContent{
 	float: right;
 	width: 40%;

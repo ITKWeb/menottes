@@ -38,17 +38,17 @@ ActiveRecord::Schema.define(version: 2013070916200000) do
 
   add_index "participants", ["user_id"], name: "index_participants_on_user_id"
 
+  create_table "participants_polls", force: true do |t|
+    t.integer "poll_id"
+    t.integer "participant_id"
+  end
+
   create_table "polls", force: true do |t|
     t.boolean  "open"
     t.datetime "open_date"
     t.datetime "close_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "polls_participants", force: true do |t|
-    t.integer "poll_id"
-    t.integer "participant_id"
   end
 
   create_table "projets", force: true do |t|
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2013070916200000) do
     t.datetime "updated_at"
     t.integer  "projet_id"
     t.integer  "sprint_id"
+    t.integer  "trac_id"
   end
 
   add_index "tickets", ["projet_id"], name: "index_tickets_on_projet_id"
