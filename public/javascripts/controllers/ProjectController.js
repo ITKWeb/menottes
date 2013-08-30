@@ -5,11 +5,11 @@ app.controller('ProjectController', ['$scope', 'Network', '$location',
 
 	    $scope.createProject = function() {    	
     		$network.createProject($scope.project);
-    		$location.path("/index.html");
+    		$location.path("/login");
     	}
 
     	 $scope.cancelCreateProject = function() {    	
-    		$location.path("/");
+    		$location.path("/login");
     	}
 	         
 

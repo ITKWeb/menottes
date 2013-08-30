@@ -22,5 +22,9 @@ app.controller('PlanifController', ['$scope', 'Network', '$routeParams', '$rootS
     
     $rootScope.$on('moveColumnEvent', function(evt, dragged, dropped) {
         console.log(line1, line2);
+        var temp = $scope.tickets[dragged];
+        $scope.tickets[dragged] = $scope.tickets[dropped];
+        $scope.tickets[dropped] = temp;
+        $scope.$apply();
     });
 }]);
