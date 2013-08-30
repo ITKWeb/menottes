@@ -17,6 +17,9 @@ app.factory("Network", ["$http",
          
     ];
 
+    var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3},
+-          {"id":5,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3}];
+
 	  function login(callback, errorCallback, login, password) {
           if (isLoginMocked === true) {
               if ((login === "aaa") && (password === "aaa")) {
@@ -113,7 +116,7 @@ app.factory("Network", ["$http",
 
     function createProject(project) {
      
-      var data = {"nom": project.nom, "description":ticket.description, "trac_id":ticket.trac_id, "importance":ticket.importance};
+      var data = {"nom": project.nom};
       if (isMocked === true) {
         projects[projects.length] = data;
       } else {
@@ -129,7 +132,7 @@ app.factory("Network", ["$http",
 
     function createTicket(ticket) {
      
-      var data = {"titre": ticket.titre};
+      var data = {"titre": ticket.titre, "description": ticket.description, "trac_id": ticket.trac_id, "importance": ticket.importance};
       if (isMocked === true) {
         tickets[tickets.length] = data;
       } else {
