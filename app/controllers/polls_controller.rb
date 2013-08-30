@@ -6,6 +6,6 @@ class PollsController < ApplicationController
 
   def show_all
     complete_poll = Poll.find(params[:idPoll])
-    render :json => complete_poll.to_json(:include => [:participants])
+    render :json => complete_poll.to_json(:include => [:participants => {:include => [:choices]}])
   end
 end
