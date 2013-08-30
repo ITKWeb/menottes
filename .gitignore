@@ -7,6 +7,9 @@
 # Ignore save files
 *.*~
 
+# Ignore kate tmp files
+*.kate-swp
+
 # Ignore bundler config.
 /.bundle
 
