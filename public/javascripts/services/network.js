@@ -1,25 +1,21 @@
 app.factory("Network", ["$http",
     function ($http) {
   
-    var isMocked = false;
+    var isMocked = true;
 
-      function login(callback, login, password) {
+      function login(callback, errorCallback, login, password) {
           if (isMocked === true) {
-              if ((login === "login") && (password === "password")) {
-                   callback([
+              if ((login === "aaa") && (password === "aaa")) {
+                   callback(
                   {"id":1,"nom":"Test","login":"aaa","password":"aaa","email":"menottes@itkweb.com"}
-              ]);
+              );
               } else {
-                  callback([{}]);
+                  callback({});
               }
           } else {
-              $http.get("/users/"+login+"/"+password)
+              $http.post("/users",{login:login, password:password})
                   .success(callback)
-                  .error(
-                  function(data, status, headers, config) {
-                      console.log(data, status, headers, config);
-                  }
-                  );
+                  .error(errorCallback);
           }
       }
 
@@ -79,6 +75,9 @@ app.factory("Network", ["$http",
     }
     
     return {
+        login: function(callback, errorCallback, log, pass) {
+            login(callback, errorCallback, log, pass);
+        },
       getProjets: function(callback) {
         getProjets(callback);
       },
