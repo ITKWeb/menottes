@@ -1,5 +1,6 @@
 Menottes::Application.routes.draw do
 
+  post 'login' => 'users#login'
   get "polls/show"
   get "users/login"
   get 'users' => 'users#index'

@@ -2,7 +2,7 @@
 	<img src="images/menottes_logo.png" alt="Menottes, The SM Tools." />
 	<p class="texte">Sélectionnez un projet ou créez en un :</p>
 		<a ng-click="newPlanif()" class="btn big-btn">Planification</a>
-		<a ng-click="newChoice()" class="btn big-btn">Faire un choix</a>
+		
 	<div id="main-projects">
 		<a href="" class="btn big-btn"><img src="images/logo_itk-vigne.png" alt="Disp'eau" title="Disp'eau" /></a>
 		<a href="" class="btn big-btn"><img src="images/logo_itk-preco.png" alt="Précovision" title="Précovision" /></a>
@@ -11,6 +11,9 @@
 	<div id="secondary-projects">
         <a ng-repeat="projet in projets" class="btn big-btn" ng-click="clickOnProjet(projet)">{{projet.nom}}</a>
 		<a href="" class="btn-new-project" ng-click="showGlassNewProject=!showGlassNewProject">Nouveau projet</a>
+	</div>
+	<div id="secondary-projects">
+	  <a ng-click="newChoice()" class="btn big-btn">Faire un nouveau choix</a> <a ng-repeat="poll in polls" ng-click="newChoice(poll)" class="btn big-btn">Choix {{poll.id}}</a>
 	</div>
 </section>
 

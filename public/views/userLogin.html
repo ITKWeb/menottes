@@ -5,18 +5,37 @@
         <label class="userLoginErrorMessage" > {{errorMessage}} </label>
     </div>
     <div class="container">
-        <div class="loginBox">
-            <label class="label" >Utilisateur:</label>
-            <input class="box" type="text" ng-model="login"/>
-        </div>
-        <div class="loginBox">
-            <label class="label">Mot de passe: </label>
-            <input class="box" type="password" ng-model="password"/><br/>
-        </div>
-        <div>
-        <a href="" ng-click="clickOnLogin()" class="btn btn-grey">Se connecter</a>
-        <a href="" ng-click="clickOnForgotten()" class="btn btn-grey">Mot de passe oublié ?</a>
-        </div>
+        <!--
+            <div class="loginBox">
+                <label class="label" >Utilisateur:</label>
+                <input class="box" type="text" ng-model="login"/>
+            </div>
+            <div class="loginBox">
+                <label class="label">Mot de passe: </label>
+                <input class="box" type="password" ng-model="password"/><br/>
+            </div>
+            <div>
+            <a href="" ng-click="clickOnLogin()" class="btn btn-grey">Se connecter</a>
+            <a href="" ng-click="clickOnForgotten()" class="btn btn-grey">Mot de passe oublié ?</a>
+            </div>
+        -->
+
+        <form novalidate id="connexion">
+
+            <div class="field" id="login">
+                <label for="inputLogIn">Utilisateur <span class="error_message"></span>: </label>
+                <input type="text" placeholder="ex: JohnDoe" name="login" id="inputLogIn" ng-model="login">
+            </div>
+            <div class="field" id="password">
+                <label for="inputPassword">Mot de passe <span class="error_message"></span>: </label>
+                <input type="password" name="password" id="inputPassword" ng-model="password">
+            </div>
+
+            <button type="submit" ng-click="clickOnLogin()" class="btn btn-grey">Se connecter</button><br/>
+            <button type="submit" ng-click="clickOnForgotten()" class="btn">Mot de passe oublié ?</button>
+
+        </form>
+
 
     </div>
 </section>

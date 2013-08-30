@@ -8,8 +8,9 @@ app.factory("Network", ["$http",
        {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
     var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3},
           {"id":5,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3}];
+    var polls = [{"id":1,"open":true,"open_date":"2013-08-30T11:29:06.921Z","close_date":"2013-08-30T11:29:14.785Z","created_at":"2013-08-30T11:32:13.809Z","updated_at":"2013-08-30T11:32:13.809Z"}];
 
-        function login(callback, errorCallback, login, password) {
+	  function login(callback, errorCallback, login, password) {
           if (isLoginMocked === true) {
               if ((login === "aaa") && (password === "aaa")) {
                    callback(
@@ -30,6 +31,20 @@ app.factory("Network", ["$http",
         callback(projects);
       } else {
         $http.get("/projets")
+          .success(callback)
+          .error(
+            function(data, status, headers, config) {
+              console.log(data, status, headers, config);
+            }
+          );
+      }
+    }
+    
+    function getPolls(callback) {
+      if(isMocked === true) {
+        callback(polls);
+      } else {
+        $http.get("/polls")
           .success(callback)
           .error(
             function(data, status, headers, config) {
@@ -111,6 +126,9 @@ app.factory("Network", ["$http",
       },
       getProjets: function(callback) {
         getProjets(callback);
+      },
+       getPolls: function(callback) {
+        getPolls(callback);
       },
       getSprints: function(callback, projectId) {
         getSprints(callback, projectId);

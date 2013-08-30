@@ -28,6 +28,15 @@ body{
 .text-center{
 	text-align:center;
 }
+
+h1{
+	text-align: center;
+	font-size:1.4em;
+	padding:40px 0 20px;
+	font-variant: small-caps;
+}
+.aligntop{vertical-align: top;padding-top:5px;}
+
 .bold{font-weight:bold;}
 
 .btn{
@@ -150,16 +159,6 @@ body{
 }
 .popup-footer{
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -4,6 +4,10 @@ app.controller('LoginController', ['$scope', 'Network', '$location', function($s
         $scope.projets = projets;
     });
     
+    $network.getPolls(function(polls){
+      $scope.polls=polls;      
+    });
+    
     $scope.clickOnProjet = function(projet) {
         $location.path('/logged/'+projet.id);
     }
@@ -16,8 +20,13 @@ app.controller('LoginController', ['$scope', 'Network', '$location', function($s
         $location.path('/planif');
     }
 
-    $scope.newChoice = function() {
-        $location.path('/choice');
+    $scope.newChoice = function(poll) {
+      if (poll === undefined ){
+	 $location.path('/choice');
+      }else{
+        $location.path('/choice/'+poll.id);
+      }
     }
+    
     
 }]);
