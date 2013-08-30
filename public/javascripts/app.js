@@ -7,9 +7,9 @@ app.config(["$routeProvider",
         templateUrl: 'views/userLogin.html',
         controller: "UserLoginController"
       })
-        .when('/login', {
+       .when('/login', {
             templateUrl: 'views/login.html',
-            controller: "loginController"
+            controller: "LoginController"
         })
       .when('/logged/:projectId', {
         templateUrl: 'views/logged.html',
