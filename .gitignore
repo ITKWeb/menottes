@@ -20,3 +20,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore installation files
+public/bower_components/
+public/node_modules/
