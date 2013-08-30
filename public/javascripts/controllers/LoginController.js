@@ -9,7 +9,7 @@ app.controller('LoginController', ['$scope', 'Network', '$location', function($s
     }
 
     $scope.createProjet = function() {
-    	$location.path('/projet/');
+    	$location.path('/projets');
 	}
 
     $scope.newPlanif = function() {

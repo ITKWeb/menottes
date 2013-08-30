@@ -6,11 +6,15 @@ app.controller('ProjectController', ['$scope', 'Network', '$location',
 	    $scope.createProject = function() {    	
     		$network.createProject($scope.project);
     		$location.path("/login");
-    	}
+    	};
 
     	 $scope.cancelCreateProject = function() {    	
     		$location.path("/login");
-    	}
+    	};
+
+    	$scope.hide=function(){
+			$scope.$parent.showGlassNewProject=false;
+		};
 	         
 
 }]);

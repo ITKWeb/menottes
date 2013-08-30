@@ -81,7 +81,7 @@ app.factory("Network", ["$http",
         var data = {"nom":"4ptest"};
         projects[projects.length] = data;
       } else {
-        var url = "/projet/";
+        var url = "/projets/";
         var data = {"nom": project.name};
         $http.post(url, data)
         .error(
@@ -93,9 +93,15 @@ app.factory("Network", ["$http",
     }
     
     return {
+<<<<<<< HEAD
         login: function(callback, errorCallback, log, pass) {
             login(callback, errorCallback, log, pass);
         },
+=======
+      login: function(callback, errorCallback, log, pass) {
+        login(callback, errorCallback, log, pass);
+      },
+>>>>>>> a79889224b6b45f654cdb2cb622d59030d52f60c
       getProjets: function(callback) {
         getProjets(callback);
       },
@@ -105,8 +111,8 @@ app.factory("Network", ["$http",
       getTickets: function(callback, projectId, sprintId) {
         getTickets(callback, projectId, sprintId);
       },
-      createProject: function(callback, project) {
-        createProject(callback, project);
+      createProject: function(project) {
+        createProject(project);
       }
     }
 

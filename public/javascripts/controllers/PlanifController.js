@@ -1,5 +1,9 @@
-app.controller('PlanifController', ['$scope', 'Network', '$routeParams', '$rootScope', function($scope, $network, $routeParams, $rootScope) {
+app.controller('PlanifController', ['$scope', 'Network', function($scope, $network) {
     
+<<<<<<< HEAD
+    $network.getProjets(function(projets) {
+        $scope.projets = projets;
+=======
     $network.getSprints(function(sprints) {
         $scope.sprints = sprints;
 		//Ajout By Laurent
@@ -26,5 +30,6 @@ app.controller('PlanifController', ['$scope', 'Network', '$routeParams', '$rootS
         $scope.tickets[dragged] = $scope.tickets[dropped];
         $scope.tickets[dropped] = temp;
         $scope.$apply();
+>>>>>>> a79889224b6b45f654cdb2cb622d59030d52f60c
     });
 }]);
