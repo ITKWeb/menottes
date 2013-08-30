@@ -1,1 +1,2 @@
-app.controller('ChoiceController', []);
+app.controller('ChoiceController', ['$scope',function($scope) {}
+]);
