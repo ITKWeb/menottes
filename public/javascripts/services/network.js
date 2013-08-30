@@ -1,10 +1,28 @@
 app.factory("Network", ["$http",
-  function($http) {
+    function ($http) {
   
     var isMocked = true;
-    var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
-          {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
-          {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
+    var isLoginMocked = true;
+    var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"},
+       {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"},
+       {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
+
+
+        function login(callback, errorCallback, login, password) {
+          if (isLoginMocked === true) {
+              if ((login === "aaa") && (password === "aaa")) {
+                   callback(
+                  {"id":1,"nom":"Test","login":"aaa","password":"aaa","email":"menottes@itkweb.com"}
+              );
+              } else {
+                  callback({});
+              }
+          } else {
+              $http.post("/users",{login:login, password:password})
+                  .success(callback)
+                  .error(errorCallback);
+          }
+      }
 
     function getProjets(callback) {
       if(isMocked === true) {
@@ -63,7 +81,7 @@ app.factory("Network", ["$http",
         var data = {"nom":"4ptest"};
         projects[projects.length] = data;
       } else {
-        var url = "/projet/";
+        var url = "/projets/";
         var data = {"nom": project.name};
         $http.post(url, data)
         .error(
@@ -71,10 +89,13 @@ app.factory("Network", ["$http",
             console.log(data, status, headers, config);
           }
         );
-      }      
+      }
     }
     
     return {
+        login: function(callback, errorCallback, log, pass) {
+            login(callback, errorCallback, log, pass);
+        },
       getProjets: function(callback) {
         getProjets(callback);
       },
@@ -84,8 +105,8 @@ app.factory("Network", ["$http",
       getTickets: function(callback, projectId, sprintId) {
         getTickets(callback, projectId, sprintId);
       },
-      createProject: function(callback, project) {
-        createProject(callback, project);
+      createProject: function(project) {
+        createProject(project);
       }
     }
 

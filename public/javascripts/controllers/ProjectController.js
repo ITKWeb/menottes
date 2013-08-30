@@ -5,12 +5,12 @@ app.controller('ProjectController', ['$scope', 'Network', '$location',
 
 	    $scope.createProject = function() {    	
     		$network.createProject($scope.project);
-    		$location.path("/index.html");
-    	}
+            $scope.$parent.showGlassNewProject=false;
+    	};
 
-    	 $scope.cancelCreateProject = function() {    	
-    		$location.path("/");
-    	}
+    	$scope.hide=function(){
+			$scope.$parent.showGlassNewProject=false;
+		};
 	         
 
 }]);
