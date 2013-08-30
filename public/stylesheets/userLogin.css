@@ -1,0 +1,26 @@
+.loginBox .box{
+   float: left;
+    width:49%;
+    display: inline-block;
+}
+
+.loginBox .label{
+    float:left;
+    display: inline-block;
+    width:49%;
+}
+
+.loginBox {
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
+.container {
+    margin: 0 33%;
+}
+
+
+.userLoginErrorMessage {
+    color:red;
+}
