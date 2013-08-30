@@ -13,6 +13,44 @@
 
 ActiveRecord::Schema.define(version: 2013070916200000) do
 
+  create_table "choices", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "poll_id"
+    t.integer  "participant_id"
+  end
+
+  add_index "choices", ["participant_id"], name: "index_choices_on_participant_id"
+  add_index "choices", ["poll_id"], name: "index_choices_on_poll_id"
+
+  create_table "date_choice_choices", force: true do |t|
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "participants", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "participants", ["user_id"], name: "index_participants_on_user_id"
+
+  create_table "polls", force: true do |t|
+    t.boolean  "open"
+    t.datetime "open_date"
+    t.datetime "close_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "polls_participants", force: true do |t|
+    t.integer "poll_id"
+    t.integer "participant_id"
+  end
+
   create_table "projets", force: true do |t|
     t.string   "nom"
     t.datetime "created_at"

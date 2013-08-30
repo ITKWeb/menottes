@@ -1,22 +1,39 @@
-<ul class="leftNavigation">
-	<li ng-repeat="sprint in sprints" ng-click="clickOnSprint(sprint)" ng-class="{active: sprint == selected}">{{sprint.nom}}</li>
-</ul>
-<div class="boardContent">
-	<div class="topBoardBar">
-		<a class="btn" href="" ng-click="showGlass=!showGlass">
-			[LogoFont] Nouveau Ticket
-		</a>
-		<a class="btn" href="">
-			[LogoFont] Imprimer les tickets
-		</a>
-		<a class="btn" href="">
-			[LogoFont] Rapport
-		</a>
+
+
+<h1>Titre</h1>
+<form novalidate id="new-plannif">
+
+	<div class="field" id="duree">
+		<label for="inputDuree">Durée <span class="error_message"></span>: </label>
+		<input type="text" placeholder="ex: 20" name="duree" id="inputDuree" class="input-small"> jours (ouvrés)
 	</div>
-	<div class="ticketsList">
-	    <ul>
-	        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}"><div id="ticket_{{$index}}" ><span class="ticket-id">#{{ticket.id}}</span><span class="ticket-titre">{{ticket.titre}}</span><span class="ticket-description">{{ticket.description}}</span></div></li>
-	    </ul>
+	<div class="field" id="projets">
+		<label for="ckeckboxProjets" class="aligntop">Projets <span class="error_message"></span>: </label>
+		<ul id="ckeckboxProjets" class="form-checkboxList">
+			<li ng-repeat="projet in projets">
+				<input type="checkbox" value="{{projet.nom}}" ng-model="projet.planifie" name="projet" />
+				{{projet.nom}}
+				<span ng-show="projet.planifie">-> Pourcentage : <input type="text" class="input-small" name="pourcentage" placeholder="ex: 30" /> %</span>
+			</li>
+		</ul>
 	</div>
-</div>
-<ng-include src="'views/addNewTicket.html'" ng-show="showGlass" ng-controller="PopupController" ></ng-include>
+	<div class="field" id="equipe">
+		<label for="ckeckboxEquipe" class="aligntop">Equipe <span class="error_message"></span>: </label>
+		<ul id="ckeckboxEquipe" class="form-checkboxList">
+			<li ng-repeat="projet in projets">
+				<input type="checkbox" value="{{projet.nom}}" ng-model="dev" name="dev" />
+				{{projet.nom}}
+				<span ng-show="dev">-> Absent : <input type="text" class="input-small" name="absence" placeholder="ex: 30" /> jours</span>
+			</li>
+		</ul>
+	</div>
+	<div class="field" id="velocite">
+		<label for="inputVelocite">Vélocité <span class="error_message"></span>: </label>
+		<input type="text" placeholder="ex: 0.7" name="velocite" id="inputVelocite" class="input-small">
+		<a class="help" title="vélocité du projet (en moyenne 0.6)">?</a>
+	</div>
+
+	<button type="submit" class="btn big-btn btn-grey">Générer</button>
+
+</form>
+

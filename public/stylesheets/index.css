@@ -5,6 +5,7 @@ html{
 body{
 	height:100%;
 	font-family : sans-serif;
+	font-size : 0.9em;
 	color:#5E5E5E;
 }
 #container{
