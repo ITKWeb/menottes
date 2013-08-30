@@ -93,9 +93,15 @@ app.factory("Network", ["$http",
     }
     
     return {
+<<<<<<< HEAD
         login: function(callback, errorCallback, log, pass) {
             login(callback, errorCallback, log, pass);
         },
+=======
+      login: function(callback, errorCallback, log, pass) {
+        login(callback, errorCallback, log, pass);
+      },
+>>>>>>> a79889224b6b45f654cdb2cb622d59030d52f60c
       getProjets: function(callback) {
         getProjets(callback);
       },

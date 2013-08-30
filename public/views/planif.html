@@ -7,6 +7,7 @@
 		<label for="inputDuree">Durée <span class="error_message"></span>: </label>
 		<input type="text" placeholder="ex: 20" name="duree" id="inputDuree" class="input-small"> jours (ouvrés)
 	</div>
+<<<<<<< HEAD
 	<div class="field" id="projets">
 		<label for="ckeckboxProjets" class="aligntop">Projets <span class="error_message"></span>: </label>
 		<ul id="ckeckboxProjets" class="form-checkboxList">
@@ -16,6 +17,12 @@
 				<span ng-show="projet.planifie">-> Pourcentage : <input type="text" class="input-small" name="pourcentage" placeholder="ex: 30" /> %</span>
 			</li>
 		</ul>
+=======
+	<div class="ticketsList">
+          <ul>
+	        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}" dragStyle="ticketDrag" drop="ticket" drop-element-id="ticket_{{$index}}" dropStyle="ticketDrop" ><div id="ticket_{{$index}}" ><span class="ticket-id">#{{ticket.id}}</span><span class="ticket-titre">{{ticket.titre}}</span><span class="ticket-description">{{ticket.description}}</span></div></li>
+          </ul>
+>>>>>>> a79889224b6b45f654cdb2cb622d59030d52f60c
 	</div>
 	<div class="field" id="equipe">
 		<label for="ckeckboxEquipe" class="aligntop">Equipe <span class="error_message"></span>: </label>

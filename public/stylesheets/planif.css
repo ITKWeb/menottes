@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -80,3 +81,12 @@ form{
 			margin-left:200px;
 		}
 
+=======
+.ticketDrag {
+    opacity: 0.7;
+    background-color: blue;
+}
+.ticketDrop {
+    background-color: green;
+}
+>>>>>>> a79889224b6b45f654cdb2cb622d59030d52f60c
