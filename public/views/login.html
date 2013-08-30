@@ -10,8 +10,12 @@
 	</div>
 	<div id="secondary-projects">
         <a ng-repeat="projet in projets" class="btn big-btn" ng-click="clickOnProjet(projet)">{{projet.nom}}</a>
+<<<<<<< HEAD
 		<a href="" class="btn-new-project" ng-click="createProjet()">New Project</a>
 		<a href="" class="btn-new-project" ng-click="showGlass=!showGlass">New Truc</a>
+=======
+		<a href="" class="btn-new-project" ng-click="showGlassNewProject=!showGlassNewProject">Nouveau projet</a>
+>>>>>>> a79889224b6b45f654cdb2cb622d59030d52f60c
 	</div>
 	<div id="secondary-projects">
 	  <a ng-click="newChoice()" class="btn big-btn">Faire un nouveau choix</a> <a ng-repeat="poll in polls" ng-click="newChoice(poll)" class="btn big-btn">Choix {{poll.id}}</a>
@@ -19,4 +23,4 @@
 </section>
 
 <footer class="main-footer">by the <a href="http://itkweb.com" class="link-footer">iTK Team</a></footer>
-<ng-include src="'views/popup.html'" ng-show="showGlass" ng-controller="PopupController" ></ng-include>
+<ng-include src="'views/addNewProject.html'" ng-show="showGlassNewProject" ng-controller="ProjectController" ></ng-include>
