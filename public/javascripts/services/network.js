@@ -1,7 +1,7 @@
 app.factory("Network", ["$http",
     function ($http) {
   
-    var isMocked = true;
+    var isMocked = false;
     var isLoginMocked = true;
     var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"},
        {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"},
