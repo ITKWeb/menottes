@@ -2,17 +2,21 @@ var app = angular.module('app', []);
 
 app.config(["$routeProvider", "$httpProvider",
   function($routeProvider, $httpProvider) {
-    $httpProvider.defaults.headers['common']['X-Requested-With'] = 'XMLHttpRequest';
+    $httpProvider.defaults.headers['common']['Accept'] = 'application/json';
     $routeProvider
       .when('/', {
-        templateUrl: 'views/login.html',
-        controller: "LoginController"
+        templateUrl: 'views/userLogin.html',
+        controller: "UserLoginController"
       })
+       .when('/login', {
+            templateUrl: 'views/login.html',
+            controller: "LoginController"
+        })
       .when('/logged/:projectId', {
         templateUrl: 'views/logged.html',
         controller: "LoggedController"
       })
-      .when('/projet/', {
+      .when('/projets', {
         templateUrl: 'views/addNewProject.html',
         controller: "ProjectController"
       })
