@@ -1,6 +1,7 @@
 Menottes::Application.routes.draw do
 
-  get "users/login"
+  post 'login' => 'users#login'
+  # get 'users/:login' => 'users#login'
   get 'users' => 'users#index'
   root :to => "static#index"
   get 'projets' => 'projets#index'
