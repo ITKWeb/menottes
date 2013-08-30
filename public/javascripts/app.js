@@ -11,6 +11,10 @@ app.config(["$routeProvider",
         templateUrl: 'views/logged.html',
         controller: "LoggedController"
       })
+      .when('/planif', {
+        templateUrl: 'views/planif.html',
+        controller: "PlanifController"
+      })
       .otherwise({
         redirectTo: '/'
       });
