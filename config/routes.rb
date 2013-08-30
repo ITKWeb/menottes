@@ -6,7 +6,7 @@ Menottes::Application.routes.draw do
   get 'projets' => 'projets#index'
   get 'tickets' => 'tickets#index'
   get 'tickets/:idProjet' => 'tickets#get_tickets_by_projet'
-  post 'projet' => 'projets#create' #=> create 
+  post 'projets' => 'projets#create' #=> create 
   delete 'projets/:idProjet' => 'projets#destroy'
   get 'sprints' => 'sprints#index'
   get 'sprints/:idProjet' => 'sprints#get_sprints_by_projet'

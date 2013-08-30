@@ -1,7 +1,7 @@
 app.factory("Network", ["$http",
   function($http) {
   
-    var isMocked = true;
+    var isMocked = false;
     var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
@@ -63,7 +63,7 @@ app.factory("Network", ["$http",
         var data = {"nom":"4ptest"};
         projects[projects.length] = data;
       } else {
-        var url = "/projet/";
+        var url = "/projets/";
         var data = {"nom": project.name};
         $http.post(url, data)
         .error(
