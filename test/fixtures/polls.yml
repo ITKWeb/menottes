@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  open: false
+  open_date: 2013-08-30 11:38:13
+  close_date: 2013-08-30 11:38:13
+
+two:
+  open: false
+  open_date: 2013-08-30 11:38:13
+  close_date: 2013-08-30 11:38:13
