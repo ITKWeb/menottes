@@ -7,7 +7,15 @@ app.factory("Network", ["$http",
     var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
-    var polls = [{"id":1,"open":true,"open_date":"2013-08-30T11:29:06.921Z","close_date":"2013-08-30T11:29:14.785Z","created_at":"2013-08-30T11:32:13.809Z","updated_at":"2013-08-30T11:32:13.809Z"}];
+    var polls = [{"id":1,"open":true,"open_date":"2013-08-30T11:29:06.921Z","close_date":"2013-08-30T11:29:14.785Z","created_at":"2013-08-30T11:32:13.809Z","updated_at":"2013-08-30T11:32:13.809Z"},{"id":2,"closed":true,"open_date":"2013-08-30T11:29:06.921Z","close_date":"2013-08-30T11:29:14.785Z","created_at":"2013-08-30T11:32:13.809Z","updated_at":"2013-08-30T11:32:13.809Z"}];
+    
+    var completePolls=[
+    
+    {"id":1,"open":true,"open_date":"2013-08-30T11:29:06.921Z","close_date":"2013-08-30T11:29:14.785Z","created_at":"2013-08-30T11:32:13.809Z","updated_at":"2013-08-30T11:32:13.809Z","participants":[{"id":1,"created_at":"2013-08-30T11:32:18.818Z","updated_at":"2013-08-30T12:22:54.339Z","user_id":3,"choices":[{"id":1,"name":"monChoix1","created_at":"2013-08-30T11:27:48.278Z","updated_at":"2013-08-30T12:22:47.870Z","poll_id":1,"participant_id":1}]}]},
+    
+    {"id":1,"false":true,"open_date":"2013-08-30T11:29:06.921Z","close_date":"2013-08-30T11:29:14.785Z","created_at":"2013-08-30T11:32:13.809Z","updated_at":"2013-08-30T11:32:13.809Z","participants":[{"id":1,"created_at":"2013-08-30T11:32:18.818Z","updated_at":"2013-08-30T12:22:54.339Z","user_id":3,"choices":[{"id":1,"name":"monChoix2","created_at":"2013-08-30T11:27:48.278Z","updated_at":"2013-08-30T12:22:47.870Z","poll_id":2,"participant_id":5}]}]}
+         
+    ];
 
 	  function login(callback, errorCallback, login, password) {
           if (isLoginMocked === true) {
@@ -44,6 +52,22 @@ app.factory("Network", ["$http",
         callback(polls);
       } else {
         $http.get("/polls")
+          .success(callback)
+          .error(
+            function(data, status, headers, config) {
+              console.log(data, status, headers, config);
+            }
+          );
+      }
+    }
+    
+    function getPoll(callback, pollid) {
+      if(isMocked === true) {
+        callback(
+	completePolls[pollid-1]
+ 	);
+      } else {
+        $http.get("/poll")
           .success(callback)
           .error(
             function(data, status, headers, config) {
@@ -116,6 +140,9 @@ app.factory("Network", ["$http",
       },
        getPolls: function(callback) {
         getPolls(callback);
+      },
+      getPoll: function(callback, pollid) {
+        getPoll(callback, pollid);
       },
       getSprints: function(callback, projectId) {
         getSprints(callback, projectId);
