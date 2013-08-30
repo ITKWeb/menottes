@@ -1,8 +1,8 @@
 app.factory("Network", ["$http",
     function ($http) {
   
-    var isMocked = true;
-    var isLoginMocked = true;
+    var isMocked = false;
+    var isLoginMocked = false;
 
     var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
@@ -70,7 +70,7 @@ app.factory("Network", ["$http",
 	completePolls[pollid-1]
  	);
       } else {
-        $http.get("/poll")
+        $http.get("/polls/"+pollid)
           .success(callback)
           .error(
             function(data, status, headers, config) {
