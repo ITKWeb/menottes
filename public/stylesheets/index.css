@@ -7,12 +7,12 @@ body{
 	font-family : sans-serif;
 	font-size : 0.9em;
 	color:#5E5E5E;
+	background:#f0f0f0;
 }
 #container{
 	position:relative;
 	min-height:100%;
-	height:auto;
-	background:#FFFFFF;
+	height:100%;
 }
 .max-width{
 	position:relative;
