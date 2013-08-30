@@ -33,7 +33,10 @@ ActiveRecord::Schema.define(version: 2013070916200000) do
   create_table "participants", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "participants", ["user_id"], name: "index_participants_on_user_id"
 
   create_table "polls", force: true do |t|
     t.boolean  "open"
