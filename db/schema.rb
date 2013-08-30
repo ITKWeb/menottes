@@ -45,4 +45,13 @@ ActiveRecord::Schema.define(version: 2013070916200000) do
   add_index "tickets", ["projet_id"], name: "index_tickets_on_projet_id"
   add_index "tickets", ["sprint_id"], name: "index_tickets_on_sprint_id"
 
+  create_table "users", force: true do |t|
+    t.string   "nom"
+    t.string   "login"
+    t.string   "password"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end

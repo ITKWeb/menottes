@@ -10,6 +10,14 @@ app.controller('LoginController', ['$scope', 'Network', '$location', function($s
 
     $scope.createProjet = function() {
     	$location.path('/projet/');
+	}
+
+    $scope.newPlanif = function() {
+        $location.path('/planif');
+    }
+
+    $scope.newChoice = function() {
+        $location.path('/choice');
     }
     
 }]);

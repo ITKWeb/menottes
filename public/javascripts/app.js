@@ -15,6 +15,14 @@ app.config(["$routeProvider",
         templateUrl: 'views/addNewProject.html',
         controller: "ProjectController"
       })
+      .when('/planif', {
+        templateUrl: 'views/planif.html',
+        controller: "PlanifController"
+      })
+      .when('/choice', {
+        templateUrl: 'views/choice.html',
+        controller: "ChoiceController"
+      })
       .otherwise({
         redirectTo: '/'
       });
