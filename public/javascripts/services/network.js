@@ -1,7 +1,28 @@
 app.factory("Network", ["$http",
-  function($http) {
+    function ($http) {
   
     var isMocked = false;
+
+      function login(callback, login, password) {
+          if (isMocked === true) {
+              if ((login === "login") && (password === "password")) {
+                   callback([
+                  {"id":1,"nom":"Test","login":"aaa","password":"aaa","email":"menottes@itkweb.com"}
+              ]);
+              } else {
+                  callback([{}]);
+              }
+          } else {
+              $http.get("/users/"+login+"/"+password)
+                  .success(callback)
+                  .error(
+                  function(data, status, headers, config) {
+                      console.log(data, status, headers, config);
+                  }
+                  );
+          }
+      }
+
 
     function getProjets(callback) {
       if(isMocked === true) {

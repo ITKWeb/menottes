@@ -1,0 +1,25 @@
+<section class="max-width text-center big-padding-bottom">
+    <img src="images/menottes_logo.png" alt="Menottes, The SM Tools." />
+    <p class="texte">Bienvenu sur Menotte. Merci de vous connecter </p>
+    <div class="container">
+        <div class="loginBox">
+            <label class="label" id="login">Utilisateur:</label>
+            <input class="box" type="text" id="inputLogin" value=""/>
+        </div>
+        <div class="loginBox">
+            <label class="label" id="password">Mot de passe: </label>
+            <input class="box" type="password" id="inputPassword" value=""/><br/>
+        </div>
+        <div>
+        <a href="" ng-click="clickOnLogin" class="btn btn-grey">Se connecter</a>
+        <a href="" ng-click="clickOnForgotten()" class="btn btn-grey">Mot de passe oublié ?</a>
+        </div>
+        <div>
+            <label id="message" class="userLoginErrorMessage"></label>
+        </div>
+
+    </div>
+</section>
+
+<footer class="main-footer">by the <a href="http://itkweb.com" class="link-footer">iTK Team</a></footer>
+<ng-include src="'views/popup.html'" ng-show="showGlass" ng-controller="PopupController" ></ng-include>
