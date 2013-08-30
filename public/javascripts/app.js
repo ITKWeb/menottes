@@ -18,7 +18,11 @@ app.config(["$routeProvider", "$httpProvider",
       })
       .when('/projets', {
         templateUrl: 'views/addNewProject.html',
-        controller: "ProjectController"
+        controller: "NewProjectController"
+      })
+      .when('/tickets', {
+        templateUrl: 'views/addNewTicket.html',
+        controller: "NewTicketController"
       })
       .when('/planif', {
         templateUrl: 'views/planif.html',
