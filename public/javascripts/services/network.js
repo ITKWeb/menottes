@@ -108,11 +108,9 @@ app.factory("Network", ["$http",
     }
     
     return {
-
-      login: function(callback, errorCallback, log, pass) {
-        login(callback, errorCallback, log, pass);
-      },
-      
+        login: function(callback, errorCallback, log, pass) {
+            login(callback, errorCallback, log, pass);
+        },
       getProjets: function(callback) {
         getProjets(callback);
       },
