@@ -1,4 +1,4 @@
-app.controller('ProjectController', ['$scope', 'Network', '$location',
+app.controller('NewProjectController', ['$scope', 'Network', '$location',
 	function($scope, $network, $location) {
     
     	$scope.project = {};
