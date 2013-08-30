@@ -90,7 +90,7 @@ app.factory("Network", ["$http",
 
     function createProject(project) {
      
-      var data = {"nom": project.nom};
+      var data = {"nom": project.nom, "description":ticket.description, "trac_id":ticket.trac_id, "importance":ticket.importance};
       if (isMocked === true) {
         projects[projects.length] = data;
       } else {
