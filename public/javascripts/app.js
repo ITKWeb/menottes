@@ -28,6 +28,10 @@ app.config(["$routeProvider", "$httpProvider",
         templateUrl: 'views/choice.html',
         controller: "ChoiceController"
       })
+      .when('/choice/:pollId', {
+        templateUrl: 'views/choice.html',
+        controller: "ChoiceController"
+      })
       .otherwise({
         redirectTo: '/'
       });
