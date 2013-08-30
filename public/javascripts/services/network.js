@@ -2,13 +2,13 @@ app.factory("Network", ["$http",
   function($http) {
   
     var isMocked = true;
+    var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
+          {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
+          {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
 
     function getProjets(callback) {
       if(isMocked === true) {
-        callback([
-          {"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
-          {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
-          {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}]);
+        callback(projects);
       } else {
         $http.get("/projets")
           .success(callback)
@@ -56,6 +56,23 @@ app.factory("Network", ["$http",
           );
       }
     }
+
+    function createProject(project) {
+     
+      if (isMocked === true) {
+        var data = {"nom":"4ptest"};
+        projects[projects.length] = data;
+      } else {
+        var url = "/projet/";
+        var data = {"nom": project.name};
+        $http.post(url, data)
+        .error(
+          function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+          }
+        );
+      }      
+    }
     
     return {
       getProjets: function(callback) {
@@ -66,6 +83,9 @@ app.factory("Network", ["$http",
       },
       getTickets: function(callback, projectId, sprintId) {
         getTickets(callback, projectId, sprintId);
+      },
+      createProject: function(callback, project) {
+        createProject(callback, project);
       }
     }
 

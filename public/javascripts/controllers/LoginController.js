@@ -7,5 +7,9 @@ app.controller('LoginController', ['$scope', 'Network', '$location', function($s
     $scope.clickOnProjet = function(projet) {
         $location.path('/logged/'+projet.id);
     }
+
+    $scope.createProjet = function() {
+    	$location.path('/projet/');
+    }
     
 }]);
