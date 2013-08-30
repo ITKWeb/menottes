@@ -9,14 +9,15 @@ app.controller('ChoiceController', ['$scope', '$location' , 'Network', function(
     $network.getPoll(function (data){
       console.log(data.open);
       poll=data;
-    },
-      pollid);
-    if (poll.open === true){
+if (poll.open === true){
      $scope.open="sondage ouvert";
     }else
     {
       $scope.open="sondage fermé";
     }
+    },
+      pollid);
+    
    
   }else{
       console.log("Nouveau sondage");
