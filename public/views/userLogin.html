@@ -1,21 +1,21 @@
 <section class="max-width text-center big-padding-bottom">
     <img src="images/menottes_logo.png" alt="Menottes, The SM Tools." />
     <p class="texte">Bienvenu sur Menotte. Merci de vous connecter </p>
+    <div ng-show="errorMessage">
+        <label class="userLoginErrorMessage" > {{errorMessage}} </label>
+    </div>
     <div class="container">
         <div class="loginBox">
-            <label class="label" id="login">Utilisateur:</label>
-            <input class="box" type="text" id="inputLogin" value=""/>
+            <label class="label" >Utilisateur:</label>
+            <input class="box" type="text" ng-model="login"/>
         </div>
         <div class="loginBox">
-            <label class="label" id="password">Mot de passe: </label>
-            <input class="box" type="password" id="inputPassword" value=""/><br/>
+            <label class="label">Mot de passe: </label>
+            <input class="box" type="password" ng-model="password"/><br/>
         </div>
         <div>
-        <a href="" ng-click="clickOnLogin" class="btn btn-grey">Se connecter</a>
+        <a href="" ng-click="clickOnLogin()" class="btn btn-grey">Se connecter</a>
         <a href="" ng-click="clickOnForgotten()" class="btn btn-grey">Mot de passe oublié ?</a>
-        </div>
-        <div>
-            <label id="message" class="userLoginErrorMessage"></label>
         </div>
 
     </div>
