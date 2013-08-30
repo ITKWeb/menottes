@@ -1,5 +1,6 @@
 Menottes::Application.routes.draw do
 
+  get "polls/show"
   get "users/login"
   get 'users' => 'users#index'
   root :to => "static#index"
@@ -11,6 +12,7 @@ Menottes::Application.routes.draw do
   get 'sprints' => 'sprints#index'
   get 'sprints/:idProjet' => 'sprints#get_sprints_by_projet'
   get 'tickets/:idProjet/:idSprint' => 'sprints#get_tickets_by_projet_by_sprint'
+  get 'polls' => 'polls#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
