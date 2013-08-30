@@ -14,9 +14,9 @@
 		</a>
 	</div>
 	<div class="ticketsList">
-	    <ul>
-	        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}"><div id="ticket_{{$index}}" ><span class="ticket-id">#{{ticket.id}}</span><span class="ticket-titre">{{ticket.titre}}</span><span class="ticket-description">{{ticket.description}}</span></div></li>
-	    </ul>
+          <ul>
+	        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}" dragStyle="ticketDrag" drop="ticket" drop-element-id="ticket_{{$index}}" dropStyle="ticketDrop" ><div id="ticket_{{$index}}" ><span class="ticket-id">#{{ticket.id}}</span><span class="ticket-titre">{{ticket.titre}}</span><span class="ticket-description">{{ticket.description}}</span></div></li>
+          </ul>
 	</div>
 </div>
 <ng-include src="'views/addNewTicket.html'" ng-show="showGlass" ng-controller="PopupController" ></ng-include>
