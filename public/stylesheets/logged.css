@@ -3,6 +3,7 @@
 
 #container{
 	background:#F0F0F0;
+	height:100%;
 }
 
 .leftNavigation{
@@ -38,6 +39,7 @@
 	height:100%;
 	margin-left : 160px;
 	padding:0 20px;
+	overflow:auto;
 }
 
 .topBoardBar, .ticketsList{
