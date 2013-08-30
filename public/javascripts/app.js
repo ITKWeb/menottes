@@ -16,7 +16,7 @@ app.config(["$routeProvider", "$httpProvider",
         templateUrl: 'views/logged.html',
         controller: "LoggedController"
       })
-      .when('/projet/', {
+      .when('/projets', {
         templateUrl: 'views/addNewProject.html',
         controller: "ProjectController"
       })
