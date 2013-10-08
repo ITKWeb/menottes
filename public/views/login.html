@@ -14,10 +14,12 @@
 			<a href="" class="btn-new-project" ng-click="showGlassNewProject=!showGlassNewProject">Nouveau projet</a>
 		</div>
 		<div id="secondary-projects">
-		  <a ng-click="newChoice()" class="btn big-btn">Faire un nouveau choix</a> <a ng-repeat="poll in polls" ng-click="newChoice(poll)" class="btn big-btn">Choix {{poll.id}}</a>
+		 	<a ng-repeat="poll in polls" class="btn big-btn" ng-click="clickOnPoll(poll)">{{poll.nom}}</a>
+			<a href="" class="btn-new-project" ng-click="showGlassNewPoll=!showGlassNewProject">Nouveau sondage</a>
 		</div>
 	</section>
 
 	<footer class="main-footer">by the <a href="http://itkweb.com" class="link-footer">iTK Team</a></footer>
 	<ng-include src="'views/addNewProject.html'" ng-show="showGlassNewProject" ng-controller="NewProjectController" ></ng-include>
+	<ng-include src="'views/addNewPoll.html'" ng-show="showGlassNewPoll" ng-controller="NewPollController" ></ng-include>
 </div>

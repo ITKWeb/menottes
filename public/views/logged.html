@@ -16,7 +16,19 @@
 		</div>
 		<div class="ticketsList">
 		    <ul>
-		        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}"><div id="ticket_{{$index}}" ><span class="ticket-id">#{{ticket.id}}</span><span class="ticket-titre">{{ticket.titre}}</span><span class="ticket-description">{{ticket.description}}</span></div></li>
+		        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}" ng-click="clickOnTicket()">
+		        	<div id="ticket_{{$index}}" >
+		        			<span class="ticket-id">#{{ticket.id}}</span>
+		        			<span class="ticket-titre">{{ticket.titre}}</span>
+		        			<span class="ticket-personne">
+		        				Attribué à : {{ticket.personne}}
+		        				<button ng-click="" >haut<img id="upArrow" ng-src="{{upArrowURL}}" /></button>
+		        				<button ng-click="" >bas</button>
+		        			</span>
+		        			<br/>
+		        			<span class="ticket-description">{{ticket.description}}</span>
+		        	</div>
+		        </li>
 		    </ul>
 		</div>
 	</div>
