@@ -3,6 +3,9 @@ app.factory("Network", ["$http",
   
     var isMocked = true;
     var isLoginMocked = true;
+    var isUsersMocked = true;
+
+    var users = [{"login":"aaa","password":"aaa"},{"login":"bbb","password":"bbb"},{"login":"ccc","password":"ccc"}];
 
     var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
@@ -36,6 +39,14 @@ app.factory("Network", ["$http",
           }
       }
 
+    function getUsers(callback) {
+      if(isUsersMocked === true) {
+        callback(users);
+      } else {
+        /*FAIRE LA PARTIE SERVEUR*/
+        console.log("FAIRE LA PARTIE SERVEUR");
+      }
+    }
     function getProjets(callback) {
       if(isMocked === true) {
         callback(projects);
@@ -149,6 +160,9 @@ app.factory("Network", ["$http",
     return {
       login: function(callback, errorCallback, log, pass) {
         login(callback, errorCallback, log, pass);
+      },
+      getUsers: function(callback) {
+        getUsers(callback);
       },
       getProjets: function(callback) {
         getProjets(callback);

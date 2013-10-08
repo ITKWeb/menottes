@@ -1,39 +1,42 @@
 
+<div id="container">
+	<h1>Planification - Gestion des ressources</h1>
+	<form id="new-plannif" name="formPlannif" novalidate>
 
-<h1>Planification - Gestion des ressources</h1>
-<form novalidate id="new-plannif">
+		<div class="field" id="duree">
+			<label for="inputDuree">Durée <span class="error_message"></span>: </label>
+			<input type="text" placeholder="ex : 20" name="duree" id="inputDuree" class="input-small" ng-model="plannif.duree" required /> jours (ouvrés)
+		</div>
+		<div class="field" id="projets">
+			<label for="ckeckboxProjets" class="aligntop">Projets <span class="error_message"></span>: </label>
+			<ul id="ckeckboxProjets" class="form-checkboxList">
+				<li ng-repeat="projet in projets">
+					<input type="checkbox" value="{{projet.nom}}" ng-model="projet.selected" name="projet" />
+					{{projet.nom}}
+					<span ng-show="projet.selected" class="icon-right"> Pourcentage : <input type="text" class="input-small" name="pourcentage" placeholder="ex : 30" ng-model="projet.pourcentage" ng-required="projet.selected" /> %</span>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="field" id="equipe">
+			<label for="ckeckboxEquipe" class="aligntop">Equipe <span class="error_message"></span>: </label>
+			<ul id="ckeckboxEquipe" class="form-checkboxList">
+				<li ng-repeat="user in users">
+					<input type="checkbox" value="{{user.login}}" ng-model="user.selected" name="dev" />
+					{{user.login}}
+					<span ng-show="user.selected" class="icon-right"> Absent : <input type="text" class="input-small" name="absence" placeholder="ex : 30" ng-model="user.absence" ng-required="user.selected" /> jours</span>
+				</li>
+			</ul>
+		</div>
+		<div class="field" id="velocite">
+			<label for="inputVelocite">Vélocité <span class="error_message"></span>: </label>
+			<input type="text" placeholder="ex : 0.7" name="velocite" id="inputVelocite" class="input-small" ng-model="plannif.velocite" required >
+			<a class="help" title="vélocité du projet (en moyenne 0.6)">?</a>
+		</div>
 
-	<div class="field" id="duree">
-		<label for="inputDuree">Durée <span class="error_message"></span>: </label>
-		<input type="text" placeholder="ex: 20" name="duree" id="inputDuree" class="input-small"> jours (ouvrés)
-	</div>
-	<div class="field" id="projets">
-		<label for="ckeckboxProjets" class="aligntop">Projets <span class="error_message"></span>: </label>
-		<ul id="ckeckboxProjets" class="form-checkboxList">
-			<li ng-repeat="projet in projets">
-				<input type="checkbox" value="{{projet.nom}}" ng-model="projet.planifie" name="projet" />
-				{{projet.nom}}
-				<span ng-show="projet.planifie">-> Pourcentage : <input type="text" class="input-small" name="pourcentage" placeholder="ex: 30" /> %</span>
-			</li>
-		</ul>
-	</div>
-	<div class="field" id="equipe">
-		<label for="ckeckboxEquipe" class="aligntop">Equipe <span class="error_message"></span>: </label>
-		<ul id="ckeckboxEquipe" class="form-checkboxList">
-			<li ng-repeat="projet in projets">
-				<input type="checkbox" value="{{projet.nom}}" ng-model="dev" name="dev" />
-				{{projet.nom}}
-				<span ng-show="dev">-> Absent : <input type="text" class="input-small" name="absence" placeholder="ex: 30" /> jours</span>
-			</li>
-		</ul>
-	</div>
-	<div class="field" id="velocite">
-		<label for="inputVelocite">Vélocité <span class="error_message"></span>: </label>
-		<input type="text" placeholder="ex: 0.7" name="velocite" id="inputVelocite" class="input-small">
-		<a class="help" title="vélocité du projet (en moyenne 0.6)">?</a>
-	</div>
+		<button type="submit" class="btn big-btn btn-grey" ng-click="generatePlannif()" ng-disabled="formPlannif.$invalid || isUnchanged(plannif)">Générer</button>
 
-	<button type="submit" class="btn big-btn btn-grey">Générer</button>
+		<div id="reslutats"></div>
 
-</form>
-
+	</form>
+</div>
