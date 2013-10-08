@@ -13,7 +13,7 @@ app.factory("Network", ["$http",
           {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
     
     var polls = [{"id":1, "nom":"Bière en ville", "description":"petite soirée à 12° au Triskell", "startDate":moment('2013-08-01'),"endDate":moment('2013-08-30'),"creationDate":moment('2013-07-29'),"updateDate":moment('2013-08-15')},
-                 {"id":2, "nom":"Pétanque", "description":"apportez votre triplette !", "startDate":moment('2013-10-01'),"endDate":moment('2013-10-30'),"creationDate":moment('2013-10-01'), "updateDate":moment('2013-10-15')}];
+                 {"id":2, "nom":"Pétanque", "description":"apportez votre triplette !", "startDate":moment('2013-10-01'),"endDate":moment('2013-10-30'),"creationDate":moment('2013-10-01'), "updateDate":moment('2013-10-15'), users:[{nom:"bastien", choix:[2], commentaire:"2 triplettes et un cochonnet"}, {nom:"romain", choix:[2, 3], commentaire:"1 triplette pas de cochonnet"}]}];
     /*
     var completePolls=[
     

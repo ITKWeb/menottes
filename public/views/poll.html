@@ -26,5 +26,14 @@
         <span>{{poll.status}}</span>
     </div>
     <h2>Bon ben maintenant y'a plus qu'a implementer le systeme de sondage lui meme !!!<br/>To be continued...</h2>
+    <div class="field">
+    	<table width="100%">
+    		<tr ng-repeat="user in poll.users">
+    			<td>{{user.nom}}</td>
+    			<td>Il manque les choix par ici</td>
+    			<td>{{user.commentaire}}</td>
+    		</tr>
+    	</table>
+	</div>
 </div>
 
