@@ -75,8 +75,12 @@
 	.ticket-description{
 		font-style: italic;
 		font-size:0.9em;
+		text-align:center;
 	}
-
+	.ticket-personne{
+		font-size:0.9em;
+		float: right;
+	}
 
 
 

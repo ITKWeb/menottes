@@ -21,7 +21,8 @@
   </head>
   <body ng-app="app">
 
-    <div id="container" ng-view></div>
+    <ng-view></ng-view>
+    <!--De Laurent à lui-même : Utiliser <ng-view></ng-view> directement pour le pb des conteneurs-->
     
     <script type="text/javascript" src="vendor/angular.min.js"></script>
     <script type="text/javascript" src="javascripts/app.js"></script>
@@ -37,6 +38,8 @@
     <script type="text/javascript" src="javascripts/controllers/UserLoginController.js"></script>
     <script type="text/javascript" src="javascripts/controllers/PollController.js"></script>
     <script type="text/javascript" src="javascripts/controllers/NewPollController.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/displayTicketController.js"></script>
+
 
   </body>
 </html>

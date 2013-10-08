@@ -1,5 +1,7 @@
-app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootScope', function($scope, $network, $routeParams, $rootScope) {
+app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootScope', '$location', function($scope, $network, $routeParams, $rootScope, $location) {
     
+    $scope.upArrowURL = '../images/arrow_up.png';
+
     $network.getSprints(function(sprints) {
         $scope.sprints = sprints;
 		//Ajout By Laurent
@@ -19,6 +21,11 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
             $scope.tickets = tickets;
         }, $routeParams.projectId, sprint.id);
     };
+
+     $scope.clickOnTicket = function() {
+        $location.path('/displayTicket');
+    }
+
     
     $rootScope.$on('moveColumnEvent', function(evt, dragged, dropped) {
         console.log(line1, line2);

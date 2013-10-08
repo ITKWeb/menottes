@@ -36,6 +36,10 @@ app.config(["$routeProvider", "$httpProvider",
         templateUrl: 'views/poll.html',
         controller: "PollController"
       })
+      .when('/displayTicket', {
+        templateUrl: 'views/displayTicket.html',
+        controller: "displayTicketController"
+      })
       .otherwise({
         redirectTo: '/'
       });
