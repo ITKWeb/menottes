@@ -25,6 +25,5 @@ app.controller('PollController', ['$scope', '$location' , 'Network', function($s
     $scope.title="Nouveau sondage";
   }
 
-funct
 
 }]);
