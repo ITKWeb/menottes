@@ -123,7 +123,8 @@ app.factory("Network", ["$http",
      
       var data = {"nom": project.nom};
       if (isMocked === true) {
-        projects[projects.length] = data;
+        data.id = projects[projects.length-1].id+1; // calculate id for new mocked project
+        projects[projects.length] = data; // add new project to mocked projects list
       } else {
         var url = "/projets/";
         $http.post(url, data)
