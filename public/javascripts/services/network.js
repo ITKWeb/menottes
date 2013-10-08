@@ -3,13 +3,14 @@ app.factory("Network", ["$http",
   
     var isMocked = true;
     var isLoginMocked = true;
+    var dateFormat = 'Do MMM YYYY';
 
     var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
     
-    var polls = [{"id":1, "nom":"Bière en ville", "startDate":"2013-08-30T11:29:06.921Z","endDate":"2013-08-30T11:29:14.785Z","creationDate":"2013-08-30T11:32:13.809Z","updateDate":"2013-08-30T11:32:13.809Z"},
-                 {"id":2, "nom":"Pétanque", "startDate":"2013-08-30T11:29:06.921Z","endDate":"2013-08-30T11:29:14.785Z","creationDate":"2013-08-30T11:32:13.809Z","updateDate":"2013-08-30T11:32:13.809Z"}];
+    var polls = [{"id":1, "nom":"Bière en ville", "description":"petite soirée à 12° au Triskell", "startDate":"2013-08-30T11:29:06.921Z","endDate":"2013-08-30T11:29:14.785Z","creationDate":"2013-08-30T11:32:13.809Z","updateDate":"2013-08-30T11:32:13.809Z"},
+                 {"id":2, "nom":"Pétanque", "description":"apportez votre triplette !", "startDate":"2013-08-30T11:29:06.921Z","endDate":"2013-08-30T11:29:14.785Z","creationDate":"2013-08-30T11:32:13.809Z","updateDate":"2013-08-30T11:32:13.809Z"}];
     /*
     var completePolls=[
     
@@ -70,7 +71,7 @@ app.factory("Network", ["$http",
     function getPoll(callback, pollId) {
       if(isMocked === true) {
         for (i=0;i<polls.length;i++) {
-          if (polls[i] === pollId) {
+          if (polls[i].id == pollId) {
             callback(polls[i]);
           }
         }
@@ -177,10 +178,12 @@ app.factory("Network", ["$http",
 
     function createPoll(poll) {
      
-      var data = {"nom": poll.nom, "startDate":poll.startDate, "endDate":poll.endDate};
-      console.log("test date " + new Date());
+      var data = {"nom": poll.nom, "description":poll.description, "startDate":poll.startDate, "endDate":poll.endDate};
       if (isMocked === true) {
         data.id = polls[polls.length-1].id+1; // calculate id for new mocked poll
+        var now = moment().format(dateFormat);
+        data.creationDate = now;
+        data.updateDate = now;
         polls[polls.length] = data; // add new poll to mocked polls list
       } else {
         var url = "/polls/";
@@ -220,6 +223,9 @@ app.factory("Network", ["$http",
       },
       createPoll: function(poll) {
         createPoll(poll);
+      },
+      getDateFormat: function() {
+        return dateFormat;
       }
     }
 

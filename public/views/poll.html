@@ -1,16 +1,30 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-  <HTML>
-	<HEAD>
-		<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=iso-8859-1">
-		<TITLE>Sondage</TITLE>
-		<LINK rel="stylesheet" type="text/css" href="../stylesheets/logged.css">
-	</HEAD>
-	<body>
-		<h1>{{nom}}</h1>
-		 <br>{{open}}</br>
-		<div class="mainContent">
-			
-		</div>
-		
-	</body>
-</HTML>
+<h1>{{poll.nom}}</h1>
+<div class="container">
+
+    <div class="field">
+        <label>Sondage crée le :</label>
+        <span>{{poll.creationDate}}</span>
+    </div>
+    <div class="field">
+        <label>Dernière mise à jour :</label>
+        <span>{{poll.updateDate}}</span>
+    </div>
+    <div class="field">
+        <label>Description :</label>
+        <span>{{poll.description}}</span>
+    </div>
+    <div class="field">
+        <label>Date de début du sondage :</label>
+        <span>{{poll.formattedStartDate}}</span>
+    </div>
+    <div class="field">
+        <label>Date de fin du sondage :</label>
+        <span>{{poll.formattedEndDate}}</span>
+    </div>
+    <div class="field">
+        <label>Statut :</label>
+        <span>{{poll.status}}</span>
+    </div>
+
+</div>
+

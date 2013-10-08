@@ -5,16 +5,16 @@ app.controller('NewPollController', ['$scope', 'Network', '$location',
 
 	    $scope.createPoll = function() {    	
     		$network.createPoll($scope.poll);
-    		console.log("date picker avec endDate " , $scope.poll);
             $scope.$parent.showGlassNewPoll=false;
     	};
 
     	$scope.startDateSelected = function(date) {
-    		$scope.poll.startDate = date;
+            console.log(date);
+    		$scope.poll.startDate = date.moment;
     	}
 
     	$scope.endDateSelected = function(date) {
-    		$scope.poll.endDate = date;
+    		$scope.poll.endDate = date.moment;
     	}
 
     	$scope.hide=function(){
