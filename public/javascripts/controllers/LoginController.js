@@ -20,12 +20,13 @@ app.controller('LoginController', ['$scope', 'Network', '$location', function($s
         $location.path('/planif');
     }
 
-    $scope.newChoice = function(poll) {
-      if (poll === undefined ){
-	 $location.path('/choice');
-      }else{
-        $location.path('/choice/'+poll.id);
-      }
+    $scope.createPoll = function() {
+        console.log("create poll in LoginController");
+        $location.path('/polls');
+    }
+
+    $scope.clickOnPoll = function(poll) {
+        $location.path('/polls/'+poll.id);
     }
     
 }]);

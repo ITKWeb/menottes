@@ -28,13 +28,13 @@ app.config(["$routeProvider", "$httpProvider",
         templateUrl: 'views/planif.html',
         controller: "PlanifController"
       })
-      .when('/choice', {
-        templateUrl: 'views/choice.html',
-        controller: "ChoiceController"
+      .when('/polls', {
+        templateUrl: 'views/addNewPoll.html',
+        controller: "NewPollController"
       })
-      .when('/choice/:pollId', {
-        templateUrl: 'views/choice.html',
-        controller: "ChoiceController"
+      .when('/polls/:pollId', {
+        templateUrl: 'views/poll.html',
+        controller: "PollController"
       })
       .when('/displayTicket', {
         templateUrl: 'views/displayTicket.html',

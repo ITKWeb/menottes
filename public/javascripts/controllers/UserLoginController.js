@@ -19,7 +19,7 @@ app.controller('UserLoginController', ['$scope', 'Network', '$location', functio
                 $location.path('/login');
             }
         }, function(data, status, headers, config) {
-                $score.errorMessage = status.toString();
+                $scope.errorMessage = status.toString();
                 console.log(data, status, headers, config);
          }, $scope.login, $scope.password);
     }
