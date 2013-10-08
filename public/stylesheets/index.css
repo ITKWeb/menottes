@@ -109,10 +109,10 @@ h1{
 
 .btn:disabled
 {
-	background-color: #DDDDDD;
-	border-color: #AAAAAA;
-	box-shadow: none;
-	color: #AAAAAA;
+    background-color: #EEEEEE;
+    border-color: #DDDDDD;
+    box-shadow: none;
+    color: #BBBBBB;
 }
 
 .main-footer{
