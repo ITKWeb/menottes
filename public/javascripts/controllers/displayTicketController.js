@@ -5,5 +5,5 @@ app.controller('displayTicketController', ['$scope', 'Network', '$routeParams', 
         $scope.ticket = ticket;
         }, $routeParams.ticketId);
 
-	$network.getTicket(1);
+	
 	}]);
