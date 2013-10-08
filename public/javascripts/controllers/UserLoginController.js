@@ -11,7 +11,7 @@ app.controller('UserLoginController', ['$scope', 'Network', '$location', functio
 
     $scope.clickOnLogin = function() {
         $network.login(function(user) {
-            if (user[0].id === undefined) {
+            if (user.id === undefined) {
                 $scope.login = "";
                 $scope.password= "";
                 $scope.errorMessage = "Login ou mot de passe incorrect";
@@ -19,7 +19,7 @@ app.controller('UserLoginController', ['$scope', 'Network', '$location', functio
                 $location.path('/login');
             }
         }, function(data, status, headers, config) {
-                $score.errorMessage = status.toString();
+                $scope.errorMessage = status.toString();
                 console.log(data, status, headers, config);
          }, $scope.login, $scope.password);
     }
