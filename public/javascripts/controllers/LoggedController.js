@@ -1,7 +1,8 @@
-app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootScope', function($scope, $network, $routeParams, $rootScope) {
+app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootScope', '$location', function($scope, $network, $routeParams, $rootScope, $location) {
     
     $scope.upArrowURL = 'images/arrow_up.png';
     $scope.downArrowURL = 'images/arrow_down.png';
+    var ticketPriorityToGet;
 
     $network.getSprints(function(sprints) {
         $scope.sprints = sprints;
@@ -16,21 +17,32 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
 	}, $routeParams.projectId);
     
     $scope.clickOnSprint = function(sprint) {
-	console.log(sprint);
+		console.log(sprint);
 		$scope.selected = sprint;
         $network.getTickets(function(tickets) {
             $scope.tickets = tickets;
         }, $routeParams.projectId, sprint.id);
     };
+
+     $scope.clickOnTicket = function() {
+        $location.path('/displayTicket');
+    }
+
     
     $scope.priorityUp = function(ticket){
-    	console.log(ticket.titre + " " + ticket.id + " " + ticket.priority);
-    	ticket.priority += 1;
+    	ticketPriorityToGet = ticket.priority + 1;
+    	$network.getTicketsByPriority(function(gotTicket){
+    		gotTicket.priority -= 1; 
+    		ticket.priority += 1;
+    	},ticketPriorityToGet);
     }
 
     $scope.priorityDown = function(ticket){
-    	console.log(ticket.titre + " " + ticket.id + " " + ticket.priority);
-    	ticket.priority -= 1;
+    	ticketPriorityToGet = ticket.priority - 1;
+    	$network.getTicketsByPriority(function(gotTicket){
+    		gotTicket.priority += 1; 
+    		ticket.priority -= 1;
+    	},ticketPriorityToGet);
     }
 
     $rootScope.$on('moveColumnEvent', function(evt, dragged, dropped) {
