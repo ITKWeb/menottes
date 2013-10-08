@@ -22,10 +22,19 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
         }, $routeParams.projectId, sprint.id);
     };
 
-     $scope.clickOnTicket = function() {
+    /* $scope.clickOnTicket = function(ticket) {
+       // $location.path('/displayTicket/'+ticket.id);
         $location.path('/displayTicket');
     }
+*/
+  $scope.clickOnTicket = function(ticketId) {
 
+	$network.getTicketById(function(ticket) {
+		console.log('controller 3');
+        $scope.ticket = ticket;
+        $location.path('/displayTicket/'+ticket.id);
+        }, ticketId);
+	};
     
     $rootScope.$on('moveColumnEvent', function(evt, dragged, dropped) {
         console.log(line1, line2);

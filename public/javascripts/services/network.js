@@ -19,9 +19,9 @@ app.factory("Network", ["$http",
          
     ];*/
 
-    var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Anakin Skywalker"},
-            {"id":3,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3, "personne": "Luke Lucky"},
-            {"id":2,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Babar Léléfan"}];
+    var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Anakin Skywalker"},
+            {"id":3,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3, "personne": "Luke Lucky"},
+            {"id":2,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Babar Léléfan"}];
 
 	  function login(callback, errorCallback, login, password) {
           if (isLoginMocked === true) {
@@ -121,14 +121,19 @@ app.factory("Network", ["$http",
 
     function getTicketById(callback, ticketId) {
       if(isMocked === true) {
+        console.log('ticketId '+ticketId);
         var i = 0;
+        var exitepas;
         while ((i < tickets.length) && (tickets[i].id != ticketId) ){
             i++;
         }
-        if (tickets[i].id == ticketId)
+
+        console.log('i = '+ i +' '+tickets.length);
+        callback(tickets[i]);
+       /* if (tickets[i].id == ticketId)
         {
           callback(tickets[i]);
-        }//test
+        }//test*/
       } else {
         //a changer
         var url = "/tickets/"+projectId+"/"+sprintId;
@@ -210,6 +215,9 @@ app.factory("Network", ["$http",
       },
       getTickets: function(callback, projectId, sprintId) {
         getTickets(callback, projectId, sprintId);
+      },
+      getTicketById: function(callback, ticketId) {
+        getTicketById(callback, ticketId);
       },
       createProject: function(project) {
         createProject(project);
