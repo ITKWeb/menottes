@@ -1,0 +1,22 @@
+
+<div class="glass" ng-click="hide()"></div>
+<div class="popup">
+	<header class="popup-header">
+		Planification Terminée - Création des sprints
+	</header>
+	
+	<section class="popup-section">
+		 <ul class="default-list">
+			<li ng-repeat="projet in projets | filter:{selected:true}" >
+				{{projet.nom}} <span class="icon-right"></span> {{projet.plannif}} point d'histoire.
+			</li>
+		</ul>
+
+
+	</section>
+	
+	<footer class="popup-footer">
+		<a href="" class="btn" ng-click="hide()">Annuler</a>
+		<a href="" class="btn btn-grey" ng-click="">Créer le(s) sprint(s)</a>
+	</footer>
+</div>

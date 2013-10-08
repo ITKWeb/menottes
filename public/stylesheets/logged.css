@@ -81,13 +81,13 @@
 		font-size:0.9em;
 		float: right;
 	}
+	.ticket-etat{
+		font-weight: bold;
+		float: right;
+	}
 
-
-
-
-
-
-
-
-
-
+	.priorityButton:hover{
+		width: 13%;
+		height: 13%;
+		cursor: default;
+	}

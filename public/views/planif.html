@@ -35,8 +35,12 @@
 		</div>
 
 		<button type="submit" class="btn big-btn btn-grey" ng-click="generatePlannif()" ng-disabled="formPlannif.$invalid || isUnchanged(plannif)">Générer</button>
-
-		<div id="reslutats"></div>
-
+		<div ng-show="formPlannif.$invalid">
+			<label></label>
+			Tout les champs sont obligatoires
+		</div>
 	</form>
+
+	<ng-include src="'views/planifResults.html'" ng-show="showGlassPlanifResults"></ng-include>
+
 </div>

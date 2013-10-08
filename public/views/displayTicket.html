@@ -1,7 +1,7 @@
 <div id="container">
-	<ul class="leftNavigation">
-		<li ng-repeat="ticket in tickets" ng-click="clickOnTicket()" ng-class="{active: sprint == selected}">{{sprint.nom}}</li>
-	</ul>
+	<!--<ul class="leftNavigation">
+		<li ng-repeat="ticket in tickets" ng-click="" ng-class="{active: sprint == selected}">{{ticket.id}}</li>
+	</ul>-->
 	<div class="boardContent">
 		<div class="topBoardBar">
 			<a class="btn icon-add" href="" ng-click="showGlassNewTicket=!showGlassNewTicket">
@@ -14,4 +14,31 @@
 				Rapport
 			</a>
 		</div>
+		<div id="ticket_{{$index}}" class="ticketContent">
+		        			<span>History ID  {{ticket.id}}</span>
+		        			<span class="ticket-personne">
+		        				Attribué à {{ticket.personne}}
+		        			</span>
+		        			<br/>
+		        			<br/>
+		        			<br/>
+		        			<span class="ticket-titre">{{ticket.titre}}</span>
+		        			<span class="ticket-personne">
+		        				Importance {{ticket.importance}}
+		        			</span>
+		        			<br/>
+		        			<span class="ticket-personne">
+		        				Poids {{ticket.poids}}
+		        			</span>
+		        			<br/>
+		        			<br/>
+		        			<br/>
+		        			<span>Description</span>
+			        		<br/>
+		        			<div class="greyBorder">
+			        			<span class="ticket-description">{{ticket.description}}</span>
+			        		</div>
+		</div>
+	</div>
+	<ng-include src="'views/addNewTicket.html'" ng-show="showGlassNewTicket" ng-controller="NewTicketController" ></ng-include>
 </div>

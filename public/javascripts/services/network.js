@@ -8,6 +8,13 @@ app.factory("Network", ["$http",
 
     var users = [{"login":"aaa","password":"aaa"},{"login":"bbb","password":"bbb"},{"login":"ccc","password":"ccc"}];
 
+    var sprints = [
+          {id:0, nom:"Backlog"},
+          {id:1, nom:"Sprint1"},
+          {id:2, nom:"Sprint2"},
+          {id:3, nom:"Sprint3"}
+        ];
+
     var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
@@ -23,9 +30,11 @@ app.factory("Network", ["$http",
          
     ];*/
 
-    var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Anakin Skywalker"},
-            {"id":3,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3, "personne": "Luke Lucky"},
-            {"id":2,"titre":"Documentation Agricommand 22","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Babar Léléfan"}];
+    var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Cuong", "priority": 2, "etat": "A tester"},
+            {"id":3,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3, "personne": "Nelly", "priority": 3, "etat": "En cours"},
+            {"id":2,"titre":"Design de l'application","description":"Mise en place de licornes partout sur le site","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Laurent", "priority": 5, "etat": "En cours"},
+            {"id":5,"titre":"Développement Agricommand","description":"Developpement AngularJS","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Romain", "priority": 4, "etat": "A tester"},
+            {"id":6,"titre":"Redesign de l'application","description":"Mise en place de poney partout sur le site à la place des licornes","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Jennifer", "priority": 1, "etat": "En cours"},];
 
 	  function login(callback, errorCallback, login, password) {
           if (isLoginMocked === true) {
@@ -99,12 +108,7 @@ app.factory("Network", ["$http",
     
     function getSprints(callback, projectId) {
       if(isMocked === true) {
-        callback([
-          {id:0, nom:"Backlog"},
-          {id:1, nom:"Sprint1"},
-          {id:2, nom:"Sprint2"},
-          {id:3, nom:"Sprint3"}
-        ]);
+        callback(sprints);
       } else {
         $http.get("/sprints/"+projectId)
           .success(callback)
@@ -113,6 +117,15 @@ app.factory("Network", ["$http",
               console.log(data, status, headers, config);
             }
           );
+      }
+    }
+
+    function createSprint(sprint) {
+      sprints.push(sprint);
+      var data = {"nom": sprint.nom};
+      if (isMocked === true) {
+        data.id = sprints[sprints.length-1].id+1; // calculate id for new mocked project
+        sprints.push(data); // add new project to mocked projects list
       }
     }
     
@@ -133,14 +146,19 @@ app.factory("Network", ["$http",
 
     function getTicketById(callback, ticketId) {
       if(isMocked === true) {
+        console.log('ticketId '+ticketId);
         var i = 0;
+        var exitepas;
         while ((i < tickets.length) && (tickets[i].id != ticketId) ){
             i++;
         }
-        if (tickets[i].id == ticketId)
+
+        console.log('i = '+ i +' '+tickets.length);
+        callback(tickets[i]);
+       /* if (tickets[i].id == ticketId)
         {
           callback(tickets[i]);
-        }//test
+        }//test*/
       } else {
         //a changer
         var url = "/tickets/"+projectId+"/"+sprintId;
@@ -151,6 +169,19 @@ app.factory("Network", ["$http",
               console.log(data, status, headers, config);
             }
           );
+      }
+    }
+
+    function getTicketsByPriority(callback, priorite) {
+      if(isMocked === true) {
+        var i;
+        for(i=0;i < tickets.length;i++){
+          if(tickets[i].priority == priorite){
+              callback(tickets[i]);
+          }
+        }
+      } else {
+        //TODO
       }
     }
 
@@ -226,8 +257,17 @@ app.factory("Network", ["$http",
       getSprints: function(callback, projectId) {
         getSprints(callback, projectId);
       },
+      createSprint: function(sprint) {
+        createSprint(sprint);
+      },
       getTickets: function(callback, projectId, sprintId) {
         getTickets(callback, projectId, sprintId);
+      },
+      getTicketsByPriority: function(callback, priority){
+        getTicketsByPriority(callback, priority);
+      },
+      getTicketById: function(callback, ticketId) {
+        getTicketById(callback, ticketId);
       },
       createProject: function(project) {
         createProject(project);
