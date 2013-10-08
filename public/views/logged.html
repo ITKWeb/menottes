@@ -16,11 +16,7 @@
 		</div>
 		<div class="ticketsList">
 		    <ul>
-<<<<<<< HEAD
-		        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}" ng-click="clickOnTicket({{ticket.id}})">
-=======
-		        <li ng-repeat="ticket in tickets" ng-click="clickOnTicket()">
->>>>>>> 25440ec5322db11a57b1e4a4bccac9b9e7be2960
+		        <li ng-repeat="ticket in tickets"  ng-click="clickOnTicket({{ticket.id}})">
 		        	<div id="ticket_{{$index}}" >
 		        			<span class="ticket-id">#{{ticket.id}}</span>
 		        			<span class="ticket-titre">{{ticket.titre}}</span>

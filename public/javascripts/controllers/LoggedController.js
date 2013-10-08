@@ -22,15 +22,6 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
         }, $routeParams.projectId, sprint.id);
     };
 
-<<<<<<< HEAD
-    /* $scope.clickOnTicket = function(ticket) {
-       // $location.path('/displayTicket/'+ticket.id);
-=======
-    $scope.clickOnTicket = function() {
->>>>>>> 25440ec5322db11a57b1e4a4bccac9b9e7be2960
-        $location.path('/displayTicket');
-    }
-*/
   $scope.clickOnTicket = function(ticketId) {
 
 	$network.getTicketById(function(ticket) {
