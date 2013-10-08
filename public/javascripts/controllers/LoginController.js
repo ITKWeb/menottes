@@ -1,5 +1,5 @@
 app.controller('LoginController', ['$scope', 'Network', '$location', function($scope, $network, $location) {
-    
+
     $network.getProjets(function(projets) {
         $scope.projets = projets;
     });
@@ -7,7 +7,7 @@ app.controller('LoginController', ['$scope', 'Network', '$location', function($s
     $network.getPolls(function(polls){
       $scope.polls=polls;      
     });
-    
+   
     $scope.clickOnProjet = function(projet) {
         $location.path('/logged/'+projet.id);
     }
@@ -27,6 +27,6 @@ app.controller('LoginController', ['$scope', 'Network', '$location', function($s
         $location.path('/choice/'+poll.id);
       }
     }
-    
+
     
 }]);

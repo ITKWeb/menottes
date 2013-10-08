@@ -11,7 +11,7 @@ app.controller('UserLoginController', ['$scope', 'Network', '$location', functio
 
     $scope.clickOnLogin = function() {
         $network.login(function(user) {
-            if (user[0].id === undefined) {
+            if (user.id === undefined) {
                 $scope.login = "";
                 $scope.password= "";
                 $scope.errorMessage = "Login ou mot de passe incorrect";

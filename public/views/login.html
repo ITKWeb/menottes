@@ -1,21 +1,23 @@
-<section class="max-width text-center big-padding-bottom">
-	<img src="images/menottes_logo.png" alt="Menottes, The SM Tools." />
-	<p class="texte">Sélectionnez un projet ou créez en un :</p>
-		<a ng-click="newPlanif()" class="btn big-btn">Planification</a>
-		
-	<div id="main-projects">
-		<a href="" class="btn big-btn"><img src="images/logo_itk-vigne.png" alt="Disp'eau" title="Disp'eau" /></a>
-		<a href="" class="btn big-btn"><img src="images/logo_itk-preco.png" alt="Précovision" title="Précovision" /></a>
-		<a href="" class="btn big-btn"><img src="images/logo_itk-protect.png" alt="4P / Movida" title="4P / Movida" /></a>
-	</div>
-	<div id="secondary-projects">
-        <a ng-repeat="projet in projets" class="btn big-btn" ng-click="clickOnProjet(projet)">{{projet.nom}}</a>
-		<a href="" class="btn-new-project" ng-click="showGlassNewProject=!showGlassNewProject">Nouveau projet</a>
-	</div>
-	<div id="secondary-projects">
-	  <a ng-click="newChoice()" class="btn big-btn">Faire un nouveau choix</a> <a ng-repeat="poll in polls" ng-click="newChoice(poll)" class="btn big-btn">Choix {{poll.id}}</a>
-	</div>
-</section>
+<div id="container">
+	<section class="max-width text-center big-padding-bottom">
+		<img src="images/menottes_logo.png" alt="Menottes, The SM Tools." />
+		<p class="texte">Sélectionnez un projet ou créez en un :</p>
+			<a ng-click="newPlanif()" class="btn big-btn">Planification</a>
+			
+		<div id="main-projects">
+			<a href="" class="btn big-btn"><img src="images/logo_itk-vigne.png" alt="Disp'eau" title="Disp'eau" /></a>
+			<a href="" class="btn big-btn"><img src="images/logo_itk-preco.png" alt="Précovision" title="Précovision" /></a>
+			<a href="" class="btn big-btn"><img src="images/logo_itk-protect.png" alt="4P / Movida" title="4P / Movida" /></a>
+		</div>
+		<div id="secondary-projects">
+	        <a ng-repeat="projet in projets" class="btn big-btn" ng-click="clickOnProjet(projet)">{{projet.nom}}</a>
+			<a href="" class="btn-new-project" ng-click="showGlassNewProject=!showGlassNewProject">Nouveau projet</a>
+		</div>
+		<div id="secondary-projects">
+		  <a ng-click="newChoice()" class="btn big-btn">Faire un nouveau choix</a> <a ng-repeat="poll in polls" ng-click="newChoice(poll)" class="btn big-btn">Choix {{poll.id}}</a>
+		</div>
+	</section>
 
-<footer class="main-footer">by the <a href="http://itkweb.com" class="link-footer">iTK Team</a></footer>
-<ng-include src="'views/addNewProject.html'" ng-show="showGlassNewProject" ng-controller="NewProjectController" ></ng-include>
+	<footer class="main-footer">by the <a href="http://itkweb.com" class="link-footer">iTK Team</a></footer>
+	<ng-include src="'views/addNewProject.html'" ng-show="showGlassNewProject" ng-controller="NewProjectController" ></ng-include>
+</div>
