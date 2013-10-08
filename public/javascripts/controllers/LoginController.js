@@ -27,6 +27,5 @@ app.controller('LoginController', ['$scope', 'Network', '$location', function($s
         $location.path('/choice/'+poll.id);
       }
     }
-
     
 }]);
