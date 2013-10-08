@@ -1,27 +1,20 @@
-app.controller('PollController', ['$scope', '$location' , 'Network', function($scope, $location, $network) {
-  var url = $location.path().split("/");
-  $scope.title="";
-  console.log("url");
-  for(i=0;i<url.length;i++) {
-    console.log(url[i]);
-  }
-  console.log("end url");
-  if (url.length === 3){
-    var pollid=+url[2];
-    console.log("initialisation du sondage "+pollid);
-    $scope.title="Sondage "+pollid;
-    var poll;
-    $network.getPoll(function (data){
-      console.log(data.open);
-      poll=data;
-      if (poll.open === true){
-        $scope.open="sondage ouvert";
-      }else{
-        $scope.open="sondage fermé";
-      }
-    }, pollid);
-  }else{
-    console.log("Nouveau sondage");
-    $scope.title="Nouveau sondage";
-  }
+app.controller('PollController', ['$scope', '$location' , 'Network', '$routeParams', function($scope, $location, $network, $routeParams) {
+ 
+  $network.getPoll(function(poll) {
+    $scope.poll = poll;
+    $scope.poll.formattedCreationDate = poll.creationDate.format($network.getDateFormat());
+    $scope.poll.formattedUpdateDate = poll.updateDate.format($network.getDateFormat());
+    $scope.poll.formattedStartDate = poll.startDate.format($network.getDateFormat());
+    $scope.poll.formattedEndDate = poll.endDate.format($network.getDateFormat());
+
+    now = moment();
+    
+    if (now.isAfter(poll.startDate) && now.isBefore(poll.endDate)) {
+    	$scope.poll.status = "actif";
+    } else {
+    	$scope.poll.status = "inactif";
+    }
+        
+  }, $routeParams.pollId);
+
 }]);

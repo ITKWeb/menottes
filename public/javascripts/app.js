@@ -40,6 +40,10 @@ app.config(["$routeProvider", "$httpProvider",
         templateUrl: 'views/displayTicket.html',
         controller: "displayTicketController"
       })
+      .when('/displayTicket/:ticketId', {
+        templateUrl: 'views/displayTicket.html',
+        controller: "displayTicketController"
+      })
       .otherwise({
         redirectTo: '/'
       });
