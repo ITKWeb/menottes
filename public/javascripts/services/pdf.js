@@ -21,7 +21,15 @@ app.factory("Pdf", [function () {
 				var ticket = tickets[i];
 
 				doc.text(PADDING, 20 + (middle_page * i), ticket.titre);
-				doc.text(PADDING, 40 + (middle_page * i), ticket.description);
+				doc.text(MAX_X-30-PADDING, 20 + (middle_page * i), "Importance");
+				doc.rect(MAX_X-PADDING, 13 + (middle_page * i), 20, 10);
+				doc.text(PADDING, 30 + (middle_page * i), ticket.description);
+				doc.text(MAX_X-30-PADDING, 30 + (middle_page * i), "Estimation");
+				doc.rect(MAX_X-PADDING, 23 + (middle_page * i), 20, 10);
+				doc.text(PADDING, 40 + (middle_page * i), "Notes");
+				doc.rect(PADDING, 41 + (middle_page * i), 120, 25);
+				doc.text(PADDING, 75 + (middle_page * i), "Comment démontrer");
+				doc.rect(PADDING, 76 + (middle_page * i), 120, 25);
 
 				doc.line(PADDING, MAX_Y/2, MAX_X, MAX_Y/2);
 
