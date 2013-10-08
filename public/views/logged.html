@@ -7,7 +7,7 @@
 			<a class="btn icon-add" href="" ng-click="showGlassNewTicket=!showGlassNewTicket">
 				Nouveau Ticket
 			</a>
-			<a class="btn icon-print" href="">
+			<a class="btn icon-print" ng-click="printPdf()">
 				Imprimer les tickets
 			</a>
 			<a class="btn icon-doc" href="">
@@ -16,7 +16,11 @@
 		</div>
 		<div class="ticketsList">
 		    <ul>
+<<<<<<< HEAD
 		        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}" ng-click="clickOnTicket({{ticket.id}})">
+=======
+		        <li ng-repeat="ticket in tickets" ng-click="clickOnTicket()">
+>>>>>>> 25440ec5322db11a57b1e4a4bccac9b9e7be2960
 		        	<div id="ticket_{{$index}}" >
 		        			<span class="ticket-id">#{{ticket.id}}</span>
 		        			<span class="ticket-titre">{{ticket.titre}}</span>

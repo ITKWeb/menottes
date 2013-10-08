@@ -8,6 +8,16 @@
 
 	        <label>Nom du sondage</label> 
 	        <input type="text" id="nom" name="nom" ng-model="poll.nom" placeholder="Nom du sondage"> 
+	        <br/>
+	        <br/>
+	        <label>Description</label> 
+	        <input type="text" id="description" name="description" ng-model="poll.description" placeholder="Description du sondage"> 
+	        <br/>
+	        <br/>
+	        <label>Date d'ouverture</label>
+	        <date-picker select-date="startDateSelected" first-day-of-week="1"></date-picker>
+	        <label>Date de clôture</label> 
+	        <date-picker select-date="endDateSelected" first-day-of-week="1"></date-picker>
 
 		</div>
 	</section>

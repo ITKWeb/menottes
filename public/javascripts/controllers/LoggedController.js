@@ -1,18 +1,18 @@
-app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootScope', '$location', function($scope, $network, $routeParams, $rootScope, $location) {
+app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootScope', '$location', 'Pdf', function($scope, $network, $routeParams, $rootScope, $location, $pdf) {
     
     $scope.upArrowURL = '../images/arrow_up.png';
 
     $network.getSprints(function(sprints) {
         $scope.sprints = sprints;
-		//Ajout By Laurent
-			//pour que le Backlog soit selected direct et que ses tickets apparaissent cash aussi
-			//A vérifier donc...
-			$scope.selected = $scope.sprints[0];
-			$network.getTickets(function(tickets) {
-				$scope.tickets = tickets;
-			}, $routeParams.projectId, sprints[0].id);
-		//fin d'ajout by Laurent
+		$scope.selected = $scope.sprints[0];
+		loadTickets($scope.selected.id);
 	}, $routeParams.projectId);
+
+	function loadTickets(idSprint) {
+		$network.getTickets(function(tickets) {
+			$scope.tickets = tickets;
+		}, $routeParams.projectId, idSprint);
+	}
     
     $scope.clickOnSprint = function(sprint) {
 		console.log(sprint);
@@ -22,8 +22,12 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
         }, $routeParams.projectId, sprint.id);
     };
 
+<<<<<<< HEAD
     /* $scope.clickOnTicket = function(ticket) {
        // $location.path('/displayTicket/'+ticket.id);
+=======
+    $scope.clickOnTicket = function() {
+>>>>>>> 25440ec5322db11a57b1e4a4bccac9b9e7be2960
         $location.path('/displayTicket');
     }
 */
@@ -36,7 +40,8 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
         }, ticketId);
 	};
     
-    $rootScope.$on('moveColumnEvent', function(evt, dragged, dropped) {
-        console.log(line1, line2);
-    });
+    $scope.printPdf = function() {
+    	$pdf.printTickets($scope.tickets);
+    }
+
 }]);

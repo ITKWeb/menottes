@@ -3,13 +3,17 @@ app.factory("Network", ["$http",
   
     var isMocked = true;
     var isLoginMocked = true;
+    var dateFormat = 'Do MMM YYYY';
+    var isUsersMocked = true;
+
+    var users = [{"login":"aaa","password":"aaa"},{"login":"bbb","password":"bbb"},{"login":"ccc","password":"ccc"}];
 
     var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
     
-    var polls = [{"id":1, "nom":"Bière en ville", "startDate":"2013-08-30T11:29:06.921Z","endDate":"2013-08-30T11:29:14.785Z","creationDate":"2013-08-30T11:32:13.809Z","updateDate":"2013-08-30T11:32:13.809Z"},
-                 {"id":2, "nom":"Pétanque", "startDate":"2013-08-30T11:29:06.921Z","endDate":"2013-08-30T11:29:14.785Z","creationDate":"2013-08-30T11:32:13.809Z","updateDate":"2013-08-30T11:32:13.809Z"}];
+    var polls = [{"id":1, "nom":"Bière en ville", "description":"petite soirée à 12° au Triskell", "startDate":moment('2013-08-01'),"endDate":moment('2013-08-30'),"creationDate":moment('2013-07-29'),"updateDate":moment('2013-08-15')},
+                 {"id":2, "nom":"Pétanque", "description":"apportez votre triplette !", "startDate":moment('2013-10-01'),"endDate":moment('2013-10-30'),"creationDate":moment('2013-10-01'), "updateDate":moment('2013-10-15')}];
     /*
     var completePolls=[
     
@@ -19,9 +23,15 @@ app.factory("Network", ["$http",
          
     ];*/
 
+<<<<<<< HEAD
     var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Anakin Skywalker"},
             {"id":3,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3, "personne": "Luke Lucky"},
             {"id":2,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Babar Léléfan"}];
+=======
+    var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Anakin Skywalker"},
+            {"id":3,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3, "personne": "Luke Lucky"},
+            {"id":2,"titre":"Documentation Agricommand 22","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Babar Léléfan"}];
+>>>>>>> 25440ec5322db11a57b1e4a4bccac9b9e7be2960
 
 	  function login(callback, errorCallback, login, password) {
           if (isLoginMocked === true) {
@@ -39,6 +49,14 @@ app.factory("Network", ["$http",
           }
       }
 
+    function getUsers(callback) {
+      if(isUsersMocked === true) {
+        callback(users);
+      } else {
+        /*FAIRE LA PARTIE SERVEUR*/
+        console.log("FAIRE LA PARTIE SERVEUR");
+      }
+    }
     function getProjets(callback) {
       if(isMocked === true) {
         callback(projects);
@@ -70,7 +88,7 @@ app.factory("Network", ["$http",
     function getPoll(callback, pollId) {
       if(isMocked === true) {
         for (i=0;i<polls.length;i++) {
-          if (polls[i] === pollId) {
+          if (polls[i].id == pollId) {
             callback(polls[i]);
           }
         }
@@ -151,7 +169,8 @@ app.factory("Network", ["$http",
      
       var data = {"nom": project.nom};
       if (isMocked === true) {
-        projects[projects.length] = data;
+        data.id = projects[projects.length-1].id+1; // calculate id for new mocked project
+        projects[projects.length] = data; // add new project to mocked projects list
       } else {
         var url = "/projets/";
         $http.post(url, data)
@@ -181,10 +200,12 @@ app.factory("Network", ["$http",
 
     function createPoll(poll) {
      
-      var data = {"nom": poll.nom, "startDate":poll.startDate, "endDate":poll.endDate};
-      console.log("test date " + new Date());
+      var data = {"nom": poll.nom, "description":poll.description, "startDate":poll.startDate, "endDate":poll.endDate};
       if (isMocked === true) {
         data.id = polls[polls.length-1].id+1; // calculate id for new mocked poll
+        var now = moment();
+        data.creationDate = now;
+        data.updateDate = now;
         polls[polls.length] = data; // add new poll to mocked polls list
       } else {
         var url = "/polls/";
@@ -200,6 +221,9 @@ app.factory("Network", ["$http",
     return {
       login: function(callback, errorCallback, log, pass) {
         login(callback, errorCallback, log, pass);
+      },
+      getUsers: function(callback) {
+        getUsers(callback);
       },
       getProjets: function(callback) {
         getProjets(callback);
@@ -227,6 +251,9 @@ app.factory("Network", ["$http",
       },
       createPoll: function(poll) {
         createPoll(poll);
+      },
+      getDateFormat: function() {
+        return dateFormat;
       }
     }
 

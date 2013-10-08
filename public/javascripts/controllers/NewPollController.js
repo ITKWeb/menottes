@@ -8,9 +8,16 @@ app.controller('NewPollController', ['$scope', 'Network', '$location',
             $scope.$parent.showGlassNewPoll=false;
     	};
 
+    	$scope.startDateSelected = function(date) {
+            console.log(date);
+    		$scope.poll.startDate = date.moment;
+    	}
+
+    	$scope.endDateSelected = function(date) {
+    		$scope.poll.endDate = date.moment;
+    	}
+
     	$scope.hide=function(){
 			$scope.$parent.showGlassNewPoll=false;
 		};
-	         
-
 }]);

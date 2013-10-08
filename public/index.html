@@ -18,17 +18,22 @@
     <link rel="stylesheet" media="screen" href="stylesheets/popupNewTicket.css">
     <link rel="stylesheet" media="screen" href="stylesheets/planif.css">
     <link rel="stylesheet" media="screen" href="stylesheets/userLogin.css">
+<<<<<<< HEAD
     <link rel="stylesheet" media="screen" href="stylesheets/ticket.css">
+=======
+    <link rel="stylesheet" media="screen" href="stylesheets/datePicker.css">
+>>>>>>> 25440ec5322db11a57b1e4a4bccac9b9e7be2960
   </head>
   <body ng-app="app">
 
     <ng-view></ng-view>
-    <!--De Laurent à lui-même : Utiliser <ng-view></ng-view> directement pour le pb des conteneurs-->
-    
+    <script type="text/javascript" src="vendor/moment.min.js"></script>
     <script type="text/javascript" src="vendor/angular.min.js"></script>
     <script type="text/javascript" src="javascripts/app.js"></script>
     <script type="text/javascript" src="javascripts/services/network.js"></script>
+    <script type="text/javascript" src="javascripts/services/pdf.js"></script>
     <script type="text/javascript" src="javascripts/directives/drag.js"></script>
+    <script type="text/javascript" src="javascripts/directives/DatePicker.js"></script>
     <script type="text/javascript" src="javascripts/controllers/MainController.js"></script>
     <script type="text/javascript" src="javascripts/controllers/LoginController.js"></script>
     <script type="text/javascript" src="javascripts/controllers/LoggedController.js"></script>
@@ -41,6 +46,15 @@
     <script type="text/javascript" src="javascripts/controllers/NewPollController.js"></script>
     <script type="text/javascript" src="javascripts/controllers/displayTicketController.js"></script>
 
+
+    <script type="text/javascript" src="vendor/jspdf/jspdf.js"></script>
+    <script type="text/javascript" src="vendor/jspdf/libs/Deflate/adler32cs.js"></script>
+    <script type="text/javascript" src="vendor/jspdf/libs/FileSaver.js/FileSaver.js"></script>
+    <script type="text/javascript" src="vendor/jspdf/libs/Blob.js/BlobBuilder.js"></script>
+    <script type="text/javascript" src="vendor/jspdf/jspdf.plugin.addimage.js"></script>
+    <script type="text/javascript" src="vendor/jspdf/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script type="text/javascript" src="vendor/jspdf/jspdf.plugin.split_text_to_size.js"></script>
+    <script type="text/javascript" src="vendor/jspdf/jspdf.plugin.from_html.js"></script>
 
   </body>
 </html>
