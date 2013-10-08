@@ -12,8 +12,8 @@ app.factory("Network", ["$http",
           {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
     
-    var polls = [{"id":1, "nom":"Bière en ville", "description":"petite soirée à 12° au Triskell", "startDate":"2013-08-30T11:29:06.921Z","endDate":"2013-08-30T11:29:14.785Z","creationDate":"2013-08-30T11:32:13.809Z","updateDate":"2013-08-30T11:32:13.809Z"},
-                 {"id":2, "nom":"Pétanque", "description":"apportez votre triplette !", "startDate":"2013-08-30T11:29:06.921Z","endDate":"2013-08-30T11:29:14.785Z","creationDate":"2013-08-30T11:32:13.809Z","updateDate":"2013-08-30T11:32:13.809Z"}];
+    var polls = [{"id":1, "nom":"Bière en ville", "description":"petite soirée à 12° au Triskell", "startDate":moment('2013-08-01'),"endDate":moment('2013-08-30'),"creationDate":moment('2013-07-29'),"updateDate":moment('2013-08-15')},
+                 {"id":2, "nom":"Pétanque", "description":"apportez votre triplette !", "startDate":moment('2013-10-01'),"endDate":moment('2013-10-30'),"creationDate":moment('2013-10-01'), "updateDate":moment('2013-10-15')}];
     /*
     var completePolls=[
     
@@ -192,7 +192,7 @@ app.factory("Network", ["$http",
       var data = {"nom": poll.nom, "description":poll.description, "startDate":poll.startDate, "endDate":poll.endDate};
       if (isMocked === true) {
         data.id = polls[polls.length-1].id+1; // calculate id for new mocked poll
-        var now = moment().format(dateFormat);
+        var now = moment();
         data.creationDate = now;
         data.updateDate = now;
         polls[polls.length] = data; // add new poll to mocked polls list

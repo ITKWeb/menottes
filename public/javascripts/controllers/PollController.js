@@ -2,6 +2,8 @@ app.controller('PollController', ['$scope', '$location' , 'Network', '$routePara
  
   $network.getPoll(function(poll) {
     $scope.poll = poll;
+    $scope.poll.formattedCreationDate = poll.creationDate.format($network.getDateFormat());
+    $scope.poll.formattedUpdateDate = poll.updateDate.format($network.getDateFormat());
     $scope.poll.formattedStartDate = poll.startDate.format($network.getDateFormat());
     $scope.poll.formattedEndDate = poll.endDate.format($network.getDateFormat());
 
