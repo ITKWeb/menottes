@@ -1,6 +1,7 @@
 app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootScope', function($scope, $network, $routeParams, $rootScope) {
     
-    $scope.upArrowURL = '../images/arrow_up.png';
+    $scope.upArrowURL = 'images/arrow_up.png';
+    $scope.downArrowURL = 'images/arrow_down.png';
 
     $network.getSprints(function(sprints) {
         $scope.sprints = sprints;
@@ -22,6 +23,16 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
         }, $routeParams.projectId, sprint.id);
     };
     
+    $scope.priorityUp = function(ticket){
+    	console.log(ticket.titre + " " + ticket.id + " " + ticket.priority);
+    	ticket.priority += 1;
+    }
+
+    $scope.priorityDown = function(ticket){
+    	console.log(ticket.titre + " " + ticket.id + " " + ticket.priority);
+    	ticket.priority -= 1;
+    }
+
     $rootScope.$on('moveColumnEvent', function(evt, dragged, dropped) {
         console.log(line1, line2);
     });
