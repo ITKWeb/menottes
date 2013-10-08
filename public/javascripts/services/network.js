@@ -7,6 +7,13 @@ app.factory("Network", ["$http",
 
     var users = [{"login":"aaa","password":"aaa"},{"login":"bbb","password":"bbb"},{"login":"ccc","password":"ccc"}];
 
+    var sprints = [
+          {id:0, nom:"Backlog"},
+          {id:1, nom:"Sprint1"},
+          {id:2, nom:"Sprint2"},
+          {id:3, nom:"Sprint3"}
+        ];
+
     var projects = [{"id":1,"nom":"Projet1","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
@@ -98,12 +105,7 @@ app.factory("Network", ["$http",
     
     function getSprints(callback, projectId) {
       if(isMocked === true) {
-        callback([
-          {id:0, nom:"Backlog"},
-          {id:1, nom:"Sprint1"},
-          {id:2, nom:"Sprint2"},
-          {id:3, nom:"Sprint3"}
-        ]);
+        callback(sprints);
       } else {
         $http.get("/sprints/"+projectId)
           .success(callback)
@@ -112,6 +114,15 @@ app.factory("Network", ["$http",
               console.log(data, status, headers, config);
             }
           );
+      }
+    }
+
+    function createSprint(sprint) {
+      sprints.push(sprint);
+      var data = {"nom": sprint.nom};
+      if (isMocked === true) {
+        data.id = sprints[sprints.length-1].id+1; // calculate id for new mocked project
+        sprints.push(data); // add new project to mocked projects list
       }
     }
     
@@ -222,6 +233,9 @@ app.factory("Network", ["$http",
       },
       getSprints: function(callback, projectId) {
         getSprints(callback, projectId);
+      },
+      createSprint: function(sprint) {
+        createSprint(sprint);
       },
       getTickets: function(callback, projectId, sprintId) {
         getTickets(callback, projectId, sprintId);

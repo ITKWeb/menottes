@@ -14,16 +14,6 @@ app.controller('PlanifController', ['$scope', 'Network', function($scope, $netwo
     });
 
 	$scope.generatePlannif = function() {
-		/*
-        if($scope.plannif)console.log($scope.plannif);
-        angular.forEach($scope.projets, function(projet, i){
-        	if(projet.selected === true) console.log(projet);
-	    });
-        angular.forEach($scope.users, function(user, i){
-        	if(user.selected === true) console.log(user);
-	    });
-	    */
-
         var toto = 0;
         if($scope.plannif.duree) var duree = $scope.plannif.duree;
         if($scope.plannif.velocite) var velocite = $scope.plannif.velocite;
@@ -47,11 +37,17 @@ app.controller('PlanifController', ['$scope', 'Network', function($scope, $netwo
         //On calcule pour chaque projet
 		angular.forEach($scope.projets, function(projet, i){
         	if(projet.selected === true){
-        		console.log(projet.nom + " = " + toto*projet.pourcentage/100);
+        		projet.plannif=toto*projet.pourcentage/100;
+        		console.log(projet.nom + " = " + projet.plannif);
         	}
 	    });
-
+		
+		$scope.$parent.showGlassPlanifResults=true; //afficher les résultats
     }
+
+    $scope.hide=function(){
+		$scope.$parent.showGlassPlanifResults=false;
+	};
 
 
 }]);
