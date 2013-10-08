@@ -119,6 +119,29 @@ app.factory("Network", ["$http",
       }
     }
 
+    function getTicketById(callback, ticketId) {
+      if(isMocked === true) {
+        var i = 0;
+        while ((i < tickets.length) && (tickets[i].id != ticketId) ){
+            i++;
+        }
+        if (tickets[i].id == ticketId)
+        {
+          callback(tickets[i]);
+        }//test
+      } else {
+        //a changer
+        var url = "/tickets/"+projectId+"/"+sprintId;
+        $http.get(url)
+          .success(callback)
+          .error(
+            function(data, status, headers, config) {
+              console.log(data, status, headers, config);
+            }
+          );
+      }
+    }
+
     function createProject(project) {
      
       var data = {"nom": project.nom};

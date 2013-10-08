@@ -1,0 +1,17 @@
+<div id="container">
+	<ul class="leftNavigation">
+		<li ng-repeat="ticket in tickets" ng-click="clickOnTicket()" ng-class="{active: sprint == selected}">{{sprint.nom}}</li>
+	</ul>
+	<div class="boardContent">
+		<div class="topBoardBar">
+			<a class="btn icon-add" href="" ng-click="showGlassNewTicket=!showGlassNewTicket">
+				Nouveau Ticket
+			</a>
+			<a class="btn icon-print" href="">
+				Imprimer les tickets
+			</a>
+			<a class="btn icon-doc" href="">
+				Rapport
+			</a>
+		</div>
+</div>
