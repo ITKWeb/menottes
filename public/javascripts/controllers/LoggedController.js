@@ -1,5 +1,7 @@
 app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootScope', function($scope, $network, $routeParams, $rootScope) {
     
+    $scope.upArrowURL = '../images/arrow_up.png';
+
     $network.getSprints(function(sprints) {
         $scope.sprints = sprints;
 		//Ajout By Laurent
