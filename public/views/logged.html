@@ -7,7 +7,7 @@
 			<a class="btn icon-add" href="" ng-click="showGlassNewTicket=!showGlassNewTicket">
 				Nouveau Ticket
 			</a>
-			<a class="btn icon-print" href="">
+			<a class="btn icon-print" ng-click="printPdf()">
 				Imprimer les tickets
 			</a>
 			<a class="btn icon-doc" href="">
@@ -16,16 +16,18 @@
 		</div>
 		<div class="ticketsList">
 		    <ul>
-		        <li ng-repeat="ticket in tickets" drag="ticket" drag-element-id="ticket_{{$index}}" ng-click="clickOnTicket()">
+		        <li ng-repeat="ticket in tickets | orderBy:'priority':true" drag="ticket" drag-element-id="ticket_{{$index}}">
 		        	<div id="ticket_{{$index}}" >
 		        			<span class="ticket-id">#{{ticket.id}}</span>
 		        			<span class="ticket-titre">{{ticket.titre}}</span>
+		        			<span class="ticket-etat">{{ticket.etat}}</span>
+		        			<br/><br />
 		        			<span class="ticket-personne">
 		        				Attribué à : {{ticket.personne}}
-		        				<button ng-click="" >haut<img id="upArrow" ng-src="{{upArrowURL}}" /></button>
-		        				<button ng-click="" >bas</button>
+		        				<img id="upArrow" class="priorityButton" ng-src="{{upArrowURL}}" ng-click="priorityUp(ticket)"/>
+		        				<img id="upArrow" class="priorityButton" ng-src="{{downArrowURL}}" ng-click="priorityDown(ticket)"/>
 		        			</span>
-		        			<br/>
+		        			<br />
 		        			<span class="ticket-description">{{ticket.description}}</span>
 		        	</div>
 		        </li>

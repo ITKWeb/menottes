@@ -3,6 +3,7 @@ app.factory("Network", ["$http",
   
     var isMocked = true;
     var isLoginMocked = true;
+    var dateFormat = 'Do MMM YYYY';
     var isUsersMocked = true;
 
     var users = [{"login":"aaa","password":"aaa"},{"login":"bbb","password":"bbb"},{"login":"ccc","password":"ccc"}];
@@ -18,8 +19,8 @@ app.factory("Network", ["$http",
           {"id":2,"nom":"Projet2","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}, 
           {"id":3,"nom":"Projet3","created_at":"2013-07-09T09:36:02.167Z","updated_at":"2013-07-09T09:36:02.167Z"}];
     
-    var polls = [{"id":1, "nom":"Bière en ville", "startDate":"2013-08-30T11:29:06.921Z","endDate":"2013-08-30T11:29:14.785Z","creationDate":"2013-08-30T11:32:13.809Z","updateDate":"2013-08-30T11:32:13.809Z"},
-                 {"id":2, "nom":"Pétanque", "startDate":"2013-08-30T11:29:06.921Z","endDate":"2013-08-30T11:29:14.785Z","creationDate":"2013-08-30T11:32:13.809Z","updateDate":"2013-08-30T11:32:13.809Z"}];
+    var polls = [{"id":1, "nom":"Bière en ville", "description":"petite soirée à 12° au Triskell", "startDate":moment('2013-08-01'),"endDate":moment('2013-08-30'),"creationDate":moment('2013-07-29'),"updateDate":moment('2013-08-15')},
+                 {"id":2, "nom":"Pétanque", "description":"apportez votre triplette !", "startDate":moment('2013-10-01'),"endDate":moment('2013-10-30'),"creationDate":moment('2013-10-01'), "updateDate":moment('2013-10-15')}];
     /*
     var completePolls=[
     
@@ -29,9 +30,11 @@ app.factory("Network", ["$http",
          
     ];*/
 
-    var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Anakin Skywalker"},
-            {"id":3,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3, "personne": "Luke Lucky"},
-            {"id":2,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":null,"poids":null,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Babar Léléfan"}];
+    var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Cuong", "priority": 2, "etat": "A tester"},
+            {"id":3,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3, "personne": "Nelly", "priority": 3, "etat": "En cours"},
+            {"id":2,"titre":"Design de l'application","description":"Mise en place de licornes partout sur le site","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Laurent", "priority": 5, "etat": "En cours"},
+            {"id":5,"titre":"Développement Agricommand","description":"Developpement AngularJS","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Romain", "priority": 4, "etat": "A tester"},
+            {"id":6,"titre":"Redesign de l'application","description":"Mise en place de poney partout sur le site à la place des licornes","importance":5,"poids":5,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Jennifer", "priority": 1, "etat": "En cours"},];
 
 	  function login(callback, errorCallback, login, password) {
           if (isLoginMocked === true) {
@@ -88,7 +91,7 @@ app.factory("Network", ["$http",
     function getPoll(callback, pollId) {
       if(isMocked === true) {
         for (i=0;i<polls.length;i++) {
-          if (polls[i] === pollId) {
+          if (polls[i].id == pollId) {
             callback(polls[i]);
           }
         }
@@ -143,14 +146,19 @@ app.factory("Network", ["$http",
 
     function getTicketById(callback, ticketId) {
       if(isMocked === true) {
+        console.log('ticketId '+ticketId);
         var i = 0;
+        var exitepas;
         while ((i < tickets.length) && (tickets[i].id != ticketId) ){
             i++;
         }
-        if (tickets[i].id == ticketId)
+
+        console.log('i = '+ i +' '+tickets.length);
+        callback(tickets[i]);
+       /* if (tickets[i].id == ticketId)
         {
           callback(tickets[i]);
-        }//test
+        }//test*/
       } else {
         //a changer
         var url = "/tickets/"+projectId+"/"+sprintId;
@@ -161,6 +169,19 @@ app.factory("Network", ["$http",
               console.log(data, status, headers, config);
             }
           );
+      }
+    }
+
+    function getTicketsByPriority(callback, priorite) {
+      if(isMocked === true) {
+        var i;
+        for(i=0;i < tickets.length;i++){
+          if(tickets[i].priority == priorite){
+              callback(tickets[i]);
+          }
+        }
+      } else {
+        //TODO
       }
     }
 
@@ -199,10 +220,12 @@ app.factory("Network", ["$http",
 
     function createPoll(poll) {
      
-      var data = {"nom": poll.nom, "startDate":poll.startDate, "endDate":poll.endDate};
-      console.log("test date " + new Date());
+      var data = {"nom": poll.nom, "description":poll.description, "startDate":poll.startDate, "endDate":poll.endDate};
       if (isMocked === true) {
         data.id = polls[polls.length-1].id+1; // calculate id for new mocked poll
+        var now = moment();
+        data.creationDate = now;
+        data.updateDate = now;
         polls[polls.length] = data; // add new poll to mocked polls list
       } else {
         var url = "/polls/";
@@ -240,6 +263,12 @@ app.factory("Network", ["$http",
       getTickets: function(callback, projectId, sprintId) {
         getTickets(callback, projectId, sprintId);
       },
+      getTicketsByPriority: function(callback, priority){
+        getTicketsByPriority(callback, priority);
+      },
+      getTicketById: function(callback, ticketId) {
+        getTicketById(callback, ticketId);
+      },
       createProject: function(project) {
         createProject(project);
       },
@@ -248,6 +277,9 @@ app.factory("Network", ["$http",
       },
       createPoll: function(poll) {
         createPoll(poll);
+      },
+      getDateFormat: function() {
+        return dateFormat;
       }
     }
 
