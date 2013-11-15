@@ -1,9 +1,10 @@
-#main-projects,#secondary-projects{
+.main-part,.secondary-part{
 	padding:20px 0;
 }
 
-#secondary-projects{
-	border-top:1px solid #F5F5F5;
+.secondary-part{
+	border-top: 1px solid #FFFFFF;
+	box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 .btn-new-project:hover,.btn-new-project:focus{
 	border:2px dashed #5E5E5E;

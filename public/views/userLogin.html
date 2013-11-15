@@ -1,43 +1,30 @@
-<section class="max-width text-center big-padding-bottom">
-    <img src="images/menottes_logo.png" alt="Menottes, The SM Tools." />
-    <p class="texte">Bienvenu sur Menotte. Merci de vous connecter </p>
-    <div ng-show="errorMessage">
-        <label class="userLoginErrorMessage" > {{errorMessage}} </label>
-    </div>
-    <div class="container">
-        <!--
-            <div class="loginBox">
-                <label class="label" >Utilisateur:</label>
-                <input class="box" type="text" ng-model="login"/>
-            </div>
-            <div class="loginBox">
-                <label class="label">Mot de passe: </label>
-                <input class="box" type="password" ng-model="password"/><br/>
-            </div>
-            <div>
-            <a href="" ng-click="clickOnLogin()" class="btn btn-grey">Se connecter</a>
-            <a href="" ng-click="clickOnForgotten()" class="btn btn-grey">Mot de passe oublié ?</a>
-            </div>
-        -->
+<div id="container">
+    <section class="max-width text-center big-padding-bottom">
+        <a href=""><img src="images/menottes_logo.png" alt="Menottes, The SM Tools." class="logo" /></a>
+        <div ng-show="errorMessage" class="userLoginErrorMessage">
+            {{errorMessage}}
+        </div>
+        <div class="container">
 
-        <form novalidate id="connexion" class="">
-            <div class="field" id="login">
-                <label for="inputLogIn">Utilisateur <span class="error_message"></span>: </label>
-                <input type="text" placeholder="ex: JohnDoe" name="login" id="inputLogIn" class="input-fullwidth" ng-model="login">
-            </div>
-            <div class="field" id="password">
-                <label for="inputPassword">Mot de passe <span class="error_message"></span>: </label>
-                <input type="password" name="password" id="inputPassword" class="input-fullwidth" ng-model="password">
-            </div>
+            <form novalidate id="connexion" class="">
+                <div class="field" id="login">
+                    <label for="inputLogIn">Utilisateur <span class="error_message"></span>: </label>
+                    <input type="text" placeholder="ex: JohnDoe" name="login" id="inputLogIn" class="input-fullwidth" ng-model="login">
+                </div>
+                <div class="field" id="password">
+                    <label for="inputPassword">Mot de passe <span class="error_message"></span>: </label>
+                    <input type="password" name="password" id="inputPassword" class="input-fullwidth" ng-model="password">
+                </div>
 
-            <button type="submit" ng-click="clickOnLogin()" class="btn btn-grey fullwidth-btn">Se connecter</button><br/><br/>
-            <button type="submit" ng-click="clickOnForgotten()" class="btn fullwidth-btn">Mot de passe oublié ?</button>
+                <button type="submit" ng-click="clickOnLogin()" class="btn btn-grey fullwidth-btn">Se connecter</button><br/><br/>
+                <button type="submit" ng-click="clickOnForgotten()" class="btn fullwidth-btn">Mot de passe oublié ?</button>
 
-        </form>
+            </form>
 
 
-    </div>
-</section>
+        </div>
+    </section>
 
-<footer class="main-footer">by the <a href="http://itkweb.com" class="link-footer">iTK Team</a></footer>
-<ng-include src="'views/popup.html'" ng-show="showGlass" ng-controller="PopupController" ></ng-include>
+    <footer class="main-footer">by the <a href="http://itkweb.com" class="link-footer">iTK Team</a></footer>
+    <ng-include src="'views/popup.html'" ng-show="showGlass" ng-controller="PopupController" ></ng-include>
+</div>

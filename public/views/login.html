@@ -1,19 +1,22 @@
 <div id="container">
 	<section class="max-width text-center big-padding-bottom">
 		<img src="images/menottes_logo.png" alt="Menottes, The SM Tools." />
-		<p class="texte">Sélectionnez un projet ou créez en un :</p>
-			<a ng-click="newPlanif()" class="btn big-btn">Planification</a>
-			
-		<div id="main-projects">
-			<a href="" class="btn big-btn"><img src="images/logo_itk-vigne.png" alt="Disp'eau" title="Disp'eau" /></a>
-			<a href="" class="btn big-btn"><img src="images/logo_itk-preco.png" alt="Précovision" title="Précovision" /></a>
-			<a href="" class="btn big-btn"><img src="images/logo_itk-protect.png" alt="4P / Movida" title="4P / Movida" /></a>
+
+		<div class="main-part">
+			<a ng-click="newPlanif()" class="btn big-btn btn-grey">Planification</a>
 		</div>
-		<div id="secondary-projects">
+		<div class="secondary-part">
+
+			<div>
+				<a href="" class="btn big-btn"><img src="images/logo_itk-vigne.png" alt="Disp'eau" title="Disp'eau" /></a>
+				<a href="" class="btn big-btn"><img src="images/logo_itk-preco.png" alt="Précovision" title="Précovision" /></a>
+				<a href="" class="btn big-btn"><img src="images/logo_itk-protect.png" alt="4P / Movida" title="4P / Movida" /></a>
+			</div>
+
 	        <a ng-repeat="projet in projets" class="btn big-btn" ng-click="clickOnProjet(projet)">{{projet.nom}}</a>
 			<a href="" class="btn-new-project" ng-click="showGlassNewProject=!showGlassNewProject">Nouveau projet</a>
 		</div>
-		<div id="secondary-projects">
+		<div class="secondary-part">
 		 	<a ng-repeat="poll in polls" class="btn big-btn" ng-click="clickOnPoll(poll)">{{poll.nom}}</a>
 			<a href="" class="btn-new-project" ng-click="showGlassNewPoll=!showGlassNewProject">Nouveau sondage</a>
 		</div>

@@ -1,5 +1,7 @@
 
-
-
-/*---------------------  --------------------*/
-
+#new-plannif{
+	width: 200px;
+}
+#new-plannif .btn{
+	margin:20px 0;
+}

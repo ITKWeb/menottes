@@ -35,10 +35,18 @@ body{
 
 h1{
 	text-align: center;
-	font-size:1.4em;
-	padding:40px 0 20px;
-	font-variant: small-caps;
+	font-size:3em;
+	font-weight: bold;
+	padding:40px 0;
+	color: #5F5F5F;
+	letter-spacing: -0.1em;
 }
+h1 span{
+	color: #CCC;
+	font-size:0.5em;
+	letter-spacing: -0.1em;
+}
+
 .aligntop{vertical-align: top;padding-top:5px;}
 
 .bold{font-weight:bold;}
@@ -127,6 +135,11 @@ ul.default-list li{
     border-color: #DDDDDD;
     box-shadow: none;
     color: #BBBBBB;
+    cursor: default;
+	padding: 10px;
+}
+.big-btn:disabled{
+	padding:20px;
 }
 
 /*---------------------------------------------------------------------*\
