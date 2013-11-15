@@ -78,6 +78,10 @@ ul.default-list li{
 	vertical-align:top;
 	cursor:pointer;
 }
+.small-btn{
+	padding:5px;
+	margin:0 5px;
+}
 .big-btn{
 	padding:20px;
 	margin:20px;
@@ -86,6 +90,7 @@ ul.default-list li{
 	margin:2px 0;
 	padding: 10px;
     width: 100%;
+    text-align: center;
 }
 .btn:hover, .btn:focus{
 	background-color:#F5F5F5;
@@ -102,6 +107,10 @@ ul.default-list li{
 .big-btn:active{
 	padding-top:21px;
 	padding-bottom:19px;
+}
+.small-btn:active{
+	padding-top:6px;
+	padding-bottom:4px;
 }
 
 .btn-new-project{
@@ -195,14 +204,24 @@ ul.default-list li{
 
 
 .popup-header{
-    background-color: #F5F5F5;
-    color: #AAAAAA;
-    font-size: 1.5em;
-    font-variant: small-caps;
-    font-weight: bold;
-    padding: 10px 0;
-    text-shadow: 1px 1px 1px #FFFFFF;
+	text-align: center;
+	font-size:2em;
+	font-weight: bold;
+	padding:10px 0;
+	color: #5F5F5F;
+	letter-spacing: -0.1em;
 }
+
+h1 span{
+	color: #CCC;
+	font-size:0.5em;
+	letter-spacing: -0.1em;
+}
+
+
+
+
+
 .popup-section{
 	border-bottom:1px solid #F5F5F5;
 	padding:30px 10px;

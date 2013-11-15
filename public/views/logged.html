@@ -1,38 +1,43 @@
-<div id="container">
+<div id="containerBoard">
+	<div class="topmenu">
+		<div class="backsection">
+			<a class="btn icon-left" href="" ng-click="clickOnBack()">
+				Back
+			</a>
+		</div>
+		<a class="btn btn-grey icon-add" href="" ng-click="showGlassNewTicket=!showGlassNewTicket">
+			Nouveau Ticket
+		</a>
+		<a class="btn icon-print" ng-click="printPdf()">
+			Imprimer les tickets
+		</a>
+		<a class="btn icon-doc" href="">
+			Rapport
+		</a>
+	</div>
 	<ul class="leftNavigation">
 		<li ng-repeat="sprint in sprints" ng-click="clickOnSprint(sprint)" ng-class="{active: sprint == selected}">{{sprint.nom}}</li>
 	</ul>
 	<div class="boardContent">
-		<div class="topBoardBar">
-			<a class="btn icon-add" href="" ng-click="showGlassNewTicket=!showGlassNewTicket">
-				Nouveau Ticket
-			</a>
-			<a class="btn icon-print" ng-click="printPdf()">
-				Imprimer les tickets
-			</a>
-			<a class="btn icon-doc" href="">
-				Rapport
-			</a>
-		</div>
-		<div class="ticketsList">
-		    <ul>
-		        <li ng-repeat="ticket in tickets | orderBy:'priority':true">
-		        	<div id="ticket_{{$index}}" ng-click="clickOnTicket(ticket.id)" >
-		        			<span class="ticket-id">#{{ticket.id}}</span>
-		        			<span class="ticket-titre">{{ticket.titre}}</span>
-		        			<span class="ticket-etat">{{ticket.etat}}</span>
-		        			<br/><br />
-		        			<span class="ticket-personne">
-		        				Attribué à : {{ticket.personne}}
-		        				<img id="upArrow" class="priorityButton" ng-src="{{upArrowURL}}" ng-click="priorityUp(ticket)"/>
-		        				<img id="upArrow" class="priorityButton" ng-src="{{downArrowURL}}" ng-click="priorityDown(ticket)"/>
-		        			</span>
-		        			<br />
-		        			<span class="ticket-description">{{ticket.description}}</span>
-		        	</div>
-		        </li>
-		    </ul>
-		</div>
+		<ul class="ticketslist">
+			<li ng-repeat="ticket in tickets | orderBy:'priority':true">
+				<div id="ticket_{{$index}}" class="ticket">
+					<div class="ticket-header" ng-click="clickOnTicket(ticket.id)">
+						<span class="ticket-header-id">#{{ticket.id}}</span>
+						<span class="ticket-header-titre">{{ticket.titre}}</span>
+						<span class="ticket-header-personne">{{ticket.personne}}</span>
+						<span class="ticket-header-etat">{{ticket.etat}}</span>
+					</div>
+					<div class="ticket-move">
+						<a class="btn small-btn icon-up" href="" ng-src="{{upArrowURL}}" ng-click="priorityUp(ticket)"></a>
+						<a class="btn small-btn icon-down" href="" ng-src="{{downArrowURL}}" ng-click="priorityDown(ticket)"></a>
+					</div>
+					<div class="ticket-description" ng-click="clickOnTicket(ticket.id)">
+						{{ticket.description}}
+					</div>
+				</div>
+			</li>
+		</ul>
 	</div>
 	<ng-include src="'views/addNewTicket.html'" ng-show="showGlassNewTicket" ng-controller="NewTicketController" ></ng-include>
 </div>

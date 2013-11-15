@@ -53,4 +53,8 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     	$pdf.printTickets($scope.tickets);
     }
 
+    $scope.clickOnBack = function() {
+        $location.path('/login');
+    }
+
 }]);
