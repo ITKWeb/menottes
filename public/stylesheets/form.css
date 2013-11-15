@@ -5,17 +5,21 @@
 
 
 form{
-	width: 500px;
+	width: 400px;
+	padding: 0 120px;
 	margin:0 auto;
+	text-align: left;
 }
 	.field{
-		margin:20px 0;
+		margin:10px 0;
+		position: relative;
 	}
 
 		label{
-			width: 180px;
-			padding:0 20px 0 0;
-			display:inline-block;
+			position: absolute;
+			top: 11px;
+			left: -110px;
+			width: 100px;
 			text-align:right;
 		}
 		input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{
@@ -23,12 +27,16 @@ form{
 		    border:1px solid #AAA;
 		    border-radius:2px;
 		    box-shadow: 0 8px 10px -10px rgba(0, 0, 0, 0.3) inset;
-		    padding: 5px 10px;
+		    padding: 10px 20px;
 		    transition:border-color 200ms;
 			width: 200px;
 		}
 			input.input-small{
 				width:50px;
+			}
+			input.input-fullwidth{
+				width:90%;
+		    	padding: 10px 5%;
 			}
 
 			input:focus{
@@ -74,10 +82,6 @@ form{
 				height:30px;
 				line-height:30px;
 			}
-
-		button.btn{
-			margin-left:200px;
-		}
 
 
 

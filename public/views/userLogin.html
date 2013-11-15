@@ -20,19 +20,18 @@
             </div>
         -->
 
-        <form novalidate id="connexion">
-
+        <form novalidate id="connexion" class="">
             <div class="field" id="login">
                 <label for="inputLogIn">Utilisateur <span class="error_message"></span>: </label>
-                <input type="text" placeholder="ex: JohnDoe" name="login" id="inputLogIn" ng-model="login">
+                <input type="text" placeholder="ex: JohnDoe" name="login" id="inputLogIn" class="input-fullwidth" ng-model="login">
             </div>
             <div class="field" id="password">
                 <label for="inputPassword">Mot de passe <span class="error_message"></span>: </label>
-                <input type="password" name="password" id="inputPassword" ng-model="password">
+                <input type="password" name="password" id="inputPassword" class="input-fullwidth" ng-model="password">
             </div>
 
-            <button type="submit" ng-click="clickOnLogin()" class="btn btn-grey">Se connecter</button><br/>
-            <button type="submit" ng-click="clickOnForgotten()" class="btn">Mot de passe oublié ?</button>
+            <button type="submit" ng-click="clickOnLogin()" class="btn btn-grey fullwidth-btn">Se connecter</button><br/><br/>
+            <button type="submit" ng-click="clickOnForgotten()" class="btn fullwidth-btn">Mot de passe oublié ?</button>
 
         </form>
 
