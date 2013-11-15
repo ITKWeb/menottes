@@ -8,22 +8,26 @@
 	<section class="popup-section newTicketContent">
 
 		<div class="leftContent">
-			<label id="lblHistory">History ID</label><br/><br/>
-			<input type="text" ng-model="ticket.history_id" value=""/>
-			<label id="lblTicket">Titre</label><br/><br/>
-			<input type="text" ng-model="ticket.titre" value=""/><br/>
-			<label id="lblDescription">Description</label><br/><br/>
-			<input type="text" ng-model="ticket.description" value=""/><br/>
+			<label id="lbl">History ID</label>
+			<input type="text" ng-model="ticket.history_id" value=""/><br/><br/>
+			<label id="lbl">Titre</label>
+			<input type="text" ng-model="ticket.titre" value=""/><br/><br>
+			<label id="lbl">Description</label>
+			<input type="text" ng-model="ticket.description" value=""/><br/><br/>
 		</div>
 
 		<div class="rightContent">
-			<label id="lblImportance">Importance </label>
-			<input type="text" ng-model="ticket.importance" value="000"/><br/>
-			<label id="lblTracId">TRAC ID</label>
-			<input type="text" ng-model="ticket.trac_id" value=""/><br/>
+			<label id="lbl">Importance </label>
+			<input type="text" ng-model="ticket.importance" value="000"/><br/><br/>
+			<label id="lbl">Estimation DEV</label>
+			<input type="text" ng-model="ticket.estimation_dev" value=""/><br/><br/>
+			<label id="lbl">Estimation TEST</label>
+			<input type="text" ng-model="ticket.estimation_test" value=""/><br/><br/>
+			<label id="lbl">TRAC ID</label>
+			<input type="text" ng-model="ticket.trac_id" value=""/><br/><br/>
 		</div>
 		
-	</section>
+	</section><br/><br/>
 	
 	<footer class="popup-footer">
 		<a href="" class="btn" ng-click="hide()">Annuler</a>

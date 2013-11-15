@@ -12,12 +12,10 @@
 
 }
 
-#lblHistory{
+#lbl{
 	float:left;
 }
-#lblTrac{
-	
-}
+
 
 #inputTitreTicket{
 	float:left;
@@ -37,15 +35,18 @@
 	width:27px;
 }
 
-#lblImportance{
-}
 
 .leftContent{
 	float: left;
-	width: 60%;
+	width: 50%;
 }
 
 .rightContent{
 	float: right;
-	width: 40%;
+	width: 50%;
+}
+
+.popup-footer{
+    width: 100%;
+    margin:auto;
 }
