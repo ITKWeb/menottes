@@ -21,10 +21,16 @@ app.factory("Pdf", [function () {
 		
 		var ticket = tickets[i];
 
-		var hut =  "Histoire:"+ticket.history_id;
+		var hut =  "Histoire:";
+		if (ticket.history_id !== undefined) {
+			hut += ticket.history_id;	
+		} 
 		doc.text(PADDING, 10 + (quart_page * nb_quart_page),hut);
 
-		var tracid = "TracId:"+ticket.trac_id;
+		var tracid = "TracId:";
+		if (ticket.trac_id !== undefined) {
+			tracid += ticket.trac_id;	
+		} 
 		doc.text(MAX_X-30-PADDING, 10 + (quart_page * nb_quart_page), tracid);
 
 		doc.setFontStyle('bold');
@@ -45,15 +51,15 @@ app.factory("Pdf", [function () {
 		doc.text(PADDING, 30 + (quart_page * nb_quart_page), "Notes");
 		doc.rect(PADDING, 31 + (quart_page * nb_quart_page), 120, 30);
 		var line = doc.splitTextToSize(ticket.description, 120);
-		doc.text(PADDING, 38 + (quart_page * nb_quart_page), line);
-		
-		if(nb_quart_page < 4) {
-		    doc.line(PADDING, MAX_Y/2, MAX_X, MAX_Y/2);
-		}
+		doc.text(PADDING+5, 38 + (quart_page * nb_quart_page), line);
 		
 		nb_quart_page++;
-		
-		if(i%4 !== 0) {
+
+		if(nb_quart_page < 4) {
+		    doc.line(PADDING, (nb_quart_page * MAX_Y)/4, MAX_X, (nb_quart_page * MAX_Y)/4);
+		}
+			
+		if(nb_quart_page === 4) {
 		    nb_quart_page = 0;
 		    doc.addPage();
 		}
