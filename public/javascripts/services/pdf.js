@@ -54,7 +54,7 @@ app.factory("Pdf", [function () {
 			}
 			//doc.rect(MAX_X-PADDING, 28 + (quart_page * nb_quart_page), 20, 10);
 
-			doc.text(MAX_X-30-PADDING, 53 + (quart_page * nb_quart_page), "Test");
+			doc.text(MAX_X-30-PADDING, 60 + (quart_page * nb_quart_page), "Test");
 			for (var x = 0; x < 5; x++) {
 				for (var y = 0; y < 4; y++) {
 					if (1+x+y*5 === ticket.estimation_test) {

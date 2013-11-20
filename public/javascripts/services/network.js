@@ -252,6 +252,14 @@ app.factory("Network", ["$http",
     function saveTickets() {
         localStorage.setItem('tickets', JSON.stringify(tickets));      
     }
+    function deleteTicket(ticketId) {
+      for (var i = 0; i < tickets.length; i++) {
+        if (tickets[i].id === ticketId) {
+          tickets.splice(i, 1);
+        }
+      }
+      saveTickets();      
+    }
 
     function createPoll(poll) {
      
@@ -309,6 +317,9 @@ app.factory("Network", ["$http",
       },
       saveTickets: function() {
         saveTickets();
+      },
+      deleteTicket: function(ticketId) {
+        deleteTicket(ticketId);
       },
       createProject: function(project) {
         createProject(project);

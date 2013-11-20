@@ -31,6 +31,7 @@
 					<div class="ticket-move">
 						<a class="btn small-btn icon-up" href="" ng-src="{{upArrowURL}}" ng-click="priorityUp(ticket)"></a>
 						<a class="btn small-btn icon-down" href="" ng-src="{{downArrowURL}}" ng-click="priorityDown(ticket)"></a>
+						<a class="btn small-btn" href="" ng-click="delete(ticket)">X</a>
 					</div>
 					<div class="ticket-description" ng-click="clickOnTicket(ticket.id)">
 						{{ticket.description}}

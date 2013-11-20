@@ -50,7 +50,9 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     	},ticketPriorityToGet);
         $network.saveTickets();
     }
-
+    $scope.delete = function(ticket){
+        $network.deleteTicket(ticket.id);
+    }
     $scope.printPdf = function() {
     	$pdf.printTickets($scope.tickets);
     }
