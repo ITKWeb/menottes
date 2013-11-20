@@ -39,6 +39,7 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     		gotTicket.priority -= 1; 
     		ticket.priority += 1;
     	},ticketPriorityToGet);
+        $network.saveTickets();
     }
 
     $scope.priorityDown = function(ticket){
@@ -47,6 +48,7 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     		gotTicket.priority += 1; 
     		ticket.priority -= 1;
     	},ticketPriorityToGet);
+        $network.saveTickets();
     }
 
     $scope.printPdf = function() {

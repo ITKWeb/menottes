@@ -6,14 +6,14 @@
         </div>
         <div class="container">
 
-            <form novalidate id="connexion" class="">
+            <form id="connexion" class="">
                 <div class="field" id="login">
                     <label for="inputLogIn">Utilisateur <span class="error_message"></span>: </label>
-                    <input type="text" placeholder="ex: JohnDoe" name="login" id="inputLogIn" class="input-fullwidth" ng-model="login">
+                    <input type="text" placeholder="ex: JohnDoe" name="login" id="inputLogIn" class="input-fullwidth" ng-model="login"/>
                 </div>
                 <div class="field" id="password">
                     <label for="inputPassword">Mot de passe <span class="error_message"></span>: </label>
-                    <input type="password" name="password" id="inputPassword" class="input-fullwidth" ng-model="password">
+                    <input type="password" name="password" id="inputPassword" class="input-fullwidth" ng-model="password"/>
                 </div>
 
                 <button type="submit" ng-click="clickOnLogin()" class="btn btn-grey fullwidth-btn">Se connecter</button><br/><br/>

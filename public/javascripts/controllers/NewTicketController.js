@@ -3,9 +3,13 @@ app.controller('NewTicketController', ['$scope', 'Network', '$location',
     
     	$scope.ticket = {};
 
-	    $scope.createTicket = function() {    	
-    		$network.createTicket($scope.ticket);
-            $scope.$parent.showGlassNewTicket=false;
+	    $scope.createTicket = function() {
+	    	if ($scope.ticket.id !== undefined) {
+	    		$network.saveTickets();
+	    	} else {   	
+    			$network.createTicket($scope.ticket);
+            	$scope.$parent.showGlassNewTicket=false;
+            }
     	};
 
     	$scope.hide=function(){

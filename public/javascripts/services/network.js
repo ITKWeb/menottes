@@ -29,13 +29,30 @@ app.factory("Network", ["$http",
     {"id":1,"false":true,"open_date":"2013-08-30T11:29:06.921Z","close_date":"2013-08-30T11:29:14.785Z","created_at":"2013-08-30T11:32:13.809Z","updated_at":"2013-08-30T11:32:13.809Z","participants":[{"id":1,"created_at":"2013-08-30T11:32:18.818Z","updated_at":"2013-08-30T12:22:54.339Z","user_id":3,"choices":[{"id":1,"name":"monChoix2","created_at":"2013-08-30T11:27:48.278Z","updated_at":"2013-08-30T12:22:47.870Z","poll_id":2,"participant_id":5}]}]}
          
     ];*/
-
-	var tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","importance":5,"poids":5,"estimation_dev":5,"estimation_test":10, "tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Cuong", "priority": 2, "etat": "A tester"},
-            {"id":3,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","importance":5,"poids":5,"estimation_dev":5,"estimation_test":10,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3, "personne": "Nelly", "priority": 3, "etat": "En cours"},
-            {"id":2,"titre":"Design de l'application","description":"Mise en place de licornes partout sur le site","importance":5,"poids":5,"estimation_dev":5,"estimation_test":10,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Laurent", "priority": 5, "etat": "En cours"},
-            {"id":5,"titre":"Développement Agricommand","description":"Developpement AngularJS","importance":5,"poids":5,"estimation_dev":5,"estimation_test":10,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Romain", "priority": 4, "etat": "A tester"},
-            {"id":6,"titre":"Redesign de l'application","description":"Mise en place de poney partout sur le site à la place des licornes","importance":5,"poids":5,"estimation_dev":5,"estimation_test":10,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Jennifer", "priority": 1, "etat": "En cours"},];
-
+    var tickets;
+    //localStorage.clear();
+    if (typeof(localStorage) == 'undefined' ) {
+        alert('Votre navigateur ne supporte pas le localStorage.');
+    } else {
+        try {
+          var stringTickets = localStorage.getItem('tickets');
+          if (stringTickets === null) {
+            tickets = [{"id":4,"titre":"Documentation Agricommand","description":"Cuong doit écrire toute la doc car Nelly a la flemme","estimation_dev":5,"estimation_test":10, "tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Cuong", "priority": 2, "etat": "A tester"},
+              {"id":3,"titre":"Migration Agricommand","description":"Nelly doit migrer Agricommand car Cuong lui passe le relai","estimation_dev":0,"estimation_test":10,"tempsPris":null,"created_at":"2013-07-09T12:12:32.179Z","updated_at":"2013-07-09T12:12:32.179Z","projet_id":3, "personne": "Nelly", "priority": 3, "etat": "En cours"},
+              {"id":2,"titre":"Design de l'application","description":"Mise en place de licornes partout sur le site","estimation_dev":8,"estimation_test":10,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Laurent", "priority": 5, "etat": "En cours"},
+              {"id":5,"titre":"Développement Agricommand","description":"Developpement AngularJS","estimation_dev":1,"estimation_test":10,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Romain", "priority": 4, "etat": "A tester"},
+              {"id":6,"titre":"Redesign de l'application","description":"Mise en place de poney partout sur le site à la place des licornes","estimation_dev":0.5,"estimation_test":10,"tempsPris":null,"created_at":"2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id":3, "personne": "Jennifer", "priority": 1, "etat": "En cours"},];
+              localStorage.setItem('tickets', JSON.stringify(tickets));
+           } else {
+              tickets = JSON.parse(stringTickets);
+              console.log(stringTickets);
+           }
+        } catch (e) {
+           if (e == QUOTA_EXCEEDED_ERR) {
+               alert('Taille max de données sauvegardées atteinte !');
+           }
+        }
+      }
 	  function login(callback, errorCallback, login, password) {
           if (isLoginMocked === true) {
               if ((login === "aaa") && (password === "aaa")) {
@@ -131,6 +148,7 @@ app.factory("Network", ["$http",
     
     function getTickets(callback, projectId, sprintId) {
       if(isMocked === true) {
+        tickets = JSON.parse(localStorage.getItem('tickets'));
         callback(tickets);
       } else {
         var url = "/tickets/"+projectId+"/"+sprintId;
@@ -204,9 +222,22 @@ app.factory("Network", ["$http",
 
     function createTicket(ticket) {
      
-      var data = {"titre": ticket.titre, "description": ticket.description, "trac_id": ticket.trac_id, "importance": ticket.importance};
+      var data = {"titre": ticket.titre, "description": ticket.description, "trac_id": ticket.trac_id, "importance": ticket.priority};
       if (isMocked === true) {
-        tickets[tickets.length] = data;
+        var maxId=0;
+        var maxPriority=0;
+        for (var i = 0; i < tickets.length; i++) {
+          if(maxId < tickets[i].id) {
+            maxId = tickets[i].id;
+          }
+          if(maxPriority < tickets[i].priority) {
+            maxPriority = tickets[i].priority;
+          }
+        };
+        ticket.id = maxId+1;
+        ticket.priority = maxPriority+1;
+        tickets[tickets.length] = ticket;
+        localStorage.setItem('tickets', JSON.stringify(tickets));
       } else {
         var url = "/tickets/";
         $http.post(url, data)
@@ -216,6 +247,10 @@ app.factory("Network", ["$http",
           }
         );
       }
+    }
+
+    function saveTickets() {
+        localStorage.setItem('tickets', JSON.stringify(tickets));      
     }
 
     function createPoll(poll) {
@@ -268,6 +303,9 @@ app.factory("Network", ["$http",
       },
       getTicketById: function(callback, ticketId) {
         getTicketById(callback, ticketId);
+      },
+      saveTickets: function() {
+        saveTickets();
       },
       createProject: function(project) {
         createProject(project);
