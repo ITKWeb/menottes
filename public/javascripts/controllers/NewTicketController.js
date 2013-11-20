@@ -1,15 +1,31 @@
-app.controller('NewTicketController', ['$scope', 'Network', '$location',
-	function($scope, $network, $location) {
+app.controller('NewTicketController', ['$scope', 'Network', '$routeParams', '$rootScope', '$location', function($scope, $network, $routeParams, $rootScope, $location) {
     
-    	$scope.ticket = {};
 
-	    $scope.createTicket = function() {    	
-    		$network.createTicket($scope.ticket);
-            $scope.$parent.showGlassNewTicket=false;
+   		$network.getTicketById(function(ticket) {
+			console.log('edit ticket');
+        	$scope.ticket = ticket;
+        }, $routeParams.ticketId);
+		/*
+        $network.getTicketById(function(ticket) {
+            console.log('edit ticket');
+            $scope.ticket = ticket;
+        }, $scope.$parent.ticketId);
+*/
+		$scope.saveTicket = function() {
+            if ($scope.ticket.id === undefined) {    	
+    		    $network.createTicket($scope.ticket);
+            } else {
+                $network.saveTickets();
+            }
+            //$scope.$parent.showGlassNewTicket=false;
+			$location.path('/logged/');
+
     	};
 
     	$scope.hide=function(){
-			$scope.$parent.showGlassNewTicket=false;
+			//$scope.$parent.showGlassNewTicket=false;
+            $location.path('/logged/');
+
 		};
 	         
 

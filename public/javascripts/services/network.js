@@ -218,6 +218,10 @@ app.factory("Network", ["$http",
       }
     }
 
+    function saveTickets() {
+      // TODO
+    }
+
     function createPoll(poll) {
      
       var data = {"nom": poll.nom, "description":poll.description, "startDate":poll.startDate, "endDate":poll.endDate};
@@ -262,6 +266,9 @@ app.factory("Network", ["$http",
       },
       getTickets: function(callback, projectId, sprintId) {
         getTickets(callback, projectId, sprintId);
+      },
+      saveTickets: function() {
+        saveTickets();
       },
       getTicketsByPriority: function(callback, priority){
         getTicketsByPriority(callback, priority);

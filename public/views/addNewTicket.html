@@ -2,10 +2,10 @@
 <div class="glass" ng-click="hide()"></div>
 <div class="popup">
 	<header class="popup-header">
-		Nouveau ticket
+		Edition de ticket
 	</header>
 	
-	<section class="popup-section newTicketContent">
+	<section id="ticket_{{$index}}" class="popup-section newTicketContent">
 
 		<div class="leftContent">
 			<label id="lbl">History ID</label>
@@ -17,8 +17,8 @@
 		</div>
 
 		<div class="rightContent">
-			<label id="lbl">Importance </label>
-			<input type="text" ng-model="ticket.importance" value="000"/><br/><br/>
+			<!--<label id="lbl">Importance </label>
+			<input type="text" ng-model="ticket.importance" value="ticket.importance"/><br/><br/>-->
 			<label id="lbl">Estimation DEV</label>
 			<input type="text" ng-model="ticket.estimation_dev" value=""/><br/><br/>
 			<label id="lbl">Estimation TEST</label>
@@ -31,6 +31,6 @@
 	
 	<footer class="popup-footer">
 		<a href="" class="btn" ng-click="hide()">Annuler</a>
-		<a href="" class="btn btn-grey" ng-click="createTicket()">Enregistrer</a>
+		<a href="" class="btn btn-grey" ng-click="saveTicket()">Enregistrer</a>
 	</footer>
 </div>

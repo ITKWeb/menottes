@@ -26,11 +26,11 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
 
   $scope.clickOnTicket = function(ticketId) {
 
-	$network.getTicketById(function(ticket) {
-		console.log('controller 3');
-        $scope.ticket = ticket;
-        $location.path('/displayTicket/'+ticket.id);
-        }, ticketId);
+	//$network.getTicketById(function(ticket) {
+		//console.log('controller 3');
+        $location.path('/displayTicket/'+ticketId);
+        //$scope.showGlassNewTicket=!$scope.showGlassNewTicket;
+        //}, ticketId);
 	};
     
     $scope.priorityUp = function(ticket){
