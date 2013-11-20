@@ -298,6 +298,9 @@ app.factory("Network", ["$http",
       getTickets: function(callback, projectId, sprintId) {
         getTickets(callback, projectId, sprintId);
       },
+      saveTickets: function() {
+        saveTickets();
+      },
       getTicketsByPriority: function(callback, priority){
         getTicketsByPriority(callback, priority);
       },

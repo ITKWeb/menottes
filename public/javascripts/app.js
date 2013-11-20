@@ -37,14 +37,14 @@ app.config(["$routeProvider", "$httpProvider",
         controller: "PollController"
       })
       .when('/displayTicket', {
-        templateUrl: 'views/displayTicket.html',
-        controller: "displayTicketController"
+        templateUrl: 'views/addNewTicket.html',
+        controller: "NewTicketController"
       })
       .when('/displayTicket/:ticketId', {
-        templateUrl: 'views/displayTicket.html',
-        controller: "displayTicketController"
+        templateUrl: 'views/addNewTicket.html',
+        controller: "NewTicketController"
       })
-      .otherwise({
+     .otherwise({
         redirectTo: '/'
       });
   }
