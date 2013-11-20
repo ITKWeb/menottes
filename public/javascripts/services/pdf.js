@@ -17,9 +17,20 @@ app.factory("Pdf", [function () {
 	    
 	    console.log(doc);
 	    
-	    for(var i=0; i<tickets.length; i++) {
+	    var maxImp = 1000;
+		var currentMax=0;
+		var ticket;
 		
-			var ticket = tickets[i];
+	    for(var i=0; i<tickets.length; i++) {
+			for (var j = 0; j < tickets.length; j++) {
+				var currentPriority = tickets[j].priority;
+				if (currentPriority > currentMax && currentPriority < maxImp) {
+					currentMax = currentPriority;
+					ticket = tickets[j];
+				}
+			}
+			maxImp = currentMax;
+			currentMax = 0;
 
 			var hut =  "Histoire:";
 			if (ticket.history_id !== undefined) {
@@ -39,7 +50,7 @@ app.factory("Pdf", [function () {
 
 			doc.text(MAX_X-30-PADDING, 20 + (quart_page * nb_quart_page), "Importance");
 			doc.rect(MAX_X-PADDING, 13 + (quart_page * nb_quart_page), 20, 10);
-			var imp = ""+ticket.priority;
+			var imp = ""+(ticket.priority*10);
 			doc.text(MAX_X-PADDING+10, 20 + (quart_page * nb_quart_page), imp);
 
 			doc.text(MAX_X-30-PADDING, 35 + (quart_page * nb_quart_page), "Estimation");
