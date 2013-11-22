@@ -1,4 +1,4 @@
-<div class="glass" ng-click="hide()"></div>
+<div class="glass" ng-click="hide()">
 <div class="popup">
 	<header class="popup-header">
 		Nouveau sondage
@@ -7,11 +7,11 @@
 		<div>
 
 	        <label>Nom du sondage</label> 
-	        <input type="text" id="nom" name="nom" ng-model="poll.nom" placeholder="Nom du sondage"> 
+	        <input type="text" id="nom" name="nom" ng-model="poll.nom" placeholder="Nom du sondage"/> 
 	        <br/>
 	        <br/>
 	        <label>Description</label> 
-	        <input type="text" id="description" name="description" ng-model="poll.description" placeholder="Description du sondage"> 
+	        <input type="text" id="description" name="description" ng-model="poll.description" placeholder="Description du sondage"/> 
 	        <br/>
 	        <br/>
 	        <label>Date d'ouverture</label>
@@ -25,4 +25,5 @@
 		<a href="" class="btn" ng-click="hide()">Annuler</a>
 		<a href="" class="btn btn-grey" ng-click="createPoll()">Enregistrer</a>
 	</footer>
+</div>
 </div>

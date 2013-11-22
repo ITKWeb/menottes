@@ -6,14 +6,14 @@
 			<a ng-click="newPlanif()" class="btn big-btn btn-grey">Planification</a>
 		</div>
 		<div class="secondary-part">
-
+			<!--
 			<div>
-				<a href="" class="btn big-btn"><img src="images/logo_itk-vigne.png" alt="Disp'eau" title="Disp'eau" /></a>
-				<a href="" class="btn big-btn"><img src="images/logo_itk-preco.png" alt="Précovision" title="Précovision" /></a>
-				<a href="" class="btn big-btn"><img src="images/logo_itk-protect.png" alt="4P / Movida" title="4P / Movida" /></a>
+				<a href="" class="btn big-btn"><img src="images/logo_itk-vigne.png" alt="Disp'eau" title="Disp'eau" ng-click="clickOnProjet(1)"/></a>
+				<a href="" class="btn big-btn"><img src="images/logo_itk-preco.png" alt="Précovision" title="Précovision" ng-click="clickOnProjet(2)"/></a>
+				<a href="" class="btn big-btn"><img src="images/logo_itk-protect.png" alt="4P / Movida" title="4P / Movida" ng-click="clickOnProjet(3)"/></a>
 			</div>
-
-	        <a ng-repeat="projet in projets" class="btn big-btn" ng-click="clickOnProjet(projet)">{{projet.nom}}</a>
+			-->
+	        <a ng-repeat="projet in projets" class="btn big-btn"><img  src="images/{{projet.logo}}" alt="{{projet.nom}}" title="{{projet.nom}}" ng-click="clickOnProjet(projet)"/></a>
 			<a href="" class="btn-new-project" ng-click="showGlassNewProject=!showGlassNewProject">Nouveau projet</a>
 		</div>
 		<div class="secondary-part">

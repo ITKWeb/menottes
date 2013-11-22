@@ -28,7 +28,7 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
 
 	//$network.getTicketById(function(ticket) {
 		//console.log('controller 3');
-        $location.path('/displayTicket/'+ticketId);
+        $location.path('/displayTicket/'+$routeParams.projectId + '/' + 0 + '/' +  ticketId);
         //$scope.showGlassNewTicket=!$scope.showGlassNewTicket;
         //}, ticketId);
 	};
@@ -38,8 +38,9 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     	$network.getTicketsByPriority(function(gotTicket){
     		gotTicket.priority -= 1; 
     		ticket.priority += 1;
+            $network.saveTicket(gotTicket);
+            $network.saveTicket(ticket);
     	},ticketPriorityToGet);
-        $network.saveTickets();
     }
 
     $scope.priorityDown = function(ticket){
@@ -47,14 +48,15 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     	$network.getTicketsByPriority(function(gotTicket){
     		gotTicket.priority += 1; 
     		ticket.priority -= 1;
+            $network.saveTicket(gotTicket);
+            $network.saveTicket(ticket);
     	},ticketPriorityToGet);
-        $network.saveTickets();
     }
     $scope.delete = function(ticket){
-        $network.deleteTicket(ticket.id);
+        $network.deleteTicket(ticket);
     }
     $scope.printPdf = function() {
-    	$pdf.printTickets($scope.tickets);
+        $pdf.printTickets($scope.tickets);
     }
 
     $scope.clickOnBack = function() {

@@ -23,15 +23,15 @@
 			<li ng-repeat="ticket in tickets | orderBy:'priority':true">
 				<div id="ticket_{{$index}}" class="ticket">
 					<div class="ticket-header" ng-click="clickOnTicket(ticket.id)">
-						<span class="ticket-header-id">#{{ticket.id}}</span>
+						<span class="ticket-header-id">#{{ticket.trac_id}}</span>
 						<span class="ticket-header-titre">{{ticket.titre}}</span>
 						<span class="ticket-header-personne">{{ticket.personne}}</span>
 						<span class="ticket-header-etat">{{ticket.etat}}</span>
 					</div>
 					<div class="ticket-move">
-						<a class="btn small-btn icon-up" href="" ng-src="{{upArrowURL}}" ng-click="priorityUp(ticket)"></a>
-						<a class="btn small-btn icon-down" href="" ng-src="{{downArrowURL}}" ng-click="priorityDown(ticket)"></a>
-						<a class="btn small-btn" href="" ng-click="delete(ticket)">X</a>
+						<a class="btn small-btn icon-up" href="" ng-src="{{upArrowURL}}" ng-click="priorityUp(ticket)" title="Augmenter la priorité"></a>
+						<a class="btn small-btn icon-down" href="" ng-src="{{downArrowURL}}" ng-click="priorityDown(ticket)" title="Diminuer la priorité"></a>
+						<a class="btn small-btn" href="" ng-click="delete(ticket)" title="Supprimer le ticket">X</a>
 					</div>
 					<div class="ticket-description" ng-click="clickOnTicket(ticket.id)">
 						{{ticket.description}}

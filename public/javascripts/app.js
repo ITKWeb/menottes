@@ -40,7 +40,7 @@ app.config(["$routeProvider", "$httpProvider",
         templateUrl: 'views/addNewTicket.html',
         controller: "NewTicketController"
       })
-      .when('/displayTicket/:ticketId', {
+      .when('/displayTicket/:projectId/:sprintId/:ticketId', {
         templateUrl: 'views/addNewTicket.html',
         controller: "NewTicketController"
       })
