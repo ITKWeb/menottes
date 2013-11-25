@@ -3,64 +3,67 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     $scope.upArrowURL = 'images/arrow_up.png';
     $scope.downArrowURL = 'images/arrow_down.png';
     var ticketPriorityToGet;
-
+    
     $network.getSprints(function(sprints) {
         $scope.sprints = sprints;
-		$scope.selected = $scope.sprints[0];
-		loadTickets($scope.selected.id);
-	}, $routeParams.projectId);
-
-	function loadTickets(idSprint) {
-		$network.getTickets(function(tickets) {
-			$scope.tickets = tickets;
-		}, $routeParams.projectId, idSprint);
-	}
+        $scope.selected = $scope.sprints[0];
+        loadTickets($scope.selected.id);
+    }, $routeParams.projectId);
+    
+    function loadTickets(idSprint) {
+        $network.getTickets(function(tickets) {
+            $scope.tickets = tickets;
+        }, $routeParams.projectId, idSprint);
+    }
     
     $scope.clickOnSprint = function(sprint) {
-		console.log(sprint);
-		$scope.selected = sprint;
+        console.log(sprint);
+        $scope.selected = sprint;
         $network.getTickets(function(tickets) {
             $scope.tickets = tickets;
         }, $routeParams.projectId, sprint.id);
     };
-
-  $scope.clickOnTicket = function(ticketId) {
-
-	//$network.getTicketById(function(ticket) {
-		//console.log('controller 3');
+    
+    $scope.clickOnTicket = function(ticketId) {
+        
+        //$network.getTicketById(function(ticket) {
+        //console.log('controller 3');
         $location.path('/displayTicket/'+$routeParams.projectId + '/' + 0 + '/' +  ticketId);
         //$scope.showGlassNewTicket=!$scope.showGlassNewTicket;
         //}, ticketId);
-	};
+    };
     
     $scope.priorityUp = function(ticket){
-    	ticketPriorityToGet = ticket.priority + 1;
-    	$network.getTicketsByPriority(function(gotTicket){
-    		gotTicket.priority -= 1; 
-    		ticket.priority += 1;
+        ticketPriorityToGet = ticket.priority + 1;
+        $network.getTicketsByPriority(function(gotTicket){
+            gotTicket.priority -= 1; 
+            ticket.priority += 1;
             $network.saveTicket(gotTicket);
             $network.saveTicket(ticket);
-    	},ticketPriorityToGet);
+            loadTickets($scope.selected.id);
+        },ticketPriorityToGet);
     }
-
+    
     $scope.priorityDown = function(ticket){
-    	ticketPriorityToGet = ticket.priority - 1;
-    	$network.getTicketsByPriority(function(gotTicket){
-    		gotTicket.priority += 1; 
-    		ticket.priority -= 1;
+        ticketPriorityToGet = ticket.priority - 1;
+        $network.getTicketsByPriority(function(gotTicket){
+            gotTicket.priority += 1; 
+            ticket.priority -= 1;
             $network.saveTicket(gotTicket);
             $network.saveTicket(ticket);
-    	},ticketPriorityToGet);
+            loadTickets($scope.selected.id);
+        },ticketPriorityToGet);
     }
     $scope.delete = function(ticket){
         $network.deleteTicket(ticket);
+        loadTickets($scope.selected.id);
     }
     $scope.printPdf = function() {
         $pdf.printTickets($scope.tickets);
     }
-
+    
     $scope.clickOnBack = function() {
         $location.path('/login');
     }
-
+    
 }]);
