@@ -8,9 +8,7 @@ app.factory(
         
         var sprints = [
             {id: 0, nom: "Backlog"},
-            {id: 1, nom: "Sprint1"},
-            {id: 2, nom: "Sprint2"},
-            {id: 3, nom: "Sprint3"}
+            {id: 1, nom: "Sprint26", planif: moment('2014-01-10'), begin: moment('2014-01-13'), freeze: moment('2014-02-05'), demo: moment('2014-02-11'), objectif: "<ul><li>Livraison en Prod</li><li>Correction de Bug</li><li>Compte Admin</li><li>PPE3 OBservation</li></ul>", team: [{nom:"Nelly"},{nom:"Cuong"},{nom:"Marine"},{nom:"Jérémy"},{nom:"Jean-François", SM: true}]},
         ];
         
         var projects = [{"id": 1, "nom": "Disp'eau", "logo": "logo_itk-vigne.png", "created_at": "2013-07-09T09:36:02.167Z", "updated_at": "2013-07-09T09:36:02.167Z"},
@@ -34,23 +32,26 @@ app.factory(
         if (typeof (localStorage) === 'undefined') {
             alert('Votre navigateur ne supporte pas le localStorage.');
         } else {
-            try {
-                var stringTickets = localStorage.getItem('tickets');
+            try { // init the local storage
+                var url = "/tickets/"+3+"/"+0;
+                var stringTickets = localStorage.getItem(url);
+                // no data saved, store fake tickets
                 if (stringTickets === null) {
-                    
-                    var url = "/tickets/"+3+"/"+0;
                     tickets = [{"id": 1,"titre": "Documentation Agricommand","description": "Cuong doit écrire toute la doc car Nelly a la flemme","estimation_dev": 5,"estimation_test": 10, "tempsPris": null,"created_at": "2013-07-09T12:12:25.811Z","updated_at": "2013-07-09T12:12:25.811Z","projet_id": 3, "sprint_id" : 0, "personne":  "Cuong", "priority":  1, "etat":  "A tester"}, {"id": 2,"titre": "Design de l'application","description": "Mise en place de licornes partout sur le site","estimation_dev": 8,"estimation_test": 10,"tempsPris": null,"created_at": "2013-07-09T12:12:25.811Z","updated_at": "2013-07-09T12:12:25.811Z","projet_id": 3, "sprint_id" : 0, "personne":  "Laurent", "priority":  2, "etat":  "En cours"}];
-                    localStorage.setItem(url, JSON.stringify(tickets));
-                    url = "/tickets/"+2+"/"+0;
-                    tickets = [  {
-                        "titre": "MAQ: Compte admin",
-                        "description": "Revoir les vues du compte Admin avec Agnès",
+                    localStorage.setItem(url, angular.toJson(tickets));
+                }
+
+
+                url = "/tickets/"+2+"/"+0;
+                stringTickets = localStorage.getItem(url);
+                // no data saved, store fake tickets
+                if (stringTickets === null) {
+                    tickets = [  {"titre": "MAQ: Compte admin","description": "Revoir les vues du compte Admin avec Agnès",
                         "trac_id": "1460",
                         "projet_id": 2,
                         "sprint_id": 0,
                         "id": 1,
                         "priority": 3,
-                        "$$hashKey": "00W"
                     },
                                {
                                    "trac_id": "1407",
@@ -60,7 +61,6 @@ app.factory(
                                    "sprint_id": 0,
                                    "id": 2,
                                    "priority": 2,
-                                   "$$hashKey": "00V"
                                },
                                {
                                    "titre": "Pdf générique ITK",
@@ -70,18 +70,26 @@ app.factory(
                                    "sprint_id": 0,
                                    "id": 3,
                                    "priority": 1,
-                                   "$$hashKey": "017"
                                }
                               ]
-                    localStorage.setItem(url, JSON.stringify(tickets));
-                    url = "/tickets/"+1+"/"+0;
-                    tickets = [{"id": 1,"titre": "Redesign de l'application","description": "Mise en place de poney partout sur le site à la place des licornes","estimation_dev": 0.5,"estimation_test": 10,"tempsPris": null,"created_at": "2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id": 1, "sprint_id" : 0, "personne": "Jennifer", "priority": 1, "etat": "En cours"}];
-                    localStorage.setItem(url, JSON.stringify(tickets));
-                    
-                } else {
-                    tickets = JSON.parse(stringTickets);
-                    localStorage.setItem('tickets', JSON.stringify(tickets));
+                    localStorage.setItem(url, angular.toJson(tickets));
                 }
+
+                url = "/tickets/"+2+"/"+1;
+                stringTickets = localStorage.getItem(url);
+                // no data saved, store fake tickets
+                if (stringTickets === null) {
+                    tickets = [{"titre":"Client: Compte admin","description":"View du tableau","trac_id":"1460","projet_id":2,"sprint_id":1,"id":1,"priority":3},{"trac_id":"1507","titre":"Serveur - Compte Admin: DAO","description":"Mettre en place les DAO pour remplir le tableau","projet_id":2,"sprint_id":1,"id":2,"priority":2, "etat":  "En cours"},{"titre":"Compte admin: boutton","description":"Changer les boutons d'accès au compte admin","trac_id":"1578","projet_id":2,"sprint_id":1,"id":3,"priority":1}];
+                    localStorage.setItem(url, angular.toJson(tickets));
+                }
+                url = "/tickets/"+1+"/"+0;
+                stringTickets = localStorage.getItem(url);
+                // no data saved, store fake tickets
+                if (stringTickets === null) {
+                    tickets = [{"id": 1,"titre": "Redesign de l'application","description": "Mise en place de poney partout sur le site à la place des licornes","estimation_dev": 0.5,"estimation_test": 10,"tempsPris": null,"created_at": "2013-07-09T12:12:25.811Z","updated_at":"2013-07-09T12:12:25.811Z","projet_id": 1, "sprint_id" : 0, "personne": "Jennifer", "priority": 1, "etat": "En cours"}];
+                    localStorage.setItem(url, angular.toJson(tickets));
+                }
+
             } catch (e) {
                 if (e == QUOTA_EXCEEDED_ERR) {
                     alert('Taille max de données sauvegardées atteinte !');
@@ -125,6 +133,17 @@ app.factory(
                         console.log(data, status, headers, config);
                     }
                 );
+            }
+        }
+        function getProjet(callback, projectId) {
+            console.log("GetProjet called with: "+projectId);
+            if(isMocked === true) {
+                for (i=0;i<projects.length; i++) {
+                    // == as projectId is a String and projects[i].id is an integer
+                    if (projects[i].id == projectId) {
+                        callback(projects[i]);
+                    }
+                }
             }
         }
         function getSelectedProjetIconPath(callback) {
@@ -185,6 +204,18 @@ app.factory(
             }
         }
         
+        function getSprint(callback, projectId, sprintId) {
+            console.log("GetSprint called with: "+projectId+"/"+sprintId);
+            if(isMocked === true) {
+                for (i=0; i<sprints.length; i++) {
+                    // == as sprintId is a String and sprints[i].id is an integer
+                    if (sprints[i].id == sprintId) {
+                        callback(sprints[i]);
+                    }
+                }
+            }
+        }
+
         function createSprint(sprint) {
             sprints.push(sprint);
             var data = {"nom": sprint.nom};
@@ -197,7 +228,7 @@ app.factory(
         function getTickets(callback, projectId, sprintId) {
             var url = "/tickets/"+projectId+"/"+sprintId;
             if(isMocked === true) {
-                tickets = JSON.parse(localStorage.getItem(url));
+                tickets = angular.fromJson(localStorage.getItem(url));
                 callback(tickets);
             } else {
                 $http.get(url)
@@ -210,8 +241,9 @@ app.factory(
             }
         }
         
-        function getTicketById(callback, ticketId) {
+        function getTicketById(callback, projectId, sprintId, ticketId) {
             if(isMocked === true) {
+                tickets = angular.fromJson(localStorage.getItem("/tickets/"+projectId+"/"+sprintId));
                 console.log('ticketId '+ticketId);
                 var i = 0;
                 var exitepas;
@@ -219,7 +251,7 @@ app.factory(
                     i++;
                 }
                 
-                console.log('i = '+ i +' '+tickets.length);
+                console.log('i = '+ i +' / '+tickets.length);
                 callback(tickets[i]);
                 /* if (tickets[i].id == ticketId) // Do not work as ticketId is a string and ticket.id an integer
         {
@@ -272,22 +304,23 @@ app.factory(
             
             var data = {"titre": ticket.titre, "description": ticket.description, "trac_id": ticket.trac_id, "importance": ticket.priority};
             if (isMocked === true) {
-                var url = "/tickets/"+ticket.projet_id+"/0";
-                tickets = JSON.parse(localStorage.getItem(url));
+                var url = "/tickets/"+ticket.projet_id+"/"+ticket.sprint_id;
+                tickets = angular.fromJson(localStorage.getItem(url));
                 var maxId=0;
-                var maxPriority=0;
+                //var maxPriority=0;
                 for (var i = 0; i < tickets.length; i++) {
                     if(maxId < tickets[i].id) {
                         maxId = tickets[i].id;
                     }
-                    if(maxPriority < tickets[i].priority) {
-                        maxPriority = tickets[i].priority;
-                    }
+                    //                    if(maxPriority < tickets[i].priority) {
+                    //                        maxPriority = tickets[i].priority;
+                    //                    }
+                    tickets[i].priority += 1;
                 };
                 ticket.id = maxId+1;
-                ticket.priority = maxPriority+1;
+                ticket.priority = 0;
                 tickets[tickets.length] = ticket;
-                localStorage.setItem(url, JSON.stringify(tickets));
+                localStorage.setItem(url, angular.toJson(tickets));
             } else {
                 var url = "/tickets/";
                 $http.post(url, data)
@@ -297,28 +330,28 @@ app.factory(
                     }
                 );
             }
-        }
+        };
         
         function saveTicket(ticket) {
-            var url = "/tickets/"+ticket.projet_id+"/0";
-            tickets = JSON.parse(localStorage.getItem(url));
+            var url = "/tickets/"+ticket.projet_id+"/"+ticket.sprint_id;
+            tickets = angular.fromJson(localStorage.getItem(url));
             for (var i = 0; i < tickets.length; i++) {
                 if (tickets[i].id === ticket.id) {
                     tickets[i] = ticket;
                 }
             }
-            localStorage.setItem(url, JSON.stringify(tickets));      
-        }
+            localStorage.setItem(url, angular.toJson(tickets));
+        };
         
         function deleteTicket(ticket) {
-            var url = "/tickets/"+ticket.projet_id+"/0";
-            tickets = JSON.parse(localStorage.getItem(url));
+            var url = "/tickets/"+ticket.projet_id+"/"+ticket.sprint_id;
+            tickets = angular.fromJson(localStorage.getItem(url));
             for (var i = 0; i < tickets.length; i++) {
                 if (tickets[i].id === ticket.id) {
                     tickets.splice(i, 1);
                 }
             }
-            localStorage.setItem(url, JSON.stringify(tickets));      
+            localStorage.setItem(url, angular.toJson(tickets));
         }
         
         function createPoll(poll) {
@@ -351,6 +384,9 @@ app.factory(
             getProjets: function(callback) {
                 getProjets(callback);
             },
+            getProjet: function(callback, projectID) {
+                getProjet(callback, projectID);
+            },
             getSelectedProjetIconPath: function(callback) {
                 getSelectedProjetIconPath(callback);
             },
@@ -362,6 +398,9 @@ app.factory(
             },
             getSprints: function(callback, projectId) {
                 getSprints(callback, projectId);
+            },
+            getSprint: function(callback, projectId, sprintId) {
+                 getSprint(callback, projectId, sprintId);
             },
             createSprint: function(sprint) {
                 createSprint(sprint);
@@ -375,8 +414,8 @@ app.factory(
             getTicketsByPriority: function(callback, priority){
                 getTicketsByPriority(callback, priority);
             },
-            getTicketById: function(callback, ticketId) {
-                getTicketById(callback, ticketId);
+            getTicketById: function(callback, projectId, sprintId, ticketId) {
+                getTicketById(callback, projectId, sprintId, ticketId);
             },
             saveTicket: function(ticket) {
                 saveTicket(ticket);

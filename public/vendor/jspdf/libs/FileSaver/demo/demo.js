@@ -1,6 +1,6 @@
 /* FileSaver.js demo script
  * 2012-01-23
- * 
+ *
  * By Eli Grey, http://eligrey.com
  * License: X11/MIT
  *   See LICENSE.md
@@ -27,15 +27,15 @@ var
 	, canvas_options_form = $("canvas-options")
 	, canvas_filename = $("canvas-filename")
 	, canvas_clear_button = $("canvas-clear")
-	
+
 	, text = $("text")
 	, text_options_form = $("text-options")
 	, text_filename = $("text-filename")
-	
+
 	, html = $("html")
 	, html_options_form = $("html-options")
 	, html_filename = $("html-filename")
-	
+
 	, ctx = canvas.getContext("2d")
 	, drawing = false
 	, x_points = session.x_points || []
@@ -70,7 +70,7 @@ var
 	, stop_drawing = function() {
 		drawing = false;
 	}
-	
+
 	// Title guesser and document creator available at https://gist.github.com/1059648
 	, guess_title = function(doc) {
 		var
@@ -203,10 +203,10 @@ view.addEventListener("unload", function() {
 	session.y_points = JSON.stringify(y_points);
 	session.drag_points = JSON.stringify(drag_points);
 	session.canvas_filename = canvas_filename.value;
-	
+
 	session.text = text.value;
 	session.text_filename = text_filename.value;
-	
+
 	session.html = html.innerHTML;
 	session.html_filename = html_filename.value;
 }, false);

@@ -1,0 +1,67 @@
+<div class="report">
+    <div id="content">
+        <center><label class="reportTitle">{{projectName}}</label><br/>
+            <label class="reportTitle">{{sprint.nom}}</label></center>
+
+        <ol>
+            <li >Calendrier </li>
+
+            <ul>
+                <li><div class="sprintContainer"><label>Planification</label><label>{{sprint.formattedPlanifDate}}</label></div></li>
+                <li><div class="sprintContainer"><label>Date de Début</label><label>{{sprint.formattedBeginDate}}</label></div></li>
+                <li><div class="sprintContainer"><label>Freeze</label><label>{{sprint.formattedFreezeDate}}</label></div></li>
+                <li><div class="sprintContainer"><label>Démo</label><label>{{sprint.formattedDemoDate}}</label></div></li>
+            </ul>
+
+            <li>Objectifs </li>
+            <div>
+                <textarea ng-model="sprint.objectif">{{sprint.objectif}}</textarea>
+            </div>
+            <li >Équipe</li>
+            <div>
+                <ul>
+                    <li ng-repeat="dev in sprint.team">
+                        <label>{{dev.nom}}</label>
+                    </li>
+                </ul><br/>
+                <div class="sprintContainer"><label>Scrum Master :</label><label ng-repeat="dev in sprint.team | filter: dev.SM=true">{{dev.nom}}</label></div>
+            </div>
+
+
+            <li >Tickets</li>
+
+            <b>{{tickets.length}}</b> tickets au total, dont: <br/><br/>
+
+            <table>
+                <tr><td class="done">{{ticketsDone.length}}</td> <td class="description">Tickets faits</td></tr>
+                <tr><td class="doing">{{ticketsDoing.length}}</td> <td class="description">Tickets en cours, suspendus ou en attente de retour</td></tr>
+                <tr><td class="todo">{{ticketsToDo.length}}</td> <td class="description">Tickets non faits</td></tr>
+            </table>
+            <br/><br/>
+
+            <table class="trac">
+                <tr class="header"> <td width="80px">TRAC interne</td><td width="80px">TRAC externe</td><td>Description</td><td width="60px">Status</td><td width="100px">Assigné à</td></tr>
+                <tr ng-repeat="ticket in ticketsDone" class="done"><td >#{{ticket.trac_id}}</td><td >{{ticket.history_id}}</td><td class="description">{{ticket.description}}</td><td >{{ticket.etat}}</td><td >{{ticket.personne}}</td></tr>
+                <tr ng-repeat="ticket in ticketsDoing" class="doing"><td >#{{ticket.trac_id}}</td><td >{{ticket.history_id}}</td><td class="description">{{ticket.description}}</td><td >{{ticket.etat}}</td><td >{{ticket.personne}}</td></tr>
+                <tr ng-repeat="ticket in ticketsToDo" class="todo"><td >#{{ticket.trac_id}}</td><td >{{ticket.history_id}}</td><td class="description">{{ticket.description}}</td><td >{{ticket.etat}}</td><td >{{ticket.personne}}</td></tr>
+            </table>
+
+            <li> Détails des tickets non faits</li>
+            <ul>
+                <li ng-repeat="ticket in ticketsToDo">
+                    <label>#{{ticket.trac_id}}</label><label ng-show="ticket.history_id"> / {{ticket.history_id}}</label><label>: {{ticket.description}}</label><br/>
+                    <textarea ng-model="ticket.note">{{ticket.note}}</textarea>
+                </li>
+            </ul>
+
+            <li> Détails des tickets en cours, suspendus ou en attente de retours </li>
+            <ul>
+                <li ng-repeat="ticket in ticketsDoing">
+                    <label>#{{ticket.trac_id}}</label><label ng-show="ticket.history_id"> / {{ticket.history_id}}</label><label>: {{ticket.description}}</label><br/>
+                    <textarea ng-model="ticket.note">{{ticket.note}}</textarea>
+                </li>
+            </ul>
+        </ol>
+    </div>
+    <center><div><button ng-click="save()">Enregistrer le rapport</button> <button ng-click="back()">Revenir au tableau de sprint</button></div></center>
+</div>

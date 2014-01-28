@@ -91,7 +91,7 @@
 }
 	.ticket-header-id{
 		display: inline-block;
-		width:40px;
+		/* width:40px;*/
 	}
 	.ticket-header-titre{
 		font-weight:bold;

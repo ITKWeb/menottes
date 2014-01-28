@@ -1,16 +1,15 @@
-app.controller('NewTicketController', ['$scope', 'Network', '$routeParams', '$rootScope', '$location', function ($scope, $network, $routeParams, $rootScope, $location) {
+app.controller('NewTicketController', ['$scope', 'Network', '$routeParams', '$rootScope', '$location', 'Pdf', function ($scope, $network, $routeParams, $rootScope, $location, $pdf) {
     
+    $network.getSprint(function(sprint) {
+        console.log(sprint);
+        $scope.sprint = sprint;
+    },  $routeParams.projectId, $routeParams.sprintId);
     
     $network.getTicketById(function (ticket) {
         console.log('edit ticket');
         $scope.ticket = ticket;
-    }, $routeParams.ticketId);
-    /*
-        $network.getTicketById(function(ticket) {
-            console.log('edit ticket');
-            $scope.ticket = ticket;
-        }, $scope.$parent.ticketId);
-*/
+    }, $routeParams.projectId, $routeParams.sprintId, $routeParams.ticketId);
+
     $scope.saveTicket = function () {
         $scope.ticket.projet_id = parseInt($routeParams.projectId);
         $scope.ticket.sprint_id = parseInt($routeParams.sprintId);
@@ -20,7 +19,7 @@ app.controller('NewTicketController', ['$scope', 'Network', '$routeParams', '$ro
             $network.saveTicket($scope.ticket);
         }
         //$scope.$parent.showGlassNewTicket=false;
-        $location.path('/logged/'+$scope.ticket.projet_id);
+        $location.path('/logged/'+$routeParams.projectId+'/'+ $routeParams.sprintId);
     };
     
     $scope.printPdf = function() {
@@ -30,7 +29,7 @@ app.controller('NewTicketController', ['$scope', 'Network', '$routeParams', '$ro
 
     $scope.hide=function (){
         //$scope.$parent.showGlassNewTicket=false;
-        $location.path('/logged/'+$scope.ticket.projet_id);
+        $location.path('/logged/'+$routeParams.projectId+'/'+ $routeParams.sprintId);
     };
     
     

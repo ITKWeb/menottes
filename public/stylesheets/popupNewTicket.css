@@ -2,6 +2,7 @@
 /*--------------------- Popup nouveau ticket  --------------------*/
 .newTicketContent{
 	text-align:left;
+    height:130px;
 }
 
 .labelTicket {
@@ -49,4 +50,19 @@
 .popup-footer{
     width: 100%;
     margin:auto;
+}
+
+.optinalRadio{
+    margin-left:100px;
+    text-align:left;
+}
+
+.optinalRadio div {
+    position:relative;
+}
+
+.optinalRadio .labelSet {
+    position:absolute;
+    left: 100px;
+    top:0;
 }
