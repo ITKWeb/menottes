@@ -1,21 +1,47 @@
-app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootScope', '$location', 'Pdf', function($scope, $network, $routeParams, $rootScope, $location, $pdf) {
+app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootScope', '$location', 'Pdf', '$http',
+    function($scope, $network, $routeParams, $rootScope, $location, $pdf, $http) {
     
     $scope.upArrowURL = 'images/arrow_up.png';
     $scope.downArrowURL = 'images/arrow_down.png';
     $scope.selected = $routeParams.sprintId;
 
     var ticketPriorityToGet;
+
+    $scope.printProjetName = '9';
+    $scope.printToken = '';
+    $scope.printSprintName = 'Sprint 2';
     
     $network.getSprints(function(sprints) {
         $scope.sprints = sprints;
         loadTickets();
     }, $routeParams.projectId);
-    
-    function loadTickets() {
-        $network.getTickets(function(tickets) {
-            $scope.tickets = tickets;
-        }, $routeParams.projectId, $routeParams.sprintId);
+
+    window.BLABLA = function(data) {
+        var tickets = data.issues.map(function(issue) {
+            return {
+                history_id: issue.parent === undefined ? "" : issue.parent.id,
+                id: issue.id,
+                trac_id: issue.id,
+                priority: '',//issue.priority.name,
+                projet_id: issue.project.id, 
+                sprint_id: issue.fixed_version === undefined ? "" : issue.fixed_version.name,
+                titre: issue.subject,
+                description: issue.description,
+            }
+        });
+        tickets = tickets.filter(function(issue) {
+            return issue.sprint_id === $scope.printSprintName;
+        });
+        $scope.tickets = tickets;
     };
+    
+    function loadTickets(idSprint) {
+        // $network.getTickets(function(tickets) {
+        //     $scope.tickets = tickets;
+        // }, $routeParams.projectId, idSprint);
+
+        $http.jsonp('http://prometheus.lan.itkweb.fr/redmine/projects/'+$scope.printProjetName+'/issues.json?limit=100&callback=BLABLA&key='+$scope.printToken);
+    }
     
     $scope.clickOnSprint = function(sprint) {
         console.log(sprint);
@@ -54,8 +80,9 @@ app.controller('LoggedController', ['$scope', 'Network', '$routeParams', '$rootS
     };
     $scope.delete = function(ticket){
         $network.deleteTicket(ticket);
-        loadTickets();
-    };
+        loadTickets($scope.selected.id);
+    }
+
     $scope.printPdf = function() {
         // create the pdf
         $pdf.printTickets($scope.tickets);

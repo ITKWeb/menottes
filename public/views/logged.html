@@ -8,7 +8,7 @@
         <a class="btn btn-grey icon-add" href="" ng-click="clickOnTicket()">
             Nouveau Ticket
         </a>
-        <a class="btn icon-print" ng-click="printPdf()">
+        <a class="btn icon-print" ng-click="showPrintScreen=!showPrintScreen">
             Imprimer les tickets
         </a>
         <a class="btn icon-print" ng-click="save()">
@@ -21,7 +21,7 @@
     <ul class="leftNavigation">
         <li ng-repeat="sprint in sprints" ng-click="clickOnSprint(sprint)" ng-class="{active: sprint == selected}">{{sprint.nom}}</li>
     </ul>
-    <div class="boardContent">
+    <div class="boardContent" ng-hide="showPrintScreen">
         <ul class="ticketslist">
             <li ng-repeat="ticket in tickets | orderBy:'priority':true">
                 <div id="ticket_{{$index}}" class="ticket">
@@ -42,6 +42,14 @@
                 </div>
             </li>
         </ul>
+    </div>
+    <div class="boardContent" ng-show="showPrintScreen">
+        <div class="ticketslist">
+            <input type="text" ng-model="printProjetName" value=""/><br/><br/>
+            <input type="text" ng-model="printToken" value=""/><br/><br/>
+            <input type="text" ng-model="printSprintName" value=""/><br/><br/>
+            <a class="btn icon-print" ng-click="printPdf()">Imprimer les tickets</a>
+        </div>
     </div>
     <ng-include src="'views/addNewTicket.html'" ng-show="showGlassNewTicket" ng-controller="NewTicketController" ></ng-include>
 </div>
