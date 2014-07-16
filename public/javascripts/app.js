@@ -49,7 +49,7 @@ app.config(["$routeProvider", "$httpProvider",
                     controller: "ReportController"
                 })
                 .otherwise({
-                    redirectTo: '/'
+                    redirectTo: '/logged/2/0'
                 });
             }
            ]);

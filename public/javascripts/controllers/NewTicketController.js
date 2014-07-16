@@ -1,12 +1,10 @@
 app.controller('NewTicketController', ['$scope', 'Network', '$routeParams', '$rootScope', '$location', 'Pdf', function ($scope, $network, $routeParams, $rootScope, $location, $pdf) {
     
     $network.getSprint(function(sprint) {
-        console.log(sprint);
         $scope.sprint = sprint;
     },  $routeParams.projectId, $routeParams.sprintId);
     
     $network.getTicketById(function (ticket) {
-        console.log('edit ticket');
         $scope.ticket = ticket;
     }, $routeParams.projectId, $routeParams.sprintId, $routeParams.ticketId);
 

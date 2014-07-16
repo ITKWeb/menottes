@@ -7,14 +7,14 @@ app.controller('ReportController', ['$scope', 'Network', '$routeParams', '$locat
 
 
     $network.getSprint(function (sprint) {
-        $scope.sprint = sprint;
-        if ($scope.sprint.planif != undefined) {
-
-            var dateFormat = 'DD / MM / YYYY';
-            $scope.sprint.formattedPlanifDate = $scope.sprint.planif.format(dateFormat);
-            $scope.sprint.formattedBeginDate = $scope.sprint.begin.format(dateFormat);
-            $scope.sprint.formattedFreezeDate = $scope.sprint.freeze.format(dateFormat);
-            $scope.sprint.formattedDemoDate = $scope.sprint.demo.format(dateFormat);
+        console.log(sprint + "/" + sprint.planif);
+		$scope.sprint = sprint;
+        if (sprint.planif  != undefined) {
+		    var dateFormat = 'DD / MM / YYYY';
+            $scope.sprint.formattedPlanifDate = moment($scope.sprint.planif).format(dateFormat);
+            $scope.sprint.formattedBeginDate = moment($scope.sprint.begin).format(dateFormat);
+            $scope.sprint.formattedFreezeDate = moment($scope.sprint.freeze).format(dateFormat);
+            $scope.sprint.formattedDemoDate = moment($scope.sprint.demo).format(dateFormat);
         }
     }, $routeParams.projectId, $routeParams.sprintId);
 
@@ -25,7 +25,7 @@ app.controller('ReportController', ['$scope', 'Network', '$routeParams', '$locat
         $scope.ticketsDoing = [];
         $scope.ticketsToDo = [];
         for (var i=0; i<tickets.length; i++) {
-            if (tickets[i].etat === undefined) {
+            if (tickets[i].etat === undefined || tickets[i].etat === null) {
                 $scope.ticketsToDo[$scope.ticketsToDo.length] = tickets[i];
             } else if (tickets[i].etat === "Clos") {
                 $scope.ticketsDone[$scope.ticketsDone.length] = tickets[i];
@@ -54,9 +54,9 @@ app.controller('ReportController', ['$scope', 'Network', '$routeParams', '$locat
         e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
         a.dispatchEvent(e);
         //alert(html);
-    }
+    };
 
     $scope.back = function() {
         $location.path('/logged/'+$routeParams.projectId+'/'+ $routeParams.sprintId);
-    }
+    };
 }]);
